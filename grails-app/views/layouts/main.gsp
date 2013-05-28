@@ -15,39 +15,20 @@
     <g:javascript library="jquery" plugin="jquery"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'user.css')}" type="text/css">
+    <r:require modules="bootstrap"/>
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
 
 <body>
-<div id="overlay" class="overlay"></div>
-<div class="page-wrapper">
 
+<div id="wrap">
     <g:render template="/layouts/header"/>
-    <div class="page-central-wrapper">
-        <div class="page-shadow">
-
-
-            <table class="page">
-
-                <tr>
-                    <td>
-
-                    </td>
-                    <td class="page-cell">
-                        <div class="content-wrapper">
-                            <g:layoutBody/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="container">
+        <g:layoutBody/>
     </div>
-
-    <div class="footer-buffer"></div>
+    <div id="push"></div>
 </div>
-
 
 <g:render template="/layouts/footer"/>
 
