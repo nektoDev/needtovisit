@@ -98,4 +98,14 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'ru.nektodev.need
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'ru.nektodev.needtovisit.UserRole'
 grails.plugins.springsecurity.authority.className = 'ru.nektodev.needtovisit.Role'
 grails.plugins.springsecurity.requestMap.className = 'ru.nektodev.needtovisit.RequestMap'
-grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+grails.plugins.springsecurity.securityConfigType = 'InterceptUrlMap'
+
+grails.plugins.springsecurity.interceptUrlMap = [
+        '/secure/**':    ['ROLE_ADMIN'],
+        '/js/**':        ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/css/**':       ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/images/**':    ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/*':            ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login/**':     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/logout/**':    ['IS_AUTHENTICATED_ANONYMOUSLY']
+]
