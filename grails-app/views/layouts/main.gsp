@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
     <r:require modules="bootstrap"/>
+    <r:require module="bootstrap-css"/>
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
@@ -25,7 +26,7 @@
 <div id="wrap">
     <g:render template="/layouts/header"/>
     <div class="container">
-        <div class="page-header"><h1>Заголовок страницы</h1></div>
+
         <g:layoutBody/>
     </div>
     <div id="push"></div>
