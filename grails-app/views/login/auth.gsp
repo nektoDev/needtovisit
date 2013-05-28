@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta name='layout' content='main'/>
+    <title><g:message code="springSecurity.login.title"/></title>
     <r:require module="login"/>
 </head>
 

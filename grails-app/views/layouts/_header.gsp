@@ -6,7 +6,29 @@
                 <a class="brand" href="./" data-original-title>Need To Visit</a>
 
                 <div class="nav-collapse collapse">
+                    <div class="navbar-text pull-right">
+                        <sec:ifNotLoggedIn>
+                        %{--<g:link controller="user" action="create"><g:message code="register"/></g:link>--}%
+                            <span class="divider-vertical"></span>
+                            <g:link class="navbar-link" controller="login">Войти</g:link>
+                        </sec:ifNotLoggedIn>
+
+                        <sec:ifLoggedIn>
+                            <span class="navbar-text">Добрый день,</span>
+
+                            <g:link class="navbar-link" controller="user" action="edit"
+                                    id="${sec.loggedInUserInfo(field: 'id')}">
+                                <sec:username/>
+                            </g:link>
+                            <span class="divider-vertical"></span>
+
+                            <g:link class="navbar-link" controller="logout">Выйти</g:link>
+
+                        </sec:ifLoggedIn>
+                    </div>
+
                     <ul class="nav">
+
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -23,9 +45,11 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
+
                     </ul>
                 </div>
             </strong>
+
             <!--/.nav-collapse -->
         </div>
     </div>
