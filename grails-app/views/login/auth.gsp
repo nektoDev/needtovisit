@@ -20,20 +20,20 @@
 
     <label class="checkbox">
         <input type="checkbox" name='${rememberMeParameter}' value="remember-me"
-               <g:if test='${hasCookie}'>checked='checked'</g:if>><g:message
-            code="springSecurity.login.remember.me.label"/>
+               <g:if test='${hasCookie}'>checked='checked'</g:if>>
+        <g:message code="springSecurity.login.remember.me.label"/>
     </label>
 
     <button class="btn btn-large btn-primary" type="submit"
-            value='${message(code: "springSecurity.login.button")}'>Sign in</button>
+            value='${message(code: "springSecurity.login.button")}'>
+        Sign in
+    </button>
 </form>
 
 <script type='text/javascript'>
-    <!--
     (function () {
         document.forms['loginForm'].elements['j_username'].focus();
     })();
-    // -->
 </script>
 </body>
 </html>
