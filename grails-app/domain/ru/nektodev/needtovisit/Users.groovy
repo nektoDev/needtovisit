@@ -1,6 +1,6 @@
 package ru.nektodev.needtovisit
 
-class User {
+class Users {
 
 	transient springSecurityService
 
@@ -21,7 +21,7 @@ class User {
 	}
 
 	Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this).collect { it.role } as Set
+		UsersRole.findAllByUser(this).collect { it.role } as Set
 	}
 
 	def beforeInsert() {

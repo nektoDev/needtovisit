@@ -94,8 +94,8 @@ log4j = {
 grails.plugins.twitterbootstrap.fixtaglib = true
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'ru.nektodev.needtovisit.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'ru.nektodev.needtovisit.UserRole'
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'ru.nektodev.needtovisit.Users'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'ru.nektodev.needtovisit.UsersRole'
 grails.plugins.springsecurity.authority.className = 'ru.nektodev.needtovisit.Role'
 grails.plugins.springsecurity.requestMap.className = 'ru.nektodev.needtovisit.RequestMap'
 grails.plugins.springsecurity.securityConfigType = 'InterceptUrlMap'
