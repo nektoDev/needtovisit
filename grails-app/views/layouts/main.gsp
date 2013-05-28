@@ -25,6 +25,7 @@
 <div id="wrap">
     <g:render template="/layouts/header"/>
     <div class="container">
+        <div class="page-header"><h1>Заголовок страницы</h1></div>
         <g:layoutBody/>
     </div>
     <div id="push"></div>
