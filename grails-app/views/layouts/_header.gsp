@@ -3,7 +3,7 @@
         <div class="container">
 
             <strong>
-                <a class="brand" href="./" data-original-title>Need To Visit</a>
+                <a class="brand" href="${createLink(uri: '/')}" data-original-title>Need To Visit</a>
 
                 <div class="nav-collapse collapse">
                     <div class="navbar-text pull-right">
