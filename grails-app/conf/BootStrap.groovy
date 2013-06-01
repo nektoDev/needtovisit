@@ -1,7 +1,7 @@
+import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.Role
+import ru.nektodev.needtovisit.Users
 import ru.nektodev.needtovisit.UsersRole
-import ru.nektodev.needtovisit.Users
-import ru.nektodev.needtovisit.Users
 
 class BootStrap {
     def springSecurityService;
