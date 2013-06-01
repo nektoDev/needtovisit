@@ -14,20 +14,63 @@
 <table class="table table-striped">
     <thead>
     <tr>
-
+        <th></th>
         <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}" />
         <g:sortableColumn property="username" title="${message(code: 'place.name.label', default: 'Username')}" />
     </tr>
     </thead>
     <tbody>
-    <g:each in="${newPlaces.place}" status="i" var="placeInstance">
+    <g:each in="${newPlaces}" status="i" var="placeInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <td><g:checkBox name="wannaVisit" disabled="sec.ifNotLoggedIn" value="${placeInstance.wannaVisit.booleanValue()}"/></td>
+            <td><g:link controller="place" action="show" id="${placeInstance.place.id}">${fieldValue(bean: placeInstance, field: "place.name")}</g:link></td>
+            <td><g:link controller="users" action="show" id="${placeInstance.user.id}">${fieldValue(bean: placeInstance, field: "user.username")}</g:link></td>
 
-            <td><g:link action="show" id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link></td>
-            <td><g:link action="show" id="${placeInstance.userRelation.user.id}">${fieldValue(bean: placeInstance, field: "userRelation.user.username")}</g:link></td>
         </tr>
     </g:each>
     </tbody>
 </table>
+<sec:ifLoggedIn>
+    <h3>Уже посетили?</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}" />
+            <g:sortableColumn property="username" title="${message(code: 'place.name.label', default: 'Username')}" />
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${placesToVisit}" status="i" var="placeToVisit">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td><g:checkBox name="visited" value="${placeToVisit.visited}"/></td>
+                <td><g:link controller="place" action="show" id="${placeToVisit.place.id}">${fieldValue(bean: placeToVisit, field: "place.name")}</g:link></td>
+                <td><g:link controller="users" action="show" id="${placeToVisit.user.id}">${fieldValue(bean: placeToVisit, field: "user.username")}</g:link></td>
+
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+    <h3>Еще разок?</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}" />
+            <g:sortableColumn property="username" title="${message(code: 'place.name.label', default: 'Username')}" />
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${placesVisited}" status="i" var="placeToVisit">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td><g:checkBox name="visited" value="${placeToVisit.visited}"/></td>
+                <td><g:link controller="place" action="show" id="${placeToVisit.place.id}">${fieldValue(bean: placeToVisit, field: "place.name")}</g:link></td>
+                <td><g:link controller="users" action="show" id="${placeToVisit.user.id}">${fieldValue(bean: placeToVisit, field: "user.username")}</g:link></td>
+
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+</sec:ifLoggedIn>
 </body>
 </html>

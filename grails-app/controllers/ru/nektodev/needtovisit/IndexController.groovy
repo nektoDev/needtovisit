@@ -22,6 +22,6 @@ class IndexController {
         } else {
             newPlaces = UserPlaceRelation.list()
         }
-        [newPlaces: newPlaces, placeToVisit: placeToVisit, placeVisited: placeVisited]
+        [newPlaces: newPlaces, placesToVisit: placeToVisit, placesVisited: placeVisited]
     }
 }
