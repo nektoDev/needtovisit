@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class PlaceController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    def springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
@@ -21,11 +22,14 @@ class PlaceController {
 
     def save() {
         def placeInstance = new Place(params)
+
         if (!placeInstance.save(flush: true)) {
             render(view: "create", model: [placeInstance: placeInstance])
             return
         }
-
+        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser, place: placeInstance).save()
+        placeInstance.addToUserRelation(relationInstance)
+        placeInstance.save(flush: true)
         flash.message = message(code: 'default.created.message', args: [message(code: 'place.label', default: 'Place'), placeInstance.id])
         redirect(action: "show", id: placeInstance.id)
     }

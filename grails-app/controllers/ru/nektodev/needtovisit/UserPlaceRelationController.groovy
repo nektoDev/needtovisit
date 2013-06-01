@@ -20,18 +20,18 @@ class UserPlaceRelationController {
     }
 
     def save() {
-        def userPlaceRelationInstance = new UserPlaceRelation(params)
-        if (!userPlaceRelationInstance.save(flush: true)) {
+        def userPlaceRelationInstance  = new UserPlaceRelation(params)
+        if (!userPlaceRelationInstance.save(flush: true, failOnError:true)) {
             render(view: "create", model: [userPlaceRelationInstance: userPlaceRelationInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), userPlaceRelationInstance.id])
-        redirect(action: "show", id: userPlaceRelationInstance.id)
+        redirect(action: "show", user: userPlaceRelationInstance.user, place: userPlaceRelationInstance.place)
     }
 
-    def show(Long id) {
-        def userPlaceRelationInstance = UserPlaceRelation.get(id)
+    def show(Users user, Place place) {
+        def userPlaceRelationInstance = UserPlaceRelation.findByUserAndPlace(user, place)
         if (!userPlaceRelationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), id])
             redirect(action: "list")

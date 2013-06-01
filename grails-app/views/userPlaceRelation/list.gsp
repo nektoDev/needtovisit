@@ -38,7 +38,7 @@
 				<g:each in="${userPlaceRelationInstanceList}" status="i" var="userPlaceRelationInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${userPlaceRelationInstance.id}">${fieldValue(bean: userPlaceRelationInstance, field: "place")}</g:link></td>
+						<td><g:link action="show" user="${userPlaceRelationInstance.user}" place="${userPlaceRelationInstance.place}">${fieldValue(bean: userPlaceRelationInstance, field: "place")}</g:link></td>
 					
 						<td>${fieldValue(bean: userPlaceRelationInstance, field: "user")}</td>
 					

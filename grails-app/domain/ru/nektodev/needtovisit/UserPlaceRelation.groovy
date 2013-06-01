@@ -15,5 +15,6 @@ class UserPlaceRelation implements Serializable{
         id composite: ['user', 'place']
         version false
         autoTimestamp false
+        table : "User_Place"
     }
 }

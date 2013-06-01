@@ -29,7 +29,7 @@ class BootStrap {
 
 
         def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO').save();
-        def adminRelation = UserPlaceRelation.findByUserAndPlace(adminUser, zoo) ?: new UserPlaceRelation(user: adminUser, place: zoo).save(failOnError: true)
+        def adminRelation = UserPlaceRelation.findByUserAndPlace(adminUser, zoo) ?: new UserPlaceRelation(user: adminUser, place: zoo).save(failOnError: true, flush: true, insert: true)
         Place.findByName("ZOO2") ?: new Place(name: 'ZOO2').save();
         Place.findByName("ZOO3") ?: new Place(name: 'ZOO3').save();
         Place.findByName("ZOO4") ?: new Place(name: 'ZOO4').save();
