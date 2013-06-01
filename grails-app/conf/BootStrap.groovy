@@ -1,3 +1,4 @@
+import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.Role
 import ru.nektodev.needtovisit.UsersRole
 import ru.nektodev.needtovisit.Users
@@ -17,7 +18,7 @@ class BootStrap {
             UsersRole.create adminUser, adminRole
         }
 
-        def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO').addToUsers(adminUser).save();
+        def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO').save();
 
     }
     def destroy = {

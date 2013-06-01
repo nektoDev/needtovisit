@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${placeInstance?.visited}">
-				<li class="fieldcontain">
-					<span id="visited-label" class="property-label"><g:message code="place.visited.label" default="Visited" /></span>
-					
-						<span class="property-value" aria-labelledby="visited-label"><g:formatBoolean boolean="${placeInstance?.visited}" /></span>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

@@ -7,7 +7,6 @@ package ru.nektodev.needtovisit
  */
 class Place {
     String name
-    boolean visited
 
 
     static constraints = {

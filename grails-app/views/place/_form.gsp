@@ -10,11 +10,3 @@
 	<g:textField name="name" required="" value="${placeInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: placeInstance, field: 'visited', 'error')} ">
-	<label for="visited">
-		<g:message code="place.visited.label" default="Visited" />
-		
-	</label>
-	<g:checkBox name="visited" value="${placeInstance?.visited}" />
-</div>
-
