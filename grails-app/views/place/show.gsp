@@ -32,6 +32,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${placeInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="place.user.label" default="User" /></span>
+					
+						<g:each in="${placeInstance.user}" var="u">
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="userPlaceRelation" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
