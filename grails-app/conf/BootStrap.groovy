@@ -17,7 +17,7 @@ class BootStrap {
             UsersRole.create adminUser, adminRole
         }
 
-        def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO')save();
+        def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO').save();
 
     }
     def destroy = {
