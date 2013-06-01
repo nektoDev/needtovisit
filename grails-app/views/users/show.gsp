@@ -77,12 +77,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usersInstance?.place}">
+				<g:if test="${usersInstance?.placeRelation}">
 				<li class="fieldcontain">
-					<span id="place-label" class="property-label"><g:message code="users.place.label" default="Place" /></span>
+					<span id="placeRelation-label" class="property-label"><g:message code="users.placeRelation.label" default="Place Relation" /></span>
 					
-						<g:each in="${usersInstance.place}" var="p">
-						<span class="property-value" aria-labelledby="place-label"><g:link controller="userPlaceRelation" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						<g:each in="${usersInstance.placeRelation}" var="p">
+						<span class="property-value" aria-labelledby="placeRelation-label"><g:link controller="userPlaceRelation" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

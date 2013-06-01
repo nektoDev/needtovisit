@@ -7,7 +7,7 @@ package ru.nektodev.needtovisit
  */
 class Place {
     String name
-    static hasMany = [user : UserPlaceRelation]
+    static hasMany = [userRelation : UserPlaceRelation]
     static belongsTo = Users
 
     static constraints = {

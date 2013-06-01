@@ -10,14 +10,14 @@
 	<g:textField name="name" required="" value="${placeInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: placeInstance, field: 'user', 'error')} ">
-	<label for="user">
-		<g:message code="place.user.label" default="User" />
+<div class="fieldcontain ${hasErrors(bean: placeInstance, field: 'userRelation', 'error')} ">
+	<label for="userRelation">
+		<g:message code="place.userRelation.label" default="User Relation" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${placeInstance?.user?}" var="u">
+<g:each in="${placeInstance?.userRelation?}" var="u">
     <li><g:link controller="userPlaceRelation" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

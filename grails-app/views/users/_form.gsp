@@ -50,14 +50,14 @@
 	<g:checkBox name="passwordExpired" value="${usersInstance?.passwordExpired}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usersInstance, field: 'place', 'error')} ">
-	<label for="place">
-		<g:message code="users.place.label" default="Place" />
+<div class="fieldcontain ${hasErrors(bean: usersInstance, field: 'placeRelation', 'error')} ">
+	<label for="placeRelation">
+		<g:message code="users.placeRelation.label" default="Place Relation" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${usersInstance?.place?}" var="p">
+<g:each in="${usersInstance?.placeRelation?}" var="p">
     <li><g:link controller="userPlaceRelation" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

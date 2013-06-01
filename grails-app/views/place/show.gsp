@@ -32,12 +32,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${placeInstance?.user}">
+				<g:if test="${placeInstance?.userRelation}">
 				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="place.user.label" default="User" /></span>
+					<span id="userRelation-label" class="property-label"><g:message code="place.userRelation.label" default="User Relation" /></span>
 					
-						<g:each in="${placeInstance.user}" var="u">
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="userPlaceRelation" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
+						<g:each in="${placeInstance.userRelation}" var="u">
+						<span class="property-value" aria-labelledby="userRelation-label"><g:link controller="userPlaceRelation" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
