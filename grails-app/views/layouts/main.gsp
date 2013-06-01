@@ -26,8 +26,9 @@
 <div id="wrap">
     <g:render template="/layouts/header"/>
     <div class="container">
-
-        <g:layoutBody/>
+        <div class="well">
+            <g:layoutBody/>
+        </div>
     </div>
     <div id="push"></div>
 </div>

@@ -49,3 +49,7 @@ body {
 code {
     font-size: 80%;
 }
+
+.container > .well {
+    background-color: white;
+}
