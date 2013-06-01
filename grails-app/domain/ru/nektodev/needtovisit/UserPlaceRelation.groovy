@@ -5,7 +5,7 @@ package ru.nektodev.needtovisit
 
  * Date: 02.06.13
  */
-class UserPlaceRelation {
+class UserPlaceRelation implements Serializable{
     Users user
     Place place
     boolean visited
