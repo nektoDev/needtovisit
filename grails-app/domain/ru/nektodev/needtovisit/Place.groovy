@@ -7,8 +7,8 @@ package ru.nektodev.needtovisit
  */
 class Place {
     String name
-    boolean visited
-
+    static hasMany = [userRelation : UserPlaceRelation]
+    static belongsTo = Users
 
     static constraints = {
         name blank: false, unique: true

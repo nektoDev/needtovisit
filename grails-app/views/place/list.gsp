@@ -26,8 +26,6 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="visited" title="${message(code: 'place.visited.label', default: 'Visited')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -35,9 +33,7 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link></td>
-					
-						<td><g:formatBoolean boolean="${placeInstance.visited}" /></td>
-					
+                        <td><g:link action="show" id="${placeInstance.userRelation.user.id}">${fieldValue(bean: placeInstance, field: "userRelation.user.username")}</g:link></td>
 					</tr>
 				</g:each>
 				</tbody>

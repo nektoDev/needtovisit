@@ -32,11 +32,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${placeInstance?.visited}">
+				<g:if test="${placeInstance?.userRelation}">
 				<li class="fieldcontain">
-					<span id="visited-label" class="property-label"><g:message code="place.visited.label" default="Visited" /></span>
+					<span id="userRelation-label" class="property-label"><g:message code="place.userRelation.label" default="User Relation" /></span>
 					
-						<span class="property-value" aria-labelledby="visited-label"><g:formatBoolean boolean="${placeInstance?.visited}" /></span>
+						<g:each in="${placeInstance.userRelation}" var="u">
+						<span class="property-value" aria-labelledby="userRelation-label"><g:link controller="userPlaceRelation" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
