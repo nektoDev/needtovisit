@@ -12,6 +12,8 @@ class UserPlaceRelation {
     boolean wannaVisit
 
     static mapping = {
-
+        id composite: ['user', 'place']
+        version false
+        autoTimestamp false
     }
 }
