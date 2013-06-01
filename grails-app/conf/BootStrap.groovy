@@ -1,5 +1,6 @@
 import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.Role
+import ru.nektodev.needtovisit.UserPlaceRelation
 import ru.nektodev.needtovisit.Users
 import ru.nektodev.needtovisit.UsersRole
 
@@ -25,7 +26,10 @@ class BootStrap {
             UsersRole.create adminUser, adminRole
         }
 
+
+
         def zoo = Place.findByName("ZOO") ?: new Place(name: 'ZOO').save();
+        def adminRelation = UserPlaceRelation.findByUserAndPlace(adminUser, zoo) ?: new UserPlaceRelation(user: adminUser, place: zoo).save(failOnError: true)
         Place.findByName("ZOO2") ?: new Place(name: 'ZOO2').save();
         Place.findByName("ZOO3") ?: new Place(name: 'ZOO3').save();
         Place.findByName("ZOO4") ?: new Place(name: 'ZOO4').save();
