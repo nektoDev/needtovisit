@@ -33,7 +33,7 @@ class UserPlaceRelationController {
     def show(Users user, Place place) {
         def userPlaceRelationInstance = UserPlaceRelation.findByUserAndPlace(user, place)
         if (!userPlaceRelationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), user])
             redirect(action: "list")
             return
         }
