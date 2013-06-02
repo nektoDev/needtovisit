@@ -16,5 +16,8 @@ class UserPlaceRelation implements Serializable{
         version false
         autoTimestamp false
         table : "User_Place"
+        wannaVisit defaultValue : true
+        visited defaultValue : true
+
     }
 }
