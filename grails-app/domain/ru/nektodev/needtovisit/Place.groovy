@@ -14,4 +14,25 @@ class Place {
         name blank: false, unique: true
     }
 
+    static List<Place> listByUser(Users u) {
+        def c = Place.createCriteria();
+
+        def result = c.list {
+            userRelation {
+                eq("user", u)
+            }
+        }
+        return result
+    }
+
+    static List<Place> listByUserNotEqual(Users u) {
+        def c = Place.createCriteria();
+
+        def result = c.list {
+            userRelation {
+                ne("user", u)
+            }
+        }
+        return result
+    }
 }
