@@ -11,13 +11,15 @@ class UserPlaceRelation implements Serializable{
     boolean visited
     boolean wannaVisit
 
+    static constraints = {
+        visited visited: false, blank : false
+        wannaVisit wannaVisit: true, blank : false
+    }
+
     static mapping = {
         id composite: ['user', 'place']
         version false
         autoTimestamp false
         table : "User_Place"
-        wannaVisit defaultValue : true
-        visited defaultValue : true
-
     }
 }
