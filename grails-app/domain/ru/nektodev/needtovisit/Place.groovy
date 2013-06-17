@@ -26,13 +26,12 @@ class Place {
     }
 
     static List<Place> listByUserNotEqual(Users u) {
-        def c = Place.createCriteria();
 
-        def result = c.list {
-            userRelation {
-                ne("user", u)
-            }
-        }
+        def result = Place.createCriteria().list {
+          userRelation {
+              ne("user", u)
+          }
+        }.groupBy{it}.keySet().asList()
         return result
     }
 }

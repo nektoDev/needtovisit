@@ -5,22 +5,26 @@ class IndexController {
     def springSecurityService
 
     def index() {
-        List<Place> placeToVisit = new ArrayList<>();
-        List<Place> placeVisited = new ArrayList<>();
+        List<UserPlaceRelation> placeToVisit = new ArrayList<>();
+        List<UserPlaceRelation> placeVisited = new ArrayList<>();
         List<Place> newPlaces = new ArrayList<>();
         if (springSecurityService.isLoggedIn()) {
-            def user = springSecurityService.currentUser
-            def temp = Place.listByUser(user as Users);
-            for (Place p : temp) {
-                if (p.userRelation.visited) {
-                    placeVisited.add(p);
+            Users user = springSecurityService.currentUser as Users;
+
+            List<UserPlaceRelation> temp = UserPlaceRelation.findAllByUser(user as Users) as List<UserPlaceRelation>;
+
+            temp.each { UserPlaceRelation rel ->
+                if (rel.visited) {
+                    placeVisited.add(rel);
                 } else {
-                    placeToVisit.add(p);
+                    placeToVisit.add(rel);
                 }
             }
-            newPlaces = Place.listByUserNotEqual(user as Users)
+
+            newPlaces = Place.listByUserNotEqual(user) as List<Place>;
+
         } else {
-            newPlaces = Place.list()
+            newPlaces = Place.list();
         }
 
         [newPlaces: newPlaces, placesToVisit: placeToVisit, placesVisited: placeVisited]
