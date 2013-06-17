@@ -30,8 +30,6 @@
 					
 						<g:sortableColumn property="visited" title="${message(code: 'userPlaceRelation.visited.label', default: 'Visited')}" />
 					
-						<g:sortableColumn property="wannaVisit" title="${message(code: 'userPlaceRelation.wannaVisit.label', default: 'Wanna Visit')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -44,7 +42,7 @@
 					
 						<td><g:formatBoolean boolean="${userPlaceRelationInstance.visited}" /></td>
 					
-						<td><g:formatBoolean boolean="${userPlaceRelationInstance.wannaVisit}" /></td>
+
 					
 					</tr>
 				</g:each>

@@ -26,8 +26,7 @@
     <tbody>
     <g:each in="${newPlaces}" status="i" var="placeInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td><g:checkBox name="wannaVisit" disabled="sec.ifNotLoggedIn"
-                            value="${placeInstance.userRelation.wannaVisit}"/></td>
+
             <td><g:link controller="place" action="show"
                         id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link></td>
             <td><g:link controller="users" action="show"

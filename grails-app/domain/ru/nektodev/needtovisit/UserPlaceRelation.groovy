@@ -9,11 +9,9 @@ class UserPlaceRelation implements Serializable{
     Users user
     Place place
     boolean visited
-    boolean wannaVisit
 
     static constraints = {
         visited visited: false, blank : false
-        wannaVisit wannaVisit: true, blank : false
     }
 
     static mapping = {

@@ -26,11 +26,3 @@
 	<g:checkBox name="visited" value="${userPlaceRelationInstance?.visited}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userPlaceRelationInstance, field: 'wannaVisit', 'error')} ">
-	<label for="wannaVisit">
-		<g:message code="userPlaceRelation.wannaVisit.label" default="Wanna Visit" />
-		
-	</label>
-	<g:checkBox name="wannaVisit" value="${userPlaceRelationInstance?.wannaVisit}" />
-</div>
-

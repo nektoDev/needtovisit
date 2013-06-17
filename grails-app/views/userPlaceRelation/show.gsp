@@ -49,15 +49,7 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${userPlaceRelationInstance?.wannaVisit}">
-				<li class="fieldcontain">
-					<span id="wannaVisit-label" class="property-label"><g:message code="userPlaceRelation.wannaVisit.label" default="Wanna Visit" /></span>
-					
-						<span class="property-value" aria-labelledby="wannaVisit-label"><g:formatBoolean boolean="${userPlaceRelationInstance?.wannaVisit}" /></span>
-					
-				</li>
-				</g:if>
+
 			
 			</ol>
 			<g:form>
