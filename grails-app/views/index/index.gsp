@@ -27,10 +27,14 @@
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
             <td><g:link controller="place" action="show"
-                        id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link></td>
+                        id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link>
+            </td>
 
-            <td><g:link controller="users" action="show"
-                        id="${placeInstance.userRelation.user.id}">${fieldValue(bean: placeInstance, field: "userRelation.user.username")}</g:link></td>
+            <td>
+                <g:each in="${placeInstance.userRelation.user}" var="u">
+                    <g:link controller="users" class="label" action="show">${u.username}</g:link>
+                </g:each>
+            </td>
 
         </tr>
     </g:each>
