@@ -30,7 +30,13 @@
 
     <g:each in="${newPlaces}" status="i" var="placeInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td><div class="btn btn-mini">ДА</div></td>
+            <td>
+                <g:formRemote name="xx" url="[controller: 'userPlaceRelation', action: 'save', params: [place: placeInstance, user: sec.loggedInUserInfo(field: 'id')]]">
+                    <input type="submit"/>
+                    <div class="btn btn-mini" onclick="form.submit()">ДА</div>
+                </g:formRemote>
+
+            </td>
             <td><g:link controller="place" action="show"
                         id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link>
             </td>
