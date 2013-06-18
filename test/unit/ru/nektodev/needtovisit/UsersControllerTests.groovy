@@ -1,9 +1,6 @@
 package ru.nektodev.needtovisit
-
-
-
-import org.junit.*
-import grails.test.mixin.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 
 @TestFor(UsersController)
 @Mock(Users)
@@ -12,7 +9,7 @@ class UsersControllerTests {
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'someValidName'
     }
 
     void testIndex() {

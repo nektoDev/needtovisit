@@ -113,7 +113,7 @@
         <dependency>
             <groupId>org.grails.plugins</groupId>
             <artifactId>tomcat</artifactId>
-            <version>2.2.1</version>
+            <version>${grails.version}</version>
             <scope>provided</scope>
             <type>zip</type>
         </dependency>
@@ -181,6 +181,9 @@
                 <configuration>
                     <!-- Whether for Fork a JVM to run Grails commands -->
                     <fork>true</fork>
+                    <forkedVmArgs>
+                        <forkedVmArg>-Dserver.port=8090</forkedVmArg>
+                    </forkedVmArgs>
                 </configuration>
                 <extensions>true</extensions>
             </plugin>
