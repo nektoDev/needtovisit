@@ -31,7 +31,9 @@
     <g:each in="${newPlaces}" status="i" var="placeInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td>
-                <g:formRemote name="xx" url="[controller: 'userPlaceRelation', action: 'save', params: [place: placeInstance, user: sec.loggedInUserInfo(field: 'id')]]">
+                <g:formRemote name="xx"
+                              update="place-new-table"
+                              url="[controller: 'index', action: 'updateDiv', params: [place: placeInstance, user: sec.loggedInUserInfo(field: 'id')]]">
                     <input type="submit"/>
                     <div class="btn btn-mini" onclick="form.submit()">ДА</div>
                 </g:formRemote>
@@ -51,6 +53,11 @@
     </g:each>
     </tbody>
 </table>
+
+<div id="test">
+    ${newPlaces.name}
+    <g:render id="" template="aa1" collection="${newPlaces}" var="placeI"/>
+</div>
 
 <sec:ifLoggedIn>
 

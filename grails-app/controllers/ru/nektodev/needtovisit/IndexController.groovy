@@ -4,10 +4,12 @@ class IndexController {
 
     def springSecurityService
 
+    List<UserPlaceRelation> placeToVisit = new ArrayList<>();
+    List<UserPlaceRelation> placeVisited = new ArrayList<>();
+    List<Place> newPlaces = new ArrayList<>();
+
     def index() {
-        List<UserPlaceRelation> placeToVisit = new ArrayList<>();
-        List<UserPlaceRelation> placeVisited = new ArrayList<>();
-        List<Place> newPlaces = new ArrayList<>();
+
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
 
@@ -27,6 +29,11 @@ class IndexController {
             newPlaces = Place.list();
         }
 
-        [newPlaces: newPlaces, placesToVisit: placeToVisit, placesVisited: placeVisited]
+        return [newPlaces: newPlaces, placesToVisit: placeToVisit, placesVisited: placeVisited]
+    }
+
+    def updateDiv = {
+        index()
+        render(view: 'index')
     }
 }
