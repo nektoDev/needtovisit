@@ -1,9 +1,10 @@
 <table id="place-visited-table" class="table table-striped">
     <thead>
     <tr>
-        <th></th>
         <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}"/>
-        <g:sortableColumn property="username" title="${message(code: 'place.name.label', default: 'Username')}"/>
+        <g:sortableColumn property="username" title="${message(code: 'place.username.label', default: 'Username')}"/>
+        <th></th>
+
     </tr>
     </thead>
     <tbody>
@@ -17,6 +18,7 @@
                 <g:link controller="users" action="show"
                         id="${placeToVisit.user.id}">${fieldValue(bean: placeToVisit, field: "userRelation.user.username")}</g:link>
             </td>
+            <td><div class="btn btn-mini">ДА</div></td>
         </tr>
     </g:each>
     </tbody>

@@ -54,15 +54,3 @@ code {
     background-color: white;
 }
 
-#place-to-visit-table th:first-child {
-    width: 30px;
-}
-
-#place-new-table th:first-child {
-    width: 30px;
-}
-
-#place-visited-table th:first-child {
-    width: 30px;
-}
-

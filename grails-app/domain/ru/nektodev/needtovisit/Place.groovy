@@ -37,4 +37,15 @@ class Place {
 
         return result
     }
+
+    static List<Place> listByUserEqual(Users u) {
+
+        def result = executeQuery(
+                """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
+                        WHERE EXISTS
+                             (FROM p.userRelation ur
+                                 WHERE ur.user = :user)""", [user: u])
+
+        return result
+    }
 }

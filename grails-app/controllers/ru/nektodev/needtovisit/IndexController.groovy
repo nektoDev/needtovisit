@@ -5,14 +5,14 @@ class IndexController {
 
     def springSecurityService
 
-    List<UserPlaceRelation> placeToVisit = new ArrayList<>();
+    List<Place> placesToVisit = new ArrayList<>();
     List<UserPlaceRelation> placeVisited = new ArrayList<>();
     List<Place> newPlaces = new ArrayList<>();
 
     def index() {
         updatePlaceLists()
 
-        return [newPlaces: newPlaces, placesToVisit: placeToVisit, placesVisited: placeVisited]
+        return [newPlaces: newPlaces, placesToVisit: placesToVisit, placesVisited: placeVisited]
     }
 
     def addUserPlaceRelation() {
@@ -39,7 +39,7 @@ class IndexController {
 
     def getPlacesToVisit() {
 
-        render(template: 'placesToVisit', model: ['placesRel': placeToVisit])
+        render(template: 'placesToVisit', model: [places: placesToVisit])
     }
 
     def getPlacesVisited() {
@@ -48,7 +48,7 @@ class IndexController {
     }
 
     private List<Place> updatePlaceLists() {
-        placeToVisit = new ArrayList<>();
+        placesToVisit = new ArrayList<>();
         placeVisited = new ArrayList<>();
         newPlaces = new ArrayList<>();
 
@@ -60,12 +60,10 @@ class IndexController {
             temp.each { UserPlaceRelation rel ->
                 if (rel.visited) {
                     placeVisited.add(rel);
-                } else {
-                    placeToVisit.add(rel);
                 }
             }
 
-
+            placesToVisit = Place.listByUserEqual(user) as List<Place>;
             newPlaces = Place.listByUserNotEqual(user) as List<Place>;
 
         } else {
