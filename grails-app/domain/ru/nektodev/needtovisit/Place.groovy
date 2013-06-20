@@ -14,6 +14,10 @@ class Place {
         name blank: false, unique: true
     }
 
+    static mapping = {
+        userRelation lazy: false
+    }
+
     static List<Place> listByUser(Users u) {
         def c = Place.createCriteria();
 
