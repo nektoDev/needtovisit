@@ -17,7 +17,7 @@
 </sec:ifNotLoggedIn>
 
 <sec:ifLoggedIn>
-
+    <g:render template="addPlace"/>
 
     <h3>Уже посетили?</h3>
     <g:render id="placesToVisitRender" template="placesToVisit" model="[places: placesToVisit]"/>
