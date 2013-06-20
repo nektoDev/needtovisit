@@ -26,7 +26,7 @@
 
             <td>
 
-                <input type="submit" class="btn btn-mini" onclick="
+                <input type="submit" class="btn btn-mini pull-right" onclick="
                     ${remoteFunction(controller: 'index',
                             action: 'addUserPlaceRelation',
                             params: [place: placeInstance.id],
@@ -40,16 +40,3 @@
     </g:each>
     </tbody>
 </table>
-
-<g:javascript>
-    function successAddRelation() {
-        ${remoteFunction(controller: 'index',
-        update: 'place-new-table',
-        action: 'getNewPlaces'
-)}
-    ${remoteFunction(controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
-    )}
-    }
-</g:javascript>
