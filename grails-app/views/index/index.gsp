@@ -32,7 +32,7 @@
 </sec:ifLoggedIn>
 
 <g:javascript>
-    function successAddRel() {
+    function successAddRelation() {
         ${remoteFunction(controller: 'index',
             update: 'place-new-table',
             action: 'getNewPlaces'

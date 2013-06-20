@@ -17,7 +17,7 @@
                     ${remoteFunction(controller: 'index',
                             action: 'addUserPlaceRelation',
                             params: [place: placeInstance.id],
-                            onSuccess: 'successAddRel();'
+                            onSuccess: 'successAddRelation();'
                     )}
                     "/>
 
