@@ -3,6 +3,7 @@
 <head>
     <meta name="layout" content="main"/>
     <title>NeedToVisit</title>
+    <g:resource dir="js" file="index.js"/>
 </head>
 
 <body>
@@ -17,17 +18,30 @@
 
 </h3>
 
-<g:render id="newPlacesRender" template="newPlaces" model="[places:newPlaces]"/>
+<g:render id="newPlacesRender" template="newPlaces" model="[places: newPlaces]"/>
 
 
 <sec:ifLoggedIn>
 
     <h3>Уже посетили?</h3>
-    <g:render id="placesToVisitRender" template="placesToVisit" model="[placesRel:placesToVisit]"/>
+    <g:render id="placesToVisitRender" template="placesToVisit" model="[placesRel: placesToVisit]"/>
 
     <h3>Еще разок?</h3>
-    <g:render id="placesVisitedRender" template="placesVisited" model="[placesRel:placesVisited]"/>
+    <g:render id="placesVisitedRender" template="placesVisited" model="[placesRel: placesVisited]"/>
 
 </sec:ifLoggedIn>
+
+<g:javascript>
+    function successAddRel() {
+        ${remoteFunction(controller: 'index',
+            update: 'place-new-table',
+            action: 'getNewPlaces'
+        )}
+        ${remoteFunction(controller: 'index',
+                update: 'place-to-visit-table',
+                action: 'getPlacesToVisit'
+        )}
+    }
+</g:javascript>
 </body>
 </html>

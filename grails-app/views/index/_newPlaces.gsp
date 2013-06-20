@@ -4,7 +4,7 @@
     <tr>
         <th></th>
         <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}"/>
-        <g:sortableColumn property="username" title="${message(code: 'place.name.label', default: 'Username')}"/>
+        <g:sortableColumn property="username" title="${message(code: 'place.username.label', default: 'Username')}"/>
     </tr>
     </thead>
     <tbody>
@@ -37,16 +37,3 @@
     </g:each>
     </tbody>
 </table>
-<g:javascript>
-    function successAddRel() {
-        ${remoteFunction(controller: 'index',
-                            update: 'place-new-table',
-                            action: 'getNewPlaces'
-                    )}
-        ${remoteFunction(controller: 'index',
-                            update: 'place-to-visit-table',
-                            action: 'getPlacesToVisit'
-                    )}
-    }
-
-</g:javascript>

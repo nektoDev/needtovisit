@@ -10,6 +10,8 @@ class UserPlaceRelation implements Serializable{
     Place place
     boolean visited
 
+    static belongsTo = [place: Place, user: Users]
+
     static constraints = {
         visited visited: false, blank : false
     }
@@ -19,5 +21,8 @@ class UserPlaceRelation implements Serializable{
         version false
         autoTimestamp false
         table : "User_Place"
+
+        place lazy: false
+        user lazy: false
     }
 }

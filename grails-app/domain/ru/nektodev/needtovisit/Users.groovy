@@ -12,7 +12,6 @@ class Users {
 	boolean passwordExpired
 
     static hasMany = [placeRelation: UserPlaceRelation]
-    static belongsTo = Place
 
 	static constraints = {
 		username blank: false, unique: true

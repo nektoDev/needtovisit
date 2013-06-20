@@ -1,5 +1,4 @@
 package ru.nektodev.needtovisit
-
 /**
  * @author tsykin.vyacheslav ts.slawa@gmail.com
 
@@ -8,20 +7,19 @@ package ru.nektodev.needtovisit
 class Place {
     String name
     static hasMany = [userRelation: UserPlaceRelation]
-    static belongsTo = Users
 
     static constraints = {
         name blank: false, unique: true
     }
 
     static mapping = {
-        userRelation lazy: false
+        user lazy: false
+
     }
 
     static List<Place> listByUser(Users u) {
-        def c = Place.createCriteria();
 
-        def result = c.list {
+        def result = createCriteria().list {
             userRelation {
                 eq("user", u)
             }
@@ -31,7 +29,7 @@ class Place {
 
     static List<Place> listByUserNotEqual(Users u) {
 
-        def result = Place.executeQuery(
+        def result = executeQuery(
                     """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE NOT EXISTS
                              (FROM p.userRelation ur

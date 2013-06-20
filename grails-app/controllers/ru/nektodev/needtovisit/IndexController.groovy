@@ -39,12 +39,12 @@ class IndexController {
 
     def getPlacesToVisit() {
 
-        render(template: 'placesToVisit', model: ['placeRel': placeToVisit])
+        render(template: 'placesToVisit', model: ['placesRel': placeToVisit])
     }
 
     def getPlacesVisited() {
 
-        render(template: 'placesVisited', model: ['placeRel': placesVisited])
+        render(template: 'placesVisited', model: ['placesRel': placesVisited])
     }
 
     private List<Place> updatePlaceLists() {
