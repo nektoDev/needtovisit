@@ -27,11 +27,27 @@ class PlaceController {
             render(view: "create", model: [placeInstance: placeInstance])
             return
         }
-        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser, place: placeInstance).save()
+
+        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser as Users, place: placeInstance).save()
         placeInstance.addToUserRelation(relationInstance)
         placeInstance.save(flush: true)
+
         flash.message = message(code: 'default.created.message', args: [message(code: 'place.label', default: 'Place'), placeInstance.id])
         redirect(action: "show", id: placeInstance.id)
+    }
+
+    def saveAjax() {
+        def placeInstance = new Place(params)
+        if (!placeInstance.save(flush: true)) {
+            render "BAD"
+            return
+        }
+
+        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser as Users, place: placeInstance).save()
+        placeInstance.addToUserRelation(relationInstance)
+        placeInstance.save(flush: true)
+
+        render "OK"
     }
 
     def show(Long id) {

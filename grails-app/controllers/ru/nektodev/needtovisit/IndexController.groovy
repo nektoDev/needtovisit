@@ -38,7 +38,11 @@ class IndexController {
     }
 
     def getPlacesToVisit() {
+        placeVisited = new ArrayList<>();
 
+        if (springSecurityService.isLoggedIn()) {
+            placesToVisit = Place.listByUserEqual(springSecurityService.currentUser as Users) as List<Place>;
+        }
         render(template: 'placesToVisit', model: [places: placesToVisit])
     }
 
@@ -47,7 +51,7 @@ class IndexController {
         render(template: 'placesVisited', model: ['placesRel': placesVisited])
     }
 
-    private List<Place> updatePlaceLists() {
+    def List<Place> updatePlaceLists() {
         placesToVisit = new ArrayList<>();
         placeVisited = new ArrayList<>();
         newPlaces = new ArrayList<>();

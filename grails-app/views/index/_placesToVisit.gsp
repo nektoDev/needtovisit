@@ -26,7 +26,7 @@
                 </g:each>
             </td>
 
-            <td><div class="btn btn-mini pull-right">${message(code: 'place.visited', default: 'Visit')}</div></td>
+            <td><button class="btn btn-mini pull-right " disabled="disabled">${message(code: 'place.visited', default: 'Visit')}</button></td>
 
         </tr>
     </g:each>
