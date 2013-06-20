@@ -1,2 +1,6 @@
 @import "skeleton.css";
 
+table td>form {
+    margin: 0;
+}
+
