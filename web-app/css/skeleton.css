@@ -52,5 +52,46 @@ code {
 
 .container > .well {
     background-color: white;
+
 }
+
+.control {
+    cursor: pointer;
+}
+
+.control img {
+    width: 20px;
+    opacity: 0.5;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.control img:hover {
+    width: 20px;
+    opacity: 1;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+
+}
+
+/*CHECKBOXES*/
+input[type=checkbox] {
+    margin-top: 0 !important;
+    background-color: #ffffff;
+}
+
+#place-to-visit {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
 

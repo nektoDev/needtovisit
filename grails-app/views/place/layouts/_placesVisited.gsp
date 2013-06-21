@@ -1,4 +1,4 @@
-<table id="place-visited-table" class="table table-striped">
+<table id="place-visited-table" class="table table-striped table-condensed">
     <thead>
     <tr>
         <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}"/>
