@@ -4,7 +4,7 @@
 
 --%>
 
-<table id="place-to-visit-table" class="table table-striped">
+<table id="place-to-visit-table" class="table table-striped table-condensed">
     <thead>
     <tr>
         <g:sortableColumn property="name" title="${message(code: 'place.name.label', default: 'Name')}"/>
@@ -22,11 +22,11 @@
             <td>
                 <g:each in="${placeToVisit.userRelation.user}" var="user">
                     <g:link controller="users" action="show" class="label"
-                        id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link>
+                            id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link>
                 </g:each>
             </td>
 
-            <td><button class="btn btn-mini pull-right " disabled="disabled">${message(code: 'place.visited', default: 'Visit')}</button></td>
+            <td><button class="btn btn-mini pull-right span1 btn-success" disabled="disabled">${message(code: 'place.visited', default: 'Visit')}</button></td>
 
         </tr>
     </g:each>
