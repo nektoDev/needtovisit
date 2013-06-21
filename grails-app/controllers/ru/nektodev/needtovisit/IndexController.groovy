@@ -20,15 +20,11 @@ class IndexController {
     def addUserPlaceRelation() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            def p_id = params.get("place") as String;
+            def placeId = params.get("place") as String;
 
-            if (p_id != null && !p_id.isEmpty()) {
+            if (!placeService.addPlaceRelation(placeId as Long, user)) {
 
-                Place p = Place.get(p_id as Long);
-                if (p != null) {
-                    UserPlaceRelation.findByUserAndPlace(user as Users, p) ?: new UserPlaceRelation(user: user, place: p).save(flush: true, insert: true);
-                }
-
+                render 'BAD'
             }
             updatePlaceLists();
         }
