@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main"/>
     <title>NeedToVisit</title>
-    <g:resource dir="js" file="index.js"/>
+
 </head>
 <body>
 <div class="page-header"><h1>Заголовок страницы</h1></div>
