@@ -5,6 +5,8 @@ class IndexController {
 
     def springSecurityService
 
+    def placeService
+
     List<Place> placesToVisit = new ArrayList<>();
     List<UserPlaceRelation> placeVisited = new ArrayList<>();
     List<Place> newPlaces = new ArrayList<>();
