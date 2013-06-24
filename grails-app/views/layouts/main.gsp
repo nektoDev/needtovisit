@@ -25,8 +25,11 @@
 
 <div id="wrap">
     <g:render template="/layouts/header"/>
+
     <div class="container">
-        <div class="well">
+    <g:render template="/layouts/alert"/>
+
+    <div class="well">
             <g:layoutBody/>
         </div>
     </div>

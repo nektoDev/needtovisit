@@ -2,11 +2,14 @@ package ru.nektodev.needtovisit
 
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
+import ru.nektodev.needtovisit.exceptions.DatabaseSaveException
 
 class PlaceController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def springSecurityService
+
+    def placeService
 
     def index() {
         redirect(action: "list", params: params)
@@ -26,30 +29,22 @@ class PlaceController {
     def save() {
         def placeInstance = new Place(params)
 
-        if (!placeInstance.save(flush: true)) {
+        if (placeService.save(placeInstance, springSecurityService.currentUser as Users) == null) {
             render(view: "create", model: [placeInstance: placeInstance])
             return
         }
 
-        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser as Users, place: placeInstance).save()
-        placeInstance.addToUserRelation(relationInstance)
-        placeInstance.save(flush: true)
+        flash.message = message(code: 'default.created.message', args: [message(code: 'place.label', default: 'Place'), placeInstance.name])
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'place.label', default: 'Place'), placeInstance.id])
         redirect(action: "show", id: placeInstance.id)
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def saveAjax() {
         def placeInstance = new Place(params)
-        if (!placeInstance.save(flush: true)) {
-            render "BAD"
-            return
+        if (placeService.save(placeInstance, springSecurityService.currentUser as Users) == null) {
+            throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
-
-        UserPlaceRelation relationInstance = new UserPlaceRelation(user: springSecurityService.currentUser as Users, place: placeInstance).save()
-        placeInstance.addToUserRelation(relationInstance)
-        placeInstance.save(flush: true)
 
         render "OK"
     }

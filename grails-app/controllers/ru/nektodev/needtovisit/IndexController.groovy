@@ -1,13 +1,12 @@
 package ru.nektodev.needtovisit
 
 import grails.plugins.springsecurity.Secured
+import ru.nektodev.needtovisit.exceptions.DatabaseSaveException
 
 class IndexController {
     static scope = "session"
 
     def springSecurityService
-
-    def placeService
 
     def placeListsService
 
@@ -30,7 +29,8 @@ class IndexController {
         if (userPlaceRelationService.save(placeId as Long, user) != null)
             render 'OK'
         else
-            render 'BAD'
+            throw new DatabaseSaveException("Sorry. Something going wrong when we trying to save.")
+
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
