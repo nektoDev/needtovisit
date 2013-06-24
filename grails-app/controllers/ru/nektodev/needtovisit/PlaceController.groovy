@@ -43,10 +43,11 @@ class PlaceController {
     def saveAjax() {
         def placeInstance = new Place(params)
         if (placeService.save(placeInstance, springSecurityService.currentUser as Users) == null) {
+            render placeInstance.name
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
 
-        render "OK"
+        render g.link([controller: 'place', action: 'show', id: placeInstance.id], placeInstance.name)
     }
 
     def show(Long id) {

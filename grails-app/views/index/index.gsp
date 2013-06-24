@@ -37,23 +37,5 @@
 
     </div>
 </sec:ifLoggedIn>
-<g:javascript>
-    function successAddRelation() {
-        ${remoteFunction(controller: 'index',
-        update: 'place-new-table',
-        action: 'getNewPlaces'
-        )}
-        ${remoteFunction(controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
-        )}
-    }
-    function updatePlaceToVisitTable() {
-        ${remoteFunction(controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
-        )}
-    }
-</g:javascript>
 </body>
 </html>

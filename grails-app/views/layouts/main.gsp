@@ -27,10 +27,13 @@
     <g:render template="/layouts/header"/>
 
     <div class="container">
-    <g:render template="/layouts/alert"/>
+
 
     <div class="well">
+        <g:render template="/layouts/alert"/>
+
             <g:layoutBody/>
+
         </div>
     </div>
     <div id="push"></div>

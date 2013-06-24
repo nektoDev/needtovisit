@@ -4,3 +4,17 @@ table td>form {
     margin: 0;
 }
 
+#alert {
+    z-index: 1000;
+    margin-left: 0 !important;
+    width: 170px;
+}
+
+#alert.in{
+    opacity: 0.66;
+}
+
+#alert.in:hover {
+    opacity: 1;
+}
+
