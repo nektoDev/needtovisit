@@ -15,14 +15,22 @@ class PlaceService {
         }
         Place p = Place.get(placeId);
         if (p != null) {
-            UserPlaceRelation.findByUserAndPlace(u, p) ?: new UserPlaceRelation(user: u, place: p).save(flush: true, insert: true);
+            UserPlaceRelation.findByUserAndPlace(u, p) ?: new UserPlaceRelation(user: u, place: p).save();
             return true
         }
         return false
     }
 
-    def save() {
+    @Transactional()
+    def save(String name) {
+        if (name != null && !name.isEmpty()) {
+            Place placeInstance = new Place(name: name);
 
+            if (placeInstance.save(flush: true)) {
+                return placeInstance
+            }
+        }
+        return null
     }
 
     def serviceMethod() {

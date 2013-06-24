@@ -7,6 +7,8 @@ class IndexController {
 
     def placeService
 
+    def userPlaceRelationService;
+
     List<Place> placesToVisit = new ArrayList<>();
     List<UserPlaceRelation> placeVisited = new ArrayList<>();
     List<Place> newPlaces = new ArrayList<>();
@@ -22,7 +24,7 @@ class IndexController {
             Users user = springSecurityService.currentUser as Users;
             def placeId = params.get("place") as String;
 
-            if (!placeService.addPlaceRelation(placeId as Long, user)) {
+            if (placeService.addPlaceRelation(placeId as Long, user) == null) {
 
                 render 'BAD'
             }
