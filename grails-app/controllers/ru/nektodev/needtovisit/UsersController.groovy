@@ -1,24 +1,29 @@
 package ru.nektodev.needtovisit
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 class UsersController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [usersInstanceList: Users.list(params), usersInstanceTotal: Users.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
         [usersInstance: new Users(params)]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
         def usersInstance = new Users(params)
         if (!usersInstance.save(flush: true)) {
@@ -30,6 +35,7 @@ class UsersController {
         redirect(action: "show", id: usersInstance.id)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def show(Long id) {
         def usersInstance = Users.get(id)
         if (!usersInstance) {
@@ -41,6 +47,7 @@ class UsersController {
         [usersInstance: usersInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def usersInstance = Users.get(id)
         if (!usersInstance) {
@@ -52,6 +59,7 @@ class UsersController {
         [usersInstance: usersInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def usersInstance = Users.get(id)
         if (!usersInstance) {
@@ -81,6 +89,7 @@ class UsersController {
         redirect(action: "show", id: usersInstance.id)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def usersInstance = Users.get(id)
         if (!usersInstance) {

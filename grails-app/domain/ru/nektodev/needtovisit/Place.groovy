@@ -45,7 +45,7 @@ class Place {
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
                              (FROM p.userRelation ur
-                                 WHERE ur.user = :user AND NOT ur.visited)""", [user: u], [max: max])
+                                 WHERE ur.user = :user AND ur.visited = false)""", [user: u], [max: max])
 
         return result
     }
@@ -56,7 +56,7 @@ class Place {
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
                              (FROM p.userRelation ur
-                                 WHERE ur.user = :user AND ur.visited)""", [user: u], [max: max])
+                                 WHERE ur.user = :user AND ur.visited = true)""", [user: u], [max: max])
 
         return result
     }

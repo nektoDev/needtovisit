@@ -1,5 +1,6 @@
 package ru.nektodev.needtovisit
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 class UserPlaceRelationController {
@@ -15,10 +16,12 @@ class UserPlaceRelationController {
         [userPlaceRelationInstanceList: UserPlaceRelation.list(params), userPlaceRelationInstanceTotal: UserPlaceRelation.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
         [userPlaceRelationInstance: new UserPlaceRelation(params)]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
         def userPlaceRelationInstance  = new UserPlaceRelation(params)
         if (!userPlaceRelationInstance.save(flush: true, failOnError:true)) {
@@ -30,6 +33,7 @@ class UserPlaceRelationController {
         redirect(action: "show", user: userPlaceRelationInstance.user, place: userPlaceRelationInstance.place)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def show(Users user, Place place) {
         def userPlaceRelationInstance = UserPlaceRelation.findByUserAndPlace(user, place)
         if (!userPlaceRelationInstance) {
@@ -41,6 +45,7 @@ class UserPlaceRelationController {
         [userPlaceRelationInstance: userPlaceRelationInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def userPlaceRelationInstance = UserPlaceRelation.get(id)
         if (!userPlaceRelationInstance) {
@@ -52,6 +57,7 @@ class UserPlaceRelationController {
         [userPlaceRelationInstance: userPlaceRelationInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def userPlaceRelationInstance = UserPlaceRelation.get(id)
         if (!userPlaceRelationInstance) {
@@ -81,6 +87,7 @@ class UserPlaceRelationController {
         redirect(action: "show", id: userPlaceRelationInstance.id)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def userPlaceRelationInstance = UserPlaceRelation.get(id)
         if (!userPlaceRelationInstance) {

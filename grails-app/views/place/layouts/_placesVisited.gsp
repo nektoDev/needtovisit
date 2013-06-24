@@ -8,15 +8,17 @@
     </tr>
     </thead>
     <tbody>
-    <g:each in="${placesRel}" status="i" var="placeToVisit">
+    <g:each in="${places}" status="i" var="placeVisited">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td><div class="btn btn-mini">ДА</div></td>
 
             <td><g:link controller="place" action="show"
-                        id="${placeToVisit.place.id}">${fieldValue(bean: placeToVisit, field: "place.name")}</g:link></td>
+                        id="${placeVisited.id}">${fieldValue(bean: placeVisited, field: "name")}</g:link></td>
             <td>
-                <g:link controller="users" action="show"
-                        id="${placeToVisit.user.id}">${fieldValue(bean: placeToVisit, field: "userRelation.user.username")}</g:link>
+                <g:each in="${placeVisited.userRelation.user}" var="user">
+                    <g:link controller="users" action="show" class="label"
+                            id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link>
+                </g:each>
             </td>
             <td><div class="btn btn-mini">ДА</div></td>
         </tr>

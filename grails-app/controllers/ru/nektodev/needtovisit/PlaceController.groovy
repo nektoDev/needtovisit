@@ -1,5 +1,6 @@
 package ru.nektodev.needtovisit
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 class PlaceController {
@@ -16,10 +17,12 @@ class PlaceController {
         [placeInstanceList: Place.list(params), placeInstanceTotal: Place.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
         [placeInstance: new Place(params)]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
         def placeInstance = new Place(params)
 
@@ -36,6 +39,7 @@ class PlaceController {
         redirect(action: "show", id: placeInstance.id)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def saveAjax() {
         def placeInstance = new Place(params)
         if (!placeInstance.save(flush: true)) {
@@ -61,6 +65,7 @@ class PlaceController {
         [placeInstance: placeInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def placeInstance = Place.get(id)
         if (!placeInstance) {
@@ -72,6 +77,7 @@ class PlaceController {
         [placeInstance: placeInstance]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def placeInstance = Place.get(id)
         if (!placeInstance) {
@@ -101,6 +107,7 @@ class PlaceController {
         redirect(action: "show", id: placeInstance.id)
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def placeInstance = Place.get(id)
         if (!placeInstance) {

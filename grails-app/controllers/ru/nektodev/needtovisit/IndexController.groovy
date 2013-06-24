@@ -1,5 +1,7 @@
 package ru.nektodev.needtovisit
 
+import grails.plugins.springsecurity.Secured
+
 class IndexController {
     static scope = "session"
 
@@ -7,71 +9,42 @@ class IndexController {
 
     def placeService
 
+    def placeListsService
+
     def userPlaceRelationService;
 
-    List<Place> placesToVisit = new ArrayList<>();
-    List<UserPlaceRelation> placeVisited = new ArrayList<>();
-    List<Place> newPlaces = new ArrayList<>();
-
     def index() {
-        updatePlaceLists()
-
-        return [newPlaces: newPlaces, placesToVisit: placesToVisit, placesVisited: placeVisited]
-    }
-
-    def addUserPlaceRelation() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            def placeId = params.get("place") as String;
-
-            if (placeService.addPlaceRelation(placeId as Long, user) == null) {
-
-                render 'BAD'
-            }
-            updatePlaceLists();
-        }
-        render 'OK'
-    }
-
-    def getNewPlaces() {
-        render(template: '/place/layouts/newPlaces', model: ['places': newPlaces])
-    }
-
-    def getPlacesToVisit() {
-        placeVisited = new ArrayList<>();
-
-        if (springSecurityService.isLoggedIn()) {
-            placesToVisit = Place.listByUserEqual(springSecurityService.currentUser as Users) as List<Place>;
-        }
-        render(template: '/place/layouts/placesToVisit', model: [places: placesToVisit])
-    }
-
-    def getPlacesVisited() {
-
-        render(template: '/place/layouts/placesVisited', model: ['placesRel': placesVisited])
-    }
-
-    def List<Place> updatePlaceLists() {
-        placesToVisit = new ArrayList<>();
-        placeVisited = new ArrayList<>();
-        newPlaces = new ArrayList<>();
-
-        if (springSecurityService.isLoggedIn()) {
-            Users user = springSecurityService.currentUser as Users;
-
-            List<UserPlaceRelation> temp = UserPlaceRelation.findAllByUser(user as Users, [lazy: false]).withEagerDefault {} as List<UserPlaceRelation>;
-
-            temp.each { UserPlaceRelation rel ->
-                if (rel.visited) {
-                    placeVisited.add(rel);
-                }
-            }
-
-            placesToVisit = Place.listByUserEqual(user) as List<Place>;
-            newPlaces = Place.listByUserNotEqual(user) as List<Place>;
-
+            return [newPlaces: placeListsService.getPlacesNewList(user, 10), placesToVisit: placeListsService.getPlacesToVisitList(user, 10), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
         } else {
-            newPlaces = Place.list();
+            return [newPlaces: placeListsService.getPlacesList(20)]
         }
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def addUserPlaceRelation() {
+        Users user = springSecurityService.currentUser as Users;
+        def placeId = params.get("place") as String;
+
+        if (userPlaceRelationService.save(placeId as Long, user) != null)
+            render 'OK'
+        else
+            render 'BAD'
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def getNewPlaces() {
+        render(template: '/place/layouts/newPlaces', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def getPlacesToVisit() {
+        render(template: '/place/layouts/placesToVisit', model: [places: placeListsService.getPlacesToVisitList(springSecurityService.currentUser as Users, 10)])
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def getPlacesVisited() {
+        render(template: '/place/layouts/placesVisited', model: ['places': placeListsService.getPlacesVisitedList(springSecurityService.currentUser as Users, 10)])
     }
 }

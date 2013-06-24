@@ -98,9 +98,9 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'ru.nektodev.need
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'ru.nektodev.needtovisit.UsersRole'
 grails.plugins.springsecurity.authority.className = 'ru.nektodev.needtovisit.Role'
 grails.plugins.springsecurity.requestMap.className = 'ru.nektodev.needtovisit.RequestMap'
-grails.plugins.springsecurity.securityConfigType = 'InterceptUrlMap'
+grails.plugins.springsecurity.securityConfigType = 'Annotation'
 
-grails.plugins.springsecurity.interceptUrlMap = [
+grails.plugins.springsecurity.staticRules = [
         '/secure/**':    ['ROLE_ADMIN'],
         '/place/edit':   ['IS_AUTHENTICATED_FULLY'],
         '/place/create': ['IS_AUTHENTICATED_FULLY'],
