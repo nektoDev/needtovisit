@@ -1,39 +1,37 @@
 package needtovisit
-
 import org.springframework.transaction.annotation.Transactional
 import ru.nektodev.needtovisit.Place
-import ru.nektodev.needtovisit.UserPlaceRelation
 import ru.nektodev.needtovisit.Users
 
 class PlaceService {
     static scope = 'session'
 
-    @Transactional()
-    def addPlaceRelation(Long placeId, Users u) {
-        if (placeId == null || u == null) {
-            return false
-        }
-        Place p = Place.get(placeId);
-        if (p != null) {
-            UserPlaceRelation.findByUserAndPlace(u, p) ?: new UserPlaceRelation(user: u, place: p).save();
-            return true
-        }
-        return false
-    }
+    def springSecurityService;
+
+    def userPlaceRelationService;
 
     @Transactional()
-    def save(String name) {
+    def save(String name, Users u = springSecurityService.currentUser as Users) {
         if (name != null && !name.isEmpty()) {
             Place placeInstance = new Place(name: name);
 
-            if (placeInstance.save(flush: true)) {
-                return placeInstance
-            }
+            return save(placeInstance, u)
         }
         return null
     }
 
-    def serviceMethod() {
-
+    @Transactional()
+    def save(Place place, Users u = springSecurityService.currentUser as Users) {
+        if (place != null) {
+            if (place.save(flush: true)) {
+                def rel = userPlaceRelationService.save(place, u)
+                if (rel != null) {
+                    place.addToUserRelation(rel);
+                    place.save()
+                    return place;
+                }
+            }
+        }
+        return null
     }
 }
