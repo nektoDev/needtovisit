@@ -1,5 +1,6 @@
 package ru.nektodev.needtovisit
 
+import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 import ru.nektodev.needtovisit.exceptions.DatabaseSaveException
@@ -121,5 +122,12 @@ class PlaceController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'place.label', default: 'Place'), id])
             redirect(action: "show", id: id)
         }
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def search() {
+        def query = params.get('q') as String;
+        def max = params.get('max') != null ? params.get('max') as Long : 10;
+        render placeService.search(query, max).name as JSON
     }
 }

@@ -34,4 +34,12 @@ class PlaceService {
         }
         return null
     }
+
+    def search(String query, Long max = 10) {
+        if (query == null || query.isEmpty()) {
+            return Place.list(max: max);
+        }
+
+        return Place.findAllByNameIlike('%' + query + '%', [max: max])
+    }
 }
