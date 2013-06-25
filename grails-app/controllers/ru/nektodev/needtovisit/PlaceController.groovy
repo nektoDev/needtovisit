@@ -128,6 +128,6 @@ class PlaceController {
     def search() {
         def query = params.get('q') as String;
         def max = params.get('max') != null ? params.get('max') as Long : 10;
-        render placeService.search(query, max).name as JSON
+        render placeService.search(query, max) as JSON
     }
 }

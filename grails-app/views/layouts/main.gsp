@@ -15,8 +15,10 @@
     <g:javascript library="jquery" plugin="jquery"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-    <r:require modules="bootstrap"/>
     <r:require module="bootstrap-css"/>
+    <r:require module="bootstrap-js"/>
+    <r:require module="bootstrap-typeahead"/>
+
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
