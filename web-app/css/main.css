@@ -5,13 +5,14 @@ table td>form {
 }
 
 #alert {
-    z-index: 1000;
+    z-index: 0;
     margin-left: 0 !important;
     width: 170px;
 }
 
 #alert.in{
     opacity: 0.66;
+    z-index: 1000;
 }
 
 #alert.in:hover {
