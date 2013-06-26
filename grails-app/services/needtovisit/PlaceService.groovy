@@ -1,4 +1,5 @@
 package needtovisit
+
 import org.springframework.transaction.annotation.Transactional
 import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.UserPlaceRelation
@@ -24,13 +25,13 @@ class PlaceService {
     @Transactional()
     def save(Place place, Users u = springSecurityService.currentUser as Users) {
         if (place != null) {
-            if (place.save(flush: true)) {
-                def rel = userPlaceRelationService.save(place, u)
-                if (rel != null) {
-                    place.addToUserRelation(rel);
-                    place.save()
-                    return place;
-                }
+
+            place = Place.findByName(place.name) ?: place.save(flush: true);
+            def rel = UserPlaceRelation.findByUserAndPlace(u, place) ?: userPlaceRelationService.save(place, u);
+            if (rel != null) {
+                place.addToUserRelation(rel);
+                place.save()
+                return place;
             }
         }
         return null
