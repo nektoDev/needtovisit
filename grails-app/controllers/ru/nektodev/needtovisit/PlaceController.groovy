@@ -126,6 +126,7 @@ class PlaceController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def search() {
+        JSON.use('deep')
         def query = params.get('q') as String;
         def max = params.get('max') != null ? params.get('max') as Long : 10;
         render placeService.search(query, max) as JSON
