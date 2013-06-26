@@ -43,7 +43,9 @@ class PlaceController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def saveAjax() {
         def placeInstance = new Place(params)
-        if (placeService.save(placeInstance, springSecurityService.currentUser as Users) == null) {
+
+        placeInstance = placeService.save(placeInstance, springSecurityService.currentUser as Users)
+        if (placeInstance == null) {
             render placeInstance.name
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
