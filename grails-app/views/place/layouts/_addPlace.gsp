@@ -6,46 +6,28 @@
               onFailure="failureAddPlace(XMLHttpRequest);"
 >
     <div class="input-append" style="width: 100%;">
-        <input type="text" name="name" style="width: 85%;"
+        <input id="add-place-input"
+               type="text"
+               name="name" style="width: 85%;"
                placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
         <g:submitButton class="btn btn-success" style="width: 13.7%;" name="addPlace" value="Добавить"/>
     </div>
 </g:formRemote>
-<input id="search"/>
+
 <g:javascript>
     jQuery(function() {
-    var projects = [
-      {
-        value: "jquery",
-        label: "jQuery",
-        desc: "the write less, do more, JavaScript library",
-        icon: "jquery_32x32.png"
-      },
-      {
-        value: "jquery-ui",
-        label: "jQuery UI",
-        desc: "the official user interface library for jQuery",
-        icon: "jqueryui_32x32.png"
-      },
-      {
-        value: "sizzlejs",
-        label: "Sizzle JS",
-        desc: "a pure-JavaScript CSS selector engine",
-        icon: "sizzlejs_32x32.png"
-      }
-    ];
 
-    jQuery( "#search" ).autocomplete({
+    jQuery( "#add-place-input" ).autocomplete({
       minLength: 0,
       source: function(request, response) {
         search(request, response);
       },
       focus: function( event, ui ) {
-        $( "#search" ).val( ui.item.label );
+        $( "#add-place-input" ).val( ui.item.name );
         return false;
       },
       select: function( event, ui ) {
-        $( "#search" ).val( ui.item.label );
+        $( "#add-place-input" ).val( ui.item.name );
         return false;
       }
     })
