@@ -207,7 +207,7 @@
 .ui-state-hover a:hover,
 .ui-state-hover a:link,
 .ui-state-hover a:visited {
-    color: #ffffff;
+    color: #ffffff !important;
     text-decoration: none;
     background-color: #0081c2;
     border: 1px solid #0077b3;

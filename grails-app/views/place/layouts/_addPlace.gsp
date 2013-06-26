@@ -31,20 +31,22 @@
         }
     })
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-        var result = null
+        var result = null;
+        var users = "";
         item.userRelation.forEach(function(rel) {
             if (rel.user.id == 3) {
                 result = $( "<li class='ui-state-disabled'>" )
-                    .append( "<a>" + item.name + " id=" + item.id + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a>");
-
+                    .append( "<a>" + item.name + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a></li>");
             }
+            users += " <span class='label'>" + rel.user.username + "</span>";
         });
 
         if (result == null) {
-            result = $( "<li>" )
-                .append( "<a>" + item.name + " id=" + item.id + "</a></li>" );
 
+            result = $( "<li>" )
+                .append( "<a>" + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
         }
+
         result.append("<li class='ui-menu-divider'></li>");
         return result.appendTo( ul );
     };
