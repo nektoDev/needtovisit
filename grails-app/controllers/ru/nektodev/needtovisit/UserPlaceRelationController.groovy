@@ -106,4 +106,9 @@ class UserPlaceRelationController {
             redirect(action: "show", id: id)
         }
     }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def loadVisitedPopup(Long placeId) {
+
+    }
 }

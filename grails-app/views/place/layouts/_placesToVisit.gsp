@@ -30,8 +30,14 @@
             </td>
 
             <td>
-                <span class="pull-right control" onclick=" ">
-                    <g:img  dir="images" file="check.png"/>
+                <span class="pull-right control">
+                    <img src="${createLink([uri: "/images/check.png"])}"
+                         onclick="
+                         ${remoteFunction(controller: 'userPlaceRelation',
+                                 action: '',
+                                 params: [place: placeToVisit.id],
+                                 onSuccess: 'successAddRelation();'
+                         )}">
                 </span>
                 </td>
 

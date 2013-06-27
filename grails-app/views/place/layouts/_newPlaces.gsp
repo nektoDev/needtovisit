@@ -27,12 +27,13 @@
             </td>
 
             <td>
-                <span class="pull-right control" onclick=" ${remoteFunction(controller: 'index',
-                        action: 'addUserPlaceRelation',
-                        params: [place: placeInstance.id],
-                        onSuccess: 'successAddRelation();'
-                )}">
-                    <g:img dir="images" file="add.png"/>
+                <span class="pull-right control">
+                    <img src="${createLink([uri: "/images/add.png"])}"
+                         onclick=" ${remoteFunction(controller: 'index',
+                            action: 'addUserPlaceRelation',
+                            params: [place: placeInstance.id],
+                            onSuccess: 'successAddRelation();'
+                    )}">
                 </span>
             </td>
         </tr>
