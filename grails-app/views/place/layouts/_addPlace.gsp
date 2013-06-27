@@ -17,20 +17,20 @@
 
     function updatePlacesToVisitTable() {
         ${remoteFunction(
-        controller: 'index',
-        update: 'place-to-visit-table',
-        action: 'getPlacesToVisit'
-)}
+            controller: 'index',
+            update: 'place-to-visit-table',
+            action: 'getPlacesToVisit'
+        )}
     }
 
     function search(request, response) {
         var query = request.term;
-    ${remoteFunction(
+        ${remoteFunction(
             controller: 'place',
             action: 'search',
             params: "'max=5&q=' + query",
             onSuccess: 'response(data);'
-    )}
+        )}
     }
 
     function successAddPlace(data) {
