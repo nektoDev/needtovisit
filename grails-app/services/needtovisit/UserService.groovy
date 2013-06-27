@@ -1,8 +1,14 @@
 package needtovisit
 
+import ru.nektodev.needtovisit.Users
+
 class UserService {
 
-    def serviceMethod() {
+    Users save(Users u) {
+        if (u != null) {
+
+        }
+
 
     }
 }

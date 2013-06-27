@@ -16,12 +16,16 @@
 
 <g:hasErrors bean="${usersInstance}">
 
-    <ul class="errors" role="alert">
+    <div class='alert alert-error'><ul role="alert">
         <g:eachError bean="${usersInstance}" var="error">
-            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                    error="${error}"/></li>
+            <li <g:if test="${error in org.springframework.validation.FieldError}">
+                    data-field-id="${error.field}"
+                </g:if>>
+
+                <g:message error="${error}"/>
+            </li>
         </g:eachError>
-    </ul>
+    </ul></div>
 
 </g:hasErrors>
 

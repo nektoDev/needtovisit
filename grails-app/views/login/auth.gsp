@@ -11,7 +11,7 @@
     <h2 class="form-signin-heading"><g:message code="springSecurity.login.header"/></h2>
 
     <g:if test='${flash.message}'>
-        <div class='login_message'>${flash.message}</div>
+        <div class='alert alert-error'>${flash.message}</div>
     </g:if>
 
     <input id='username' name='j_username' type="text" class="input-block-level"

@@ -94,4 +94,9 @@ input[type=checkbox] {
     transition: all 0.5s;
 }
 
+.alert ul {
+    margin: 0 0 0 10px;
+}
+
+
 
