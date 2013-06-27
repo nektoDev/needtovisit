@@ -19,3 +19,7 @@ table td>form {
     opacity: 1;
 }
 
+.ui-autocomplete img {
+    width: 24px;
+}
+

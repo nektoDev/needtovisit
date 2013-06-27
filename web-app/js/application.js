@@ -70,7 +70,7 @@ function autocompleteAddPlace() {
         if (result == null) {
 
             result = $("<li>")
-                .append("<a>" + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
+                .append("<a><img src='images/place-default.jpg' class='img-rounded'> " + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
         }
 
         result.append("<li class='ui-menu-divider'></li>");
