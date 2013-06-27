@@ -10,7 +10,6 @@
     <tbody>
     <g:each in="${places}" status="i" var="placeVisited">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td><div class="btn btn-mini">ДА</div></td>
 
             <td><g:link controller="place" action="show"
                         id="${placeVisited.id}">${fieldValue(bean: placeVisited, field: "name")}</g:link></td>
