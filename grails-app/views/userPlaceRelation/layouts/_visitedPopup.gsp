@@ -9,7 +9,8 @@
                   url="[controller: 'userPlaceRelation',
                         action: 'setVisitedAjax',
                         params: [placeId: placeRel.place.id]]"
-                        onSuccess="successSetVisited()"
+                        onSuccess="successSetVisited(data)"
+                        onFailure="failtureSetVisited(XMLHttpRequest)"
     >
 
     <div class="modal-body">
@@ -24,12 +25,42 @@
 </g:if>
 
 <g:javascript>
-    function successSetVisited() {
+    function updatePlacesToVisitTable() {
+        ${remoteFunction(
+            controller: 'index',
+            update: 'place-to-visit-table',
+            action: 'getPlacesToVisit'
+        )}
+    }
 
+
+    function updatePlacesVisitedTable() {
+        ${remoteFunction(
+            controller: 'index',
+            update: 'place-visited-table',
+            action: 'getPlacesVisited'
+        )}
+    }
+
+    function successSetVisited(data) {
+
+        jQuery('#visited-popup').modal('hide');
+        $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
+        showAlert('alert-success');
+
+        updatePlacesToVisitTable();
+        updatePlacesVisitedTable();
 
     }
 
-    function failtureSetVisited() {
+    function failtureSetVisited(data) {
+
+        jQuery('#visited-popup').modal('hide');
+        $("#alert #alert-content").html("Произошла ошибка!");
+        showAlert('alert-error');
+
+        updatePlacesToVisitTable();
+        updatePlacesVisitedTable();
 
     }
 
