@@ -10,16 +10,24 @@ class UserPlaceRelation implements Serializable{
     Place place
     boolean visited
 
+    Date dateToVisit
+    Date dateVisited
+    Date dateCreated
+    Date lastUpdated
+
     static belongsTo = [place: Place, user: Users]
 
     static constraints = {
         visited visited: false, blank : false
+
+        dateToVisit    nullable: true
+        dateVisited  nullable: true
     }
 
     static mapping = {
         id composite: ['user', 'place']
         version false
-        autoTimestamp false
+        autoTimestamp true
 
         place lazy: false
         user lazy: false
