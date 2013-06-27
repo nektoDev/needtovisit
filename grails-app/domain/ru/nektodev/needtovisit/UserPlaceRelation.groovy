@@ -1,10 +1,14 @@
 package ru.nektodev.needtovisit
 
+import grails.validation.Validateable
+
 /**
  * @author tsykin.vyacheslav ts.slawa@gmail.com
 
  * Date: 02.06.13
  */
+
+@Validateable
 class UserPlaceRelation implements Serializable{
     Users user
     Place place

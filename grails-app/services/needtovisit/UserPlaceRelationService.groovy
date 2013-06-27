@@ -1,23 +1,13 @@
 package needtovisit
 
-import grails.validation.Validateable
 import org.springframework.transaction.annotation.Transactional
 import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.UserPlaceRelation
 import ru.nektodev.needtovisit.Users
 
-@Validateable
 class UserPlaceRelationService {
 
     def springSecurityService
-    public static final UserPlaceRelation TEMPLATE_RELATION = new UserPlaceRelation()
-
-    def getTemplateInstance() {
-        TEMPLATE_RELATION.setPlace(new Place("TEMPLATE"))
-        TEMPLATE_RELATION.setUser(springSecurityService.currentUser as Users)
-
-        return TEMPLATE_RELATION
-    }
 
     @Transactional
     def UserPlaceRelation save(Long placeId, Users u) {
