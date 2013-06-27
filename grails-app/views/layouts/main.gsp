@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
 <div id="wrap">
     <g:render template="/layouts/header"/>
 
@@ -45,6 +44,10 @@
 <g:javascript library="application"/>
 
 <r:layoutResources/>
+
+<sec:ifLoggedIn>
+    <g:hiddenField name="userid" id="userid" value="${sec.loggedInUserInfo(field: "id")}"/>
+</sec:ifLoggedIn>
 
 </body>
 </html>
