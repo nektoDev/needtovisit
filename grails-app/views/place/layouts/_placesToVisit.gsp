@@ -34,9 +34,10 @@
                     <img src="${createLink([uri: "/images/check.png"])}"
                          onclick="
                          ${remoteFunction(controller: 'userPlaceRelation',
-                                 action: '',
-                                 params: [place: placeToVisit.id],
-                                 onSuccess: 'successAddRelation();'
+                                 action: 'loadVisitedPopup',
+                                 params: [placeId: placeToVisit.id],
+                                 update: 'visited-popup-wrapper',
+                                 onSuccess: "jQuery('#visited-popup').modal('show')"
                          )}">
                 </span>
                 </td>
@@ -45,4 +46,6 @@
     </g:each>
     </tbody>
 </table>
-
+<div id="visited-popup-wrapper">
+<g:render id="visited-popup-render" template="/userPlaceRelation/layouts/visitedPopup"/>
+</div>
