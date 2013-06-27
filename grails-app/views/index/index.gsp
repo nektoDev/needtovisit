@@ -10,7 +10,7 @@
 <div class="page-header"><h1>Заголовок страницы</h1></div>
 <sec:ifNotLoggedIn>
     <h3>
-        Хотите посетить? <small class="muted"><g:link controller="users" action="add">Зарегистрируйтесь</g:link> или <g:link
+        Хотите посетить? <small class="muted"><g:link controller="users" action="create">Зарегистрируйтесь</g:link> или <g:link
                     controller="login" action="auth">войдите</g:link>, чтобы не забыть сходить или найти компанию</small>
     </h3>
     <g:render id="newPlacesRender" template="/place/layouts/newPlaces" model="[places: newPlaces]"/>

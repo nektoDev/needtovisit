@@ -33,7 +33,6 @@
 
     <div class="well">
         <g:render template="/layouts/alert"/>
-
             <g:layoutBody/>
 
         </div>

@@ -12,18 +12,16 @@ class UsersController {
         redirect(action: "list", params: params)
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
+    @Secured(['ROLE_ADMIN'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [usersInstanceList: Users.list(params), usersInstanceTotal: Users.count()]
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
         [usersInstance: new Users(params)]
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
         def usersInstance = new Users(params)
         if (!usersInstance.save(flush: true)) {
@@ -32,7 +30,7 @@ class UsersController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'users.label', default: 'Users'), usersInstance.id])
-        redirect(action: "show", id: usersInstance.id)
+        redirect(controller: "index")
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
@@ -89,7 +87,7 @@ class UsersController {
         redirect(action: "show", id: usersInstance.id)
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def usersInstance = Users.get(id)
         if (!usersInstance) {

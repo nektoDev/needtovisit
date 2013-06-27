@@ -10,6 +10,8 @@
                         <sec:ifNotLoggedIn>
                         %{--<g:link controller="user" action="create"><g:message code="register"/></g:link>--}%
                             <span class="divider-vertical"></span>
+                            <g:link class="navbar-link" controller="users" action="create">Регистрация</g:link>
+                            <span class="divider-vertical"></span>
                             <g:link class="navbar-link" controller="login">Войти</g:link>
                         </sec:ifNotLoggedIn>
 
