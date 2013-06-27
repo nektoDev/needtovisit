@@ -26,6 +26,36 @@
     </div>
 </div>
 
+<g:formInput bean="usersInstance"
+             field="email"
+             label="users.email.label"
+             defaultLabel="Email"
+             required="false"
+>
+    <g:textField name="email" id="email" value="${usersInstance?.email}"
+                 placeholder="${message([code: 'users.email.label', default: 'example@email.com'])}"/>
+</g:formInput>
+
+<g:formInput bean="usersInstance"
+             field="firstName"
+             label="users.firstName.label"
+             defaultLabel="First name"
+             required="false"
+>
+    <g:textField name="firstName" id="firstName" value="${usersInstance?.firstName}"
+                 placeholder="${message([code: 'users.firstName.label', default: 'Иван'])}"/>
+</g:formInput>
+
+<g:formInput bean="usersInstance"
+             field="lastName"
+             label="users.lastName.label"
+             defaultLabel="Last name"
+             required="false"
+>
+    <g:textField name="lastName" id="lastName" value="${usersInstance?.lastName}"
+                 placeholder="${message([code: 'users.lastName.label', default: 'Иванов'])}"/>
+</g:formInput>
+
 <g:javascript>
     jQuery('#password').passField({
         showWarn: false,

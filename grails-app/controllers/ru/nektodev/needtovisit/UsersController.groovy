@@ -26,6 +26,7 @@ class UsersController {
 
     def save() {
         def usersInstance = new Users(params)
+        usersInstance.enabled = true;
         if (!usersInstance.save(flush: true)) {
             render(view: "create", model: [usersInstance: usersInstance])
             return
