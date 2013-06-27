@@ -2,7 +2,9 @@
 <head>
     <meta name='layout' content='main'/>
     <title><g:message code="springSecurity.login.title"/></title>
+    <r:require module="passfield"/>
     <r:require module="login"/>
+
 </head>
 
 <body>
@@ -34,7 +36,20 @@
 <script type='text/javascript'>
     (function () {
         document.forms['loginForm'].elements['j_username'].focus();
+
+
     })();
+
+
 </script>
+
+<g:javascript>
+    jQuery("#password").passField({
+        acceptRate: 0,
+        showGenerate: false,
+        showWarn: false,
+        showTip: false
+    });
+</g:javascript>
 </body>
 </html>

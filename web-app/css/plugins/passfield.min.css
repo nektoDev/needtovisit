@@ -5,9 +5,9 @@
 .a_pf-wrap .a_pf-btn:hover{color:#4b4b4b}
 .a_pf-wrap .a_pf-btn.a_pf-btn-gen{width:22px}
 .a_pf-wrap .a_pf-btn-gen-i{width:16px;height:16px;display:block;margin:0 auto}
-.a_pf-wrap .a_pf-btn-gen-i,.a_pf-wrap .a_pf-btn-gen-help{height:16px;background:url(rand.png) center -16px no-repeat}
+.a_pf-wrap .a_pf-btn-gen-i,.a_pf-wrap .a_pf-btn-gen-help{height:16px;background:url("../../images/rand.png") center -16px no-repeat}
 .a_pf-wrap .a_pf-btn-gen-i:hover{background-position:center 0}
-@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min--moz-device-pixel-ratio:2),only screen and (-o-min-device-pixel-ratio:2/1),only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:192dpi),only screen and (min-resolution:2dppx){.a_pf-wrap .a_pf-btn-gen-i,.a_pf-wrap .a_pf-btn-gen-help{background-image:url(rand@2x.png);background-size:16px}
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min--moz-device-pixel-ratio:2),only screen and (-o-min-device-pixel-ratio:2/1),only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:192dpi),only screen and (min-resolution:2dppx){.a_pf-wrap .a_pf-btn-gen-i,.a_pf-wrap .a_pf-btn-gen-help{background-image:url(../../images/rand@2x.png);background-size:16px}
 }
 .a_pf-wrap .a_pf-placeholder{display:block;color:#aaa;text-align:left;overflow:hidden;cursor:text}
 .a_pf-wrap .a_pf-warn{color:#b94a48;display:inline-block;margin:0}

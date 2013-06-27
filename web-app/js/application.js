@@ -16,13 +16,6 @@
  }
  */
 
-jQuery(function () {
-
-    autocompleteAddPlace();
-
-});
-
-
 var previousAlertClass = "class"
 function showAlert(clazz) {
     var $alert = $('#alert');

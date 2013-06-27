@@ -5,6 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'users.label', default: 'Users')}"/>
     <title><g:message code="registration"/></title>
+    <r:require module="passfield"/>
 </head>
 
 <body>
@@ -34,9 +35,9 @@
         <g:render template="form"/>
     </fieldset>
 
-    <fieldset class="buttons">
-        <g:submitButton name="create" class="btn btn-success"
-                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+    <fieldset class="buttons control-group">
+        <div class="controls"><g:submitButton name="create" class="btn btn-success"
+                        value="${message(code: 'default.button.create.label', default: 'Create')}"/></div>
     </fieldset>
 </g:form>
 

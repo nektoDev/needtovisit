@@ -21,8 +21,16 @@
     </label>
 
     <div class="controls">
-        <g:textField name="password" required="" value="${usersInstance?.password}"
+        <g:textField name="password" id="password" required="" value="${usersInstance?.password}"
                      placeholder="${message([code: 'users.password.label', default: 'Password'])}"/>
     </div>
 </div>
+
+<g:javascript>
+    jQuery('#password').passField({
+        showWarn: false,
+        showTip: false,
+        locale: "ru"
+    });
+</g:javascript>
 
