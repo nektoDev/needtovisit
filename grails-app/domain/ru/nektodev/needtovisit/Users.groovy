@@ -6,6 +6,10 @@ class Users {
 
 	String username
 	String password
+    String email
+    String firstName
+    String lastName
+
 	boolean enabled
 	boolean accountExpired
 	boolean accountLocked
@@ -14,8 +18,12 @@ class Users {
     static hasMany = [placeRelation: UserPlaceRelation]
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+		username        blank: false, unique: true
+		password        blank: false
+        email           email: true, nullable: true
+        firstName       nullable: true
+        lastName        nullable: true
+
         enabled         defaultValue: true
         accountExpired  defaultValue: false
         accountLocked   defaultValue: false
