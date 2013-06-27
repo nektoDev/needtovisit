@@ -18,7 +18,7 @@
                         <sec:ifLoggedIn>
                             <span class="navbar-text">Добрый день,</span>
 
-                            <g:link class="navbar-link" controller="user" action="edit"
+                            <g:link class="navbar-link" controller="users" action="edit"
                                     id="${sec.loggedInUserInfo(field: 'id')}">
                                 <sec:username/>
                             </g:link>
