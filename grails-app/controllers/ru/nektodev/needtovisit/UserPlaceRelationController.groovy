@@ -2,10 +2,15 @@ package ru.nektodev.needtovisit
 
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
+import ru.nektodev.needtovisit.exceptions.NullIDException
 
 class UserPlaceRelationController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def springSecurityService
+
+    def userPlaceRelationService
 
     def index() {
         redirect(action: "list", params: params)
@@ -109,6 +114,25 @@ class UserPlaceRelationController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def loadVisitedPopup(Long placeId) {
+        Place p = Place.get(placeId)
+        UserPlaceRelation result = UserPlaceRelation.findByUserAndPlace(springSecurityService.currentUser as Users, p)
+
+        render(template: 'layouts/visitedPopup', model: [placeRel: result])
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def setVisitedAjax(Long placeId, Date visitedDate) {
+        if (placeId != null) {
+            Place p = Place.get(placeId)
+            Users u = springSecurityService.currentUser as Users
+
+            if (userPlaceRelationService.setVisited(p, u, visitedDate) != null) {
+                render g.link([controller: 'place', action: 'show', id: p.id], p.name)
+            }
+        } else {
+            throw new NullIDException("Place ID cannot be null")
+        }
+
 
     }
 }
