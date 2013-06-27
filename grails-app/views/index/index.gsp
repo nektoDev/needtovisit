@@ -32,7 +32,7 @@
         <div class="span1 divider"></div>
         <div class="span5">
             <h3>Еще разок?</h3>
-            <g:render id="placesVisitedRender" template="/place/layouts/placesVisited" model="[placesRel: placesVisited]"/>
+            <g:render id="placesVisitedRender" template="/place/layouts/placesVisited" model="[places: placesVisited]"/>
         </div>
 
     </div>
