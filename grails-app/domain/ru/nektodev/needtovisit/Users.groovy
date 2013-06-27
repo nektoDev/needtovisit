@@ -16,8 +16,11 @@ class Users {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-
-	}
+        enabled         defaultValue: true
+        accountExpired  defaultValue: false
+        accountLocked   defaultValue: false
+        passwordExpired defaultValue: false
+    }
 
 	static mapping = {
 		password column: '`password`'

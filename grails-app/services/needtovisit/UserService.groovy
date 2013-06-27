@@ -5,10 +5,6 @@ import ru.nektodev.needtovisit.Users
 class UserService {
 
     Users save(Users u) {
-        if (u != null) {
-
-        }
-
 
     }
 }

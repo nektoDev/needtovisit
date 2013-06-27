@@ -13,7 +13,7 @@
 <g:if test='${flash.message}'>
     <g:javascript>
         jQuery(function() {
-            showAlert("alert-error");
+            showAlert("alert-info");
         })
     </g:javascript>
 

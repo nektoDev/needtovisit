@@ -5,6 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class UsersController {
 
+    def userService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
@@ -29,7 +31,7 @@ class UsersController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'users.label', default: 'Users'), usersInstance.id])
+        flash.message = message(code: 'user.registred.message', args: [usersInstance.username])
         redirect(controller: "index")
     }
 

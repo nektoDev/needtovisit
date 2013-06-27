@@ -27,7 +27,7 @@ function showAlert(clazz) {
 
     setTimeout(function () {
         hideAlert();
-    }, 5000);
+    }, 15000);
 }
 
 function hideAlert() {
