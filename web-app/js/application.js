@@ -16,6 +16,13 @@
  }
  */
 
+jQuery(function () {
+
+    autocompleteAddPlace();
+
+});
+
+
 var previousAlertClass = "class"
 function showAlert(clazz) {
     var $alert = $('#alert');
@@ -38,8 +45,7 @@ function hideAlert() {
 
 
 //autocomplete
-jQuery(function () {
-
+function autocompleteAddPlace() {
     jQuery("#add-place-input").autocomplete({
         minLength: 0,
         source: function (request, response) {
@@ -50,32 +56,31 @@ jQuery(function () {
             return false;
         },
         select: function (event, ui) {
-                $("#add-place-input").val(ui.item.name);
-                return false;
-            }
-        })
+            $("#add-place-input").val(ui.item.name);
+            return false;
+        }
+    })
         .data("ui-autocomplete")._renderItem = function (ul, item) {
 
-            var result = null;
-            var users = "";
-            item.userRelation.forEach(function (rel) {
-                if (rel.user.id == 3) {
-                    result = $("<li class='ui-state-disabled'>")
-                        .append("<a>" + item.name + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a></li>");
-                }
-                users += " <span class='label'>" + rel.user.username + "</span>";
-            });
-
-            if (result == null) {
-
-                result = $("<li>")
-                    .append("<a>" + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
+        var result = null;
+        var users = "";
+        item.userRelation.forEach(function (rel) {
+            if (rel.user.id == 3) {
+                result = $("<li class='ui-state-disabled'>")
+                    .append("<a>" + item.name + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a></li>");
             }
+            users += " <span class='label'>" + rel.user.username + "</span>";
+        });
 
-            result.append("<li class='ui-menu-divider'></li>");
-            return result.appendTo(ul);
-        };
+        if (result == null) {
 
-    });
+            result = $("<li>")
+                .append("<a>" + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
+        }
+
+        result.append("<li class='ui-menu-divider'></li>");
+        return result.appendTo(ul);
+    };
+}
 
 
