@@ -24,6 +24,7 @@ class Place {
                 eq("user", u)
             }
             maxResults(max)
+            order("id", "desc")
         }
         return result
     }
@@ -34,7 +35,8 @@ class Place {
                     """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE NOT EXISTS
                              (FROM p.userRelation ur
-                                 WHERE ur.user = :user)""", [user: u], [max: max])
+                                 WHERE ur.user = :user)
+                        ORDER BY p.id DESC""", [user: u], [max: max])
 
         return result
     }
@@ -45,7 +47,8 @@ class Place {
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
                              (FROM p.userRelation ur
-                                 WHERE ur.user = :user AND ur.visited = false)""", [user: u], [max: max])
+                                 WHERE ur.user = :user AND ur.visited = false)
+                        ORDER BY p.id DESC""", [user: u], [max: max])
 
         return result
     }
@@ -56,7 +59,8 @@ class Place {
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
                              (FROM p.userRelation ur
-                                 WHERE ur.user = :user AND ur.visited = true)""", [user: u], [max: max])
+                                 WHERE ur.user = :user AND ur.visited = true)
+                         ORDER BY p.id DESC""", [user: u], [max: max])
 
         return result
     }
