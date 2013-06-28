@@ -28,8 +28,9 @@
         <g:textArea id="comment" name="comment" rows="3" class="span6" value="${placeRel?.comment}"/>
     </div>
     <div class="modal-footer">
+        <small class="muted pull-left" style="margin: 5px 0;"><i>Ctrl+Enter для сохранения</i></small>
         <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
-        <g:submitButton class="btn btn-success" name="setVisitedPopupSubminBtn" value="ОК">Save changes</g:submitButton >
+        <g:submitButton class="btn btn-success" name="setVisitedPopupSubminBtn" id="setVisitedPopupSubminBtn" value="ОК"/>
     </div>
     </g:formRemote>
 </div>
@@ -74,4 +75,6 @@
         updatePlacesVisitedTable();
 
     }
+
+
 </g:javascript>

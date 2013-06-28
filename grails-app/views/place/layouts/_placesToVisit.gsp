@@ -55,7 +55,12 @@
 
         jQuery('#visited-popup').on('shown', function () {
             jQuery('#comment').focus();
-        })
+            jQuery('#visited-popup').bind('keydown', function (event) {
+                if (event.keyCode == 13 && event.ctrlKey) {
+                    jQuery('#visited-popup #setVisitedPopupSubminBtn').click();
+                }
+            })
+        });
         jQuery('#visited-popup').modal('show');
 
     }
