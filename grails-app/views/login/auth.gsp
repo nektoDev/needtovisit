@@ -29,7 +29,7 @@
 
     <button class="btn btn-large btn-success" type="submit"
             value='${message(code: "springSecurity.login.button")}'>
-        Sign in
+        Войти
     </button>
 </form>
 

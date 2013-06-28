@@ -19,6 +19,8 @@ class UserPlaceRelation implements Serializable{
     Date dateCreated
     Date lastUpdated
 
+    String comment
+
     static belongsTo = [place: Place, user: Users]
 
     static constraints = {
@@ -26,6 +28,7 @@ class UserPlaceRelation implements Serializable{
 
         dateToVisit    nullable: true
         dateVisited  nullable: true
+        comment      nullable: true
     }
 
     static mapping = {
@@ -35,5 +38,6 @@ class UserPlaceRelation implements Serializable{
 
         place lazy: false
         user lazy: false
+        comment sqlType: "text"
     }
 }

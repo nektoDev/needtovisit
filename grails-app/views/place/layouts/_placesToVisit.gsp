@@ -37,7 +37,8 @@
                                  action: 'loadVisitedPopup',
                                  params: [placeId: placeToVisit.id],
                                  update: 'visited-popup-wrapper',
-                                 onSuccess: "jQuery('#visited-popup').modal('show')"
+                                 onSuccess: "successLoadVisitedPopup()",
+                                 onFailure: "failureLoadVisitedPopup()"
                          )}">
                 </span>
                 </td>
@@ -49,3 +50,18 @@
 <div id="visited-popup-wrapper">
 <g:render id="visited-popup-render" template="/userPlaceRelation/layouts/visitedPopup"/>
 </div>
+<g:javascript>
+    function successLoadVisitedPopup() {
+
+        jQuery('#visited-popup').on('shown', function () {
+            jQuery('#comment').focus();
+        })
+        jQuery('#visited-popup').modal('show');
+
+    }
+
+    function failureLoadVisitedPopup() {
+        jQuery("#alert #alert-content").html("Произошла ошибка!");
+        showAlert('alert-error');
+    }
+</g:javascript>
