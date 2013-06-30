@@ -19,4 +19,9 @@ modules = {
     login {
         resource url: 'css/login.css'
     }
+
+    datepicker {
+        resource url: 'css/plugins/datepicker.css'
+        resource url: 'js/plugins/bootstrap-datepicker.js'
+    }
 }
