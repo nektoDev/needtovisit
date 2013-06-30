@@ -1,6 +1,6 @@
 <%@ page import="ru.nektodev.needtovisit.PlaceController" %>
 <style type="text/css">
-#g-search-button {
+#add-date-icon {
     display: inline-block;
     width: 24px;
     height: 24px;
@@ -24,7 +24,7 @@
                name="name" style="width: 85%;"
                placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
         <g:submitButton class="btn btn-success" style="width: 150px;" name="addPlace" value="Добавить"/>
-        <a href="#" data-date-format="dd.mm.yyyy" data-date="07.07.2013" id="g-search-button"></a>
+        <a href="#" data-date-format="dd.mm.yyyy" data-date="07.07.2013" id="add-date-icon"></a>
 
     </div>
 </g:formRemote>
@@ -35,13 +35,13 @@
     var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
-        $('#g-search-button').datepicker({
+        $('#add-date-icon').datepicker({
             onRender: function(date) {
                 return date.valueOf() < now.valueOf() ? 'disabled' : '';
             }
         }).on('changeDate', function(ev) {
-            $('#g-search-button').datepicker('hide');
-            $('#add-place-input').val($('#add-place-input').val() + " " + $('#g-search-button').data('date'));
+            $('#add-date-icon').datepicker('hide');
+            $('#add-place-input').val($('#add-place-input').val() + " " + $('#add-date-icon').data('date'));
             $('#add-place-input').focus();
         });
 
