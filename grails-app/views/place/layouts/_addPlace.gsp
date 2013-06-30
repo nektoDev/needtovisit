@@ -24,11 +24,10 @@
                name="name" style="width: 85%;"
                placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
         <g:submitButton class="btn btn-success" style="width: 150px;" name="addPlace" value="Добавить"/>
-        <a href="#" data-date-format="dd.mm.yyyy" data-date="07.07.2013" id="add-date-icon"></a>
+        <a href="#" data-date-format="dd.mm.yyyy" data-date="${formatDate([format: "dd.mm.yyyy", date: new Date()])}" id="add-date-icon"></a>
 
     </div>
 </g:formRemote>
-<g:textField name="xxx" id="test"/>
 <g:javascript>
 
 
@@ -38,7 +37,9 @@
         $('#add-date-icon').datepicker({
             onRender: function(date) {
                 return date.valueOf() < now.valueOf() ? 'disabled' : '';
-            }
+            },
+            weekStart: 1
+
         }).on('changeDate', function(ev) {
             $('#add-date-icon').datepicker('hide');
             $('#add-place-input').val($('#add-place-input').val() + " " + $('#add-date-icon').data('date'));
