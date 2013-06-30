@@ -24,7 +24,7 @@
                name="name" style="width: 85%;"
                placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
         <g:submitButton class="btn btn-success" style="width: 150px;" name="addPlace" value="Добавить"/>
-        <a href="#" data-date-format="yyyy-mm-dd" data-date="2013-07-07" id="g-search-button"></a>
+        <a href="#" data-date-format="dd.mm.yyyy" data-date="07.07.2013" id="g-search-button"></a>
 
     </div>
 </g:formRemote>
