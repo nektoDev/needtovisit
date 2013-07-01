@@ -26,12 +26,12 @@
 <body>
 <div id="wrap">
 
-
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span3">
                 <g:render template="/layouts/left-menu"/>
             </div>
+
             <div class="span9">
                 <div class="well">
                     <g:render template="/layouts/alert"/>
@@ -48,6 +48,19 @@
 
 <g:render template="/layouts/footer"/>
 
+<g:javascript>
+    jQuery(document).ready(function() {
+        updatePlacesNewTable()
+    });
+
+    function updatePlacesNewTable() {
+        ${remoteFunction(
+        controller: 'index',
+        update: 'place-new-table',
+        action: 'getNewPlaces'
+)}
+    }
+</g:javascript>
 <g:javascript library="application"/>
 
 <r:layoutResources/>

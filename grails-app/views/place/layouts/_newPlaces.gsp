@@ -32,14 +32,6 @@
         )}
     }
 
-    function updatePlacesNewTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-new-table',
-            action: 'getNewPlaces'
-        )}
-    }
-
     function successAddRelation() {
 
         updatePlacesNewTable();

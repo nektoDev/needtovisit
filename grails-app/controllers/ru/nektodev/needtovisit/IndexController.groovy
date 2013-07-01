@@ -33,7 +33,6 @@ class IndexController {
 
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
     def getNewPlaces() {
         render(template: '/place/layouts/newPlaces', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
     }

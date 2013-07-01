@@ -10,6 +10,8 @@ class PlaceListsService {
 
         if (u != null) {
             result = Place.listByUserNotEqual(u) as List<Place>;
+        } else {
+            result = getPlacesList();
         }
 
         return result;

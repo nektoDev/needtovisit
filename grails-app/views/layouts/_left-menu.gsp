@@ -72,7 +72,7 @@
         <li class="divider"></li>
         <li class="nav-header">Рекомендуем:</li>
         <li>
-            <g:render id="newPlacesRender" template="/place/layouts/newPlaces" model="[places: newPlaces]"/>
+            <g:render id="newPlacesRender" template="/place/layouts/newPlaces"/>
         </li>
 
         <li class="nav-header">Календарь ваших событий</li>
