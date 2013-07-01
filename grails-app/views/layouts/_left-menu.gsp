@@ -30,6 +30,10 @@
     margin-left: -25px;
 }
 
+.nav-list .divider {
+    margin-left: -10px;
+}
+
 </style>
 
 <div class="well">
