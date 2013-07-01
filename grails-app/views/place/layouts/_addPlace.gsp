@@ -5,11 +5,11 @@
     width: 24px;
     height: 24px;
     position: relative;
-    left: -180px;
+    left: -16.5%;
     top: 3px;
     z-index: 100;
-
-    background-color: black;  /* Replace with your own image */
+    color: white;
+    background-color: grey;  /* Replace with your own image */
 }
 </style>
 <g:formRemote class="" name="addPlaceForm"
@@ -18,14 +18,12 @@
               onSuccess="successAddPlace(data);"
               onFailure="failureAddPlace(XMLHttpRequest);">
     <div class="input-append" style="width: 100%;">
-                               \
         <input id="add-place-input"
                type="text"
                name="name" style="width: 85%;"
                placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
-        <g:submitButton class="btn btn-success" style="width: 150px;" name="addPlace" value="Добавить"/>
-        <a href="#" data-date-format="dd.mm.yyyy" data-date="${formatDate([format: "dd.mm.yyyy", date: new Date()])}" id="add-date-icon"></a>
-
+        <g:submitButton class="btn btn-success" style="width: 13.7%" name="addPlace" value="Добавить"/>
+        <a href="#" data-date-format="dd.mm.yyyy" data-date="${formatDate([format: "dd.MM.yyyy", date: new Date()])}" id="add-date-icon">text</a>
     </div>
 </g:formRemote>
 <g:javascript>
@@ -42,7 +40,7 @@
 
         }).on('changeDate', function(ev) {
             $('#add-date-icon').datepicker('hide');
-            $('#add-place-input').val($('#add-place-input').val() + " " + $('#add-date-icon').data('date'));
+            $('#add-date-icon').text($('#add-date-icon').data('date'));
             $('#add-place-input').focus();
         });
 
