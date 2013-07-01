@@ -18,7 +18,7 @@
     <r:require module="bootstrap-css"/>
     <r:require module="bootstrap-js"/>
     <r:require module="bootstrap-typeahead"/>
-
+    <r:require module="datepicker"/>
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
