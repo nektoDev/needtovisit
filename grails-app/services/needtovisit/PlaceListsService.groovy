@@ -9,7 +9,7 @@ class PlaceListsService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listByUserNotEqual(u, max) as List<Place>;
+            result = Place.listByUserNotEqual(u) as List<Place>;
         }
 
         return result;

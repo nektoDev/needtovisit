@@ -25,17 +25,24 @@
 
 <body>
 <div id="wrap">
-    <g:render template="/layouts/header"/>
-
-    <div class="container">
 
 
-    <div class="well">
-        <g:render template="/layouts/alert"/>
-            <g:layoutBody/>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <g:render template="/layouts/left-menu"/>
+            </div>
+            <div class="span9">
+                <div class="well">
+                    <g:render template="/layouts/alert"/>
+                    <g:layoutBody/>
+
+                </div>
+            </div>
 
         </div>
     </div>
+
     <div id="push"></div>
 </div>
 

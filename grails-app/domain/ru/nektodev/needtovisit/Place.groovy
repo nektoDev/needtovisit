@@ -29,7 +29,7 @@ class Place {
         return result
     }
 
-    static List<Place> listByUserNotEqual(Users u, Long max = 10) {
+    static List<Place> listByUserNotEqual(Users u, Integer max = Integer.MAX_VALUE) {
 
         def result = executeQuery(
                     """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur

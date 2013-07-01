@@ -62,7 +62,7 @@ function autocompleteAddPlace() {
         item.userRelation.forEach(function (rel) {
             if (rel.user.id == currentUser) {
                 result = $("<li class='ui-state-disabled'>")
-                    .append("<a>" + item.name + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a></li>");
+                    .append("<a><img src='images/place-default.jpg' class='img-rounded'/> " + item.name + "<small class='pull-right'><i>Вы уже хотите посетить это место</i></small></a></li>");
             }
             users += " <span class='label'>" + rel.user.username + "</span>";
         });
@@ -70,7 +70,7 @@ function autocompleteAddPlace() {
         if (result == null) {
 
             result = $("<li>")
-                .append("<a><img src='images/place-default.jpg' class='img-rounded'> " + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
+                .append("<a><img src='images/place-default.jpg' class='img-rounded'/> " + item.name + "<small class='pull-right muted'><i>Хотят посетить: " + users + "</i></small></a></li>");
         }
 
         result.append("<li class='ui-menu-divider'></li>");
