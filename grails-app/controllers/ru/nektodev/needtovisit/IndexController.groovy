@@ -15,7 +15,7 @@ class IndexController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [newPlaces: placeListsService.getPlacesNewList(user, 10), placesToVisit: placeListsService.getPlacesToVisitList(user, 10), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
+            return [newPlaces: placeListsService.getPlacesNewList(user, 10), placesToVisit: placeListsService.getPlacesToVisitList(user, 100), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
         } else {
             return [newPlaces: placeListsService.getPlacesList(20)]
         }

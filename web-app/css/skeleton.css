@@ -40,22 +40,9 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-#wrap > .container {
-    padding-top: 60px;
-}
 .container .credit {
     margin: 20px 0;
 }
-
-code {
-    font-size: 80%;
-}
-
-.container > .well {
-    background-color: white;
-
-}
-
 .control {
     cursor: pointer;
 }
@@ -82,10 +69,6 @@ code {
 }
 
 /*CHECKBOXES*/
-input[type=checkbox] {
-    margin-top: 0 !important;
-    background-color: #ffffff;
-}
 
 #place-to-visit {
     -webkit-transition: all 0.5s;
@@ -103,5 +86,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: lighter !important;
 }
 
+.span5 {
+    margin: 0px !important;
+}
+
+
+i {
+    margin-top: 5px !important;
+    margin-right: 5px !important;
+}
 
 

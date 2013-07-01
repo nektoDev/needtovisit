@@ -29,20 +29,6 @@
                 </g:each>
             </td>
 
-            <td>
-                <span class="pull-right control">
-                    <img src="${createLink([uri: "/images/check.png"])}"
-                         onclick="
-                         ${remoteFunction(controller: 'userPlaceRelation',
-                                 action: 'loadVisitedPopup',
-                                 params: [placeId: placeToVisit.id],
-                                 update: 'visited-popup-wrapper',
-                                 onSuccess: "successLoadVisitedPopup()",
-                                 onFailure: "failureLoadVisitedPopup()"
-                         )}">
-                </span>
-                </td>
-
         </tr>
     </g:each>
     </tbody>

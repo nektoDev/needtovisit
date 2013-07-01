@@ -22,20 +22,6 @@
     <h3>Уже посетили?</h3>
     <g:render id="placesToVisitRender" template="/place/layouts/placesToVisit" model="[places: placesToVisit]"/>
 
-    <div class="row">
-
-        <div class="span5">
-            <h3>Хотите посетить?</h3>
-
-            <g:render id="newPlacesRender" template="/place/layouts/newPlaces" model="[places: newPlaces]"/>
-        </div>
-        <div class="span1 divider"></div>
-        <div class="span5">
-            <h3>Еще разок?</h3>
-            <g:render id="placesVisitedRender" template="/place/layouts/placesVisited" model="[places: placesVisited]"/>
-        </div>
-
-    </div>
 
     <g:javascript>
         jQuery(function () {

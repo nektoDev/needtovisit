@@ -25,17 +25,31 @@
 
 <body>
 <div id="wrap">
-    <g:render template="/layouts/header"/>
 
-    <div class="container">
+    <div class="container-fluid">
 
+        <div class="span2">
+            HELLO!
+            <ul class="nav nav-list">
+                <li><i class="pull-left icon-book"></i><a href="https://svn.otr.ru/repos/urksvn/db04/%D0%9C%D0%A1%D0%9E%D0%A1-2/">Documentation</a></li>
+                <li><i class="pull-left icon-list-alt"></i><a href="http://hs-c06-ws01.pds.otr.ru:13080/pages/viewpage.action?pageId=11337764">Wiki</a></li>
+                <li><i class="pull-left icon-trash"></i><a href="https://svn.otr.ru/repos/urksvn/db04/AlfaMSOS2/">Project sources</a></li>
+                <li><i class="pull-left icon-check"></i><a href="http://172.31.199.219/testlink/">TestLink</a></li>
+                <li><i class="pull-left icon-list"></i><a href="https://irbis.otr.ru:8443/jira/browse/MS">JIRA</a></li>
+                <li><i class="pull-left icon-wrench"></i><a href="http://172.31.199.218/">BuildServer</a></li>
+                <li><i class="pull-left icon-eye-open"></i><a href="http://testjmb.alfabank.ru/CS/MonLog/">MonLog</a></li>
+                <li><i class="pull-left icon-signal"></i><a href="/smsservice.html">SMSService</a></li>
+            </ul>
+        </div>
 
-    <div class="well">
-        <g:render template="/layouts/alert"/>
-            <g:layoutBody/>
-
+        <div id="main-content" class="span10">
+            <div class="well">
+                <g:render template="/layouts/alert"/>
+                <g:layoutBody/>
+            </div>
         </div>
     </div>
+
     <div id="push"></div>
 </div>
 
