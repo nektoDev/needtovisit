@@ -45,15 +45,6 @@
         )}
     }
 
-
-    function updatePlacesVisitedTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-visited-table',
-            action: 'getPlacesVisited'
-        )}
-    }
-
     function successSetVisited(data) {
 
         jQuery('#visited-popup').modal('hide');
@@ -61,7 +52,6 @@
         showAlert('alert-success');
 
         updatePlacesToVisitTable();
-        updatePlacesVisitedTable();
 
     }
 
@@ -72,7 +62,6 @@
         showAlert('alert-error');
 
         updatePlacesToVisitTable();
-        updatePlacesVisitedTable();
 
     }
 
