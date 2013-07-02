@@ -5,43 +5,23 @@ import ru.nektodev.needtovisit.Users
 
 class PlaceListsService {
 
-    List<Place> getPlacesNewList(Users u, Long max = 10) {
+    List<Place> getPlacesRecommendedList(Users u, Integer max = 7) {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listByUserNotEqual(u) as List<Place>;
+            result = Place.listByUserNotEqual(u, max) as List<Place>;
         } else {
-            result = getPlacesList();
+            result = getPlacesList(max);
         }
 
         return result;
     }
 
-    List<Place> getPlacesToVisitList(Users u, Long max = 10) {
-        List<Place> result = new ArrayList<>();
-
-        if (u != null) {
-            result = Place.listNotVisitedByUser(u, max) as List<Place>;
-        }
-
-        return result;
-    }
-
-    List<Place> getPlacesVisitedList(Users u, Long max = 10) {
-        List<Place> result = new ArrayList<>();
-
-        if (u != null) {
-            result = Place.listVisitedByUser(u, max) as List<Place>;
-        }
-
-        return result;
-    }
-    
-    List<Place> getPlacesList(Long max = 10) {
+    List<Place> getPlacesList(Integer max = 10) {
         return Place.list([order: "id desc"])
     }
     
-    List<Place> getPlacesList(Users u, Long max = 20) {
+    List<Place> getPlacesList(Users u, Integer max = Integer.MAX_VALUE) {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {

@@ -17,7 +17,7 @@ class Place {
 
     }
 
-    static List<Place> listByUser(Users u, Long max = 20) {
+    static List<Place> listByUser(Users u, Integer max = 20) {
 
         def result = createCriteria().list {
             userRelation {
@@ -41,7 +41,7 @@ class Place {
         return result
     }
 
-    static List<Place> listNotVisitedByUser(Users u, Long max = 10) {
+    static List<Place> listNotVisitedByUser(Users u, Integer max = 10) {
 
         def result = executeQuery(
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
@@ -53,7 +53,7 @@ class Place {
         return result
     }
 
-    static List<Place> listVisitedByUser(Users u, Long max = 10) {
+    static List<Place> listVisitedByUser(Users u, Integer max = 10) {
 
         def result = executeQuery(
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur

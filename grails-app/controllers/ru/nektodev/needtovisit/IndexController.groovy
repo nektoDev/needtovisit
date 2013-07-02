@@ -15,7 +15,7 @@ class IndexController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [placesList: placeListsService.getPlacesToVisitList(user, 10), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
+            return [placesList: placeListsService.getPlacesList(user)]
         } else {
             return [placesList: placeListsService.getPlacesList(20)]
         }
@@ -34,11 +34,19 @@ class IndexController {
     }
 
     def getPlacesRecommended() {
-        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
+        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 10)])
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
-    def getPlacesToVisit() {
-        render(template: '/place/layouts/placesToVisit', model: [places: placeListsService.getPlacesToVisitList(springSecurityService.currentUser as Users, 10)])
+    def getPlacesList() {
+        List<Place> result = new ArrayList<>();
+
+        if (springSecurityService.isLoggedIn()) {
+            Users user = springSecurityService.currentUser as Users;
+            result = placeListsService.getPlacesList(user, Integer.MAX_VALUE)
+        } else {
+            result = placeListsService.getPlacesList(20)
+        }
+
+        render(template: '/place/layouts/placesList', model: [places: result])
     }
 }

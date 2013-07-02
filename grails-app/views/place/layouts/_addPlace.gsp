@@ -68,7 +68,7 @@
     ${remoteFunction(
             controller: 'index',
             update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
+            action: 'getPlacesList'
     )}
     }
 

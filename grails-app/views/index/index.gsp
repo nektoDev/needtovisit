@@ -20,7 +20,7 @@
     <g:render template="/place/layouts/addPlace"/>
 </sec:ifLoggedIn>
 
-<g:render id="placesToVisitRender" template="/place/layouts/placesToVisit" model="[places: placesList]"/>
+<g:render id="placesToVisitRender" template="/place/layouts/placesList" model="[places: placesList]"/>
 
 <g:javascript>
 //region PlacesRecommended
@@ -32,7 +32,7 @@
         ${remoteFunction(
         controller: 'index',
         update: 'place-to-visit-table',
-        action: 'getPlacesToVisit'
+        action: 'getPlacesList'
 )}
     }
 
