@@ -21,19 +21,23 @@
 
 
     var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    jQuery(function () {
+        autocompleteAddPlace();
 
         $('#add-date-icon').datepicker({
-            onRender: function(date) {
-                return date.valueOf() < now.valueOf() ? 'disabled' : '';
-            },
-            weekStart: 1
+        onRender: function(date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        },
+        weekStart: 1
 
         }).on('changeDate', function(ev) {
             $('#add-date-icon').datepicker('hide');
             $('#add-date-icon').text($('#add-date-icon').data('date'));
             $('#add-place-input').focus();
         });
+    });
+
 
     function updatePlacesToVisitTable() {
         ${remoteFunction(
@@ -68,6 +72,8 @@
         showAlert('alert-error');
         updatePlacesToVisitTable();
     }
+
+
 </g:javascript>
 
 

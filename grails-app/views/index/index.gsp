@@ -35,14 +35,6 @@
    %{--     </div>
 
     </div>--}%
-
-    <g:javascript>
-        jQuery(function () {
-
-            autocompleteAddPlace();
-
-        });
-    </g:javascript>
 </sec:ifLoggedIn>
 </body>
 </html>
