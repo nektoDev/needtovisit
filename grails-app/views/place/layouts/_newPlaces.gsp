@@ -1,3 +1,5 @@
+<r:require module="place"/>
+
 <table id="place-new-table" class="table table-condensed">
     <tbody>
 
@@ -24,6 +26,10 @@
 </table>
 
 <g:javascript>
+    jQuery(document).ready(function() {
+        updatePlacesNewTable()
+    });
+
     function updatePlacesToVisitTable() {
         ${remoteFunction(
         controller: 'index',
@@ -32,9 +38,19 @@
         )}
     }
 
+    function updatePlacesNewTable() {
+        ${remoteFunction(
+            controller: 'index',
+            update: 'place-new-table',
+            action: 'getNewPlaces'
+        )}
+    }
+
+
     function successAddRelation() {
 
         updatePlacesNewTable();
         updatePlacesToVisitTable();
     }
+
 </g:javascript>

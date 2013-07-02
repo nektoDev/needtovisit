@@ -1,17 +1,9 @@
 <%@ page import="ru.nektodev.needtovisit.PlaceController" %>
-<style type="text/css">
-#add-date-icon {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    left: -16.5%;
-    top: 3px;
-    z-index: 100;
-    color: white;
-    background-color: grey;  /* Replace with your own image */
-}
-</style>
+
+<r:require module="datepicker"/>
+<r:require module="autocomplete"/>
+<r:require module="place"/>
+
 <g:formRemote class="" name="addPlaceForm"
               url="[controller: 'place', action: 'saveAjax']"
               style="width: 100%; display: inline-block; margin: 5px 0;"

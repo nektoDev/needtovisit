@@ -1,5 +1,6 @@
 <%@ page import="ru.nektodev.needtovisit.Users" %>
 
+<r:require module="passfield"/>
 <div class="control-group fieldcontain ${hasErrors(bean: usersInstance, field: 'username', 'error')} required">
 
     <label for="username" class="control-label">

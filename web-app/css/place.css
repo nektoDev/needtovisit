@@ -1,0 +1,28 @@
+/*ADD PLACE*/
+#add-date-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    left: -16.5%;
+    top: 3px;
+    z-index: 100;
+    color: white;
+    background-color: grey;  /* Replace with your own image */
+}
+
+img.place-img-small {
+    width: 24px;
+}
+
+img.place-img-medium {
+    width: 48px;
+}
+
+img.place-img-standart {
+    width: 64px;
+}
+
+img.place-img-big {
+    width: 128px;
+}
