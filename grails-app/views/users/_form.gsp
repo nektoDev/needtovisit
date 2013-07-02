@@ -57,11 +57,11 @@
                  placeholder="${message([code: 'users.lastName.label', default: 'Иванов'])}"/>
 </g:formInput>
 
-<g:javascript>
+<script type="text/javascript">
     jQuery('#password').passField({
         showWarn: false,
         showTip: false,
         locale: "ru"
     });
-</g:javascript>
+</script>
 

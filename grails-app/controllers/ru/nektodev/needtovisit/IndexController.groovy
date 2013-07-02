@@ -34,7 +34,7 @@ class IndexController {
     }
 
     def getPlacesRecommended() {
-        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 10)])
+        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 7)])
     }
 
     def getPlacesList() {

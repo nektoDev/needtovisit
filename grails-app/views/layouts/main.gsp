@@ -53,6 +53,107 @@
 
 <g:render template="/layouts/footer"/>
 
+<g:javascript>
+jQuery(document).ready(function() {
+    updatePlacesRecommendedTable()
+});
+
+
+//region UPDATE TABLES
+function updatePlacesListTable() {
+    ${remoteFunction(
+        controller: 'index',
+        update: 'place-list-table',
+        action: 'getPlacesList'
+    )}
+}
+function updatePlacesRecommendedTable() {
+    ${remoteFunction(
+        controller: 'index',
+        update: 'place-recommended-table',
+        action: 'getPlacesRecommended'
+    )}
+}
+//endregion
+
+//region PlaceToVisit
+function successLoadVisitedPopup() {
+    jQuery('#visited-popup').on('shown', function () {
+       $('#comment').focus();
+       $('#visited-popup').bind('keydown', function (event) {
+           if (event.keyCode == 13 && event.ctrlKey) {
+               $('#visited-popup #setVisitedPopupSubminBtn').click();
+           }
+       })
+   });
+   $('#visited-popup').modal('show');
+}
+
+function failureLoadVisitedPopup() {
+    $("#alert #alert-content").html("Произошла ошибка!");
+    showAlert('alert-error');
+}
+//endregion
+
+//region VisitedPopup
+function successSetVisited(data) {
+
+    $('#visited-popup').modal('hide');
+    $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
+    showAlert('alert-success');
+
+    updatePlacesListTable();
+
+}
+
+function failtureSetVisited(data) {
+
+    jQuery('#visited-popup').modal('hide');
+    $("#alert #alert-content").html("Произошла ошибка!");
+    showAlert('alert-error');
+
+    updatePlacesListTable();
+
+}
+//endregion
+
+//region PlacesRecommended
+function successAddRelation() {
+    updatePlacesRecommendedTable();
+    updatePlacesListTable();
+}
+//endregion
+
+
+//region ADD PLACE
+function search(request, response) {
+    var query = request.term;
+    ${remoteFunction(
+        controller: 'place',
+        action: 'search',
+        params: "'max=5&q=' + query",
+        onSuccess: 'response(data);'
+    )}
+}
+
+function successAddPlace(data) {
+
+    $("#alert #alert-content").html("Место " + data + " успешно добавлено!");
+    showAlert('alert-success');
+
+    updatePlacesListTable();
+    document.getElementById('addPlaceForm').reset();
+}
+
+function failureAddPlace(data) {
+    $("#alert #alert-content").html("Не удалось добавить место!");
+    showAlert('alert-error');
+    updatePlacesListTable();
+}
+//endredion
+</g:javascript>
+
+
 <r:layoutResources/>
 
 <sec:ifLoggedIn>

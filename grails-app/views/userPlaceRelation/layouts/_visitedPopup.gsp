@@ -35,35 +35,3 @@
     </g:formRemote>
 </div>
 </g:if>
-
-<g:javascript>
-    function updatePlacesToVisitTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesList'
-        )}
-    }
-
-    function successSetVisited(data) {
-
-        jQuery('#visited-popup').modal('hide');
-        $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
-        showAlert('alert-success');
-
-        updatePlacesToVisitTable();
-
-    }
-
-    function failtureSetVisited(data) {
-
-        jQuery('#visited-popup').modal('hide');
-        $("#alert #alert-content").html("Произошла ошибка!");
-        showAlert('alert-error');
-
-        updatePlacesToVisitTable();
-
-    }
-
-
-</g:javascript>

@@ -20,56 +20,7 @@
     <g:render template="/place/layouts/addPlace"/>
 </sec:ifLoggedIn>
 
-<g:render id="placesToVisitRender" template="/place/layouts/placesList" model="[places: placesList]"/>
-
-<g:javascript>
-//region PlacesRecommended
-    jQuery(document).ready(function() {
-        updatePlacesRecommendedTable()
-    });
-
-    function updatePlacesToVisitTable() {
-        ${remoteFunction(
-        controller: 'index',
-        update: 'place-to-visit-table',
-        action: 'getPlacesList'
-)}
-    }
-
-    function updatePlacesRecommendedTable() {
-    ${remoteFunction(
-            controller: 'index',
-            update: 'place-recommended-table',
-            action: 'getPlacesRecommended'
-    )}
-    }
-
-    function successAddRelation() {
-
-        updatePlacesRecommendedTable();
-        updatePlacesToVisitTable();
-    }
-//endregion
-
-//region PlaceToVisit
-function successLoadVisitedPopup() {
-    jQuery('#visited-popup').on('shown', function () {
-       jQuery('#comment').focus();
-       jQuery('#visited-popup').bind('keydown', function (event) {
-           if (event.keyCode == 13 && event.ctrlKey) {
-               jQuery('#visited-popup #setVisitedPopupSubminBtn').click();
-           }
-       })
-   });
-   jQuery('#visited-popup').modal('show');
-}
-
-function failureLoadVisitedPopup() {
-    jQuery("#alert #alert-content").html("Произошла ошибка!");
-    showAlert('alert-error');
-}
-//endregion
-</g:javascript>
+<g:render id="placesListRender" template="/place/layouts/placesList" model="[places: placesList]"/>
 
 </body>
 </html>

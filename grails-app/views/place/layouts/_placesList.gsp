@@ -4,7 +4,7 @@
 
 --%>
 
-<table id="place-to-visit-table" class="table table-striped table-condensed">
+<table id="place-list-table" class="table table-striped table-condensed">
     <thead>
     <tr>
         <th><input type="checkbox"/></th>
