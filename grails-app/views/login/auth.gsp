@@ -3,7 +3,6 @@
     <meta name='layout' content='main'/>
     <title><g:message code="springSecurity.login.title"/></title>
     <r:require module="passfield"/>
-    <r:require module="login"/>
 
 </head>
 

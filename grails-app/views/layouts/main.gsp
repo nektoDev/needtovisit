@@ -55,6 +55,33 @@
 
 <r:layoutResources/>
 
+<g:javascript>
+
+    function updatePlacesToVisitTable() {
+        ${remoteFunction(
+            controller: 'index',
+            update: 'place-to-visit-table',
+            action: 'getPlacesToVisit'
+        )}
+    }
+
+    function updatePlacesRecommendedTable() {
+    ${remoteFunction(
+            controller: 'index',
+            update: 'place-recommended-table',
+            action: 'getPlacesRecommended'
+    )}
+    }
+
+
+    function successAddRelation() {
+
+        updatePlacesRecommendedTable();
+        updatePlacesToVisitTable();
+    }
+
+</g:javascript>
+
 <sec:ifLoggedIn>
     <g:hiddenField name="userid" id="userid" value="${sec.loggedInUserInfo(field: "id")}"/>
 </sec:ifLoggedIn>

@@ -12,9 +12,9 @@
 
         <g:link class="" controller="users" action="edit"
                 id="${sec.loggedInUserInfo(field: 'id')}">
-            <div class="label">
+
                 <sec:username/>
-            </div>
+
         </g:link>
 
         <g:link class="pull-right" controller="logout">Выйти</g:link>
@@ -26,13 +26,15 @@
 <ul class="nav nav-list">
 
     <li class="nav-header">Навигация</li>
-    <li><g:link controller="index">Home</g:link></li>
-    <li><g:link controller="place" action="list">Places</g:link></li>
+    <li><g:link controller="place" action="list">Что еще посетить</g:link></li>
+    <li><g:link controller="place" action="list">Хотите посетить</g:link></li>
+    <li><g:link controller="place" action="list">Уже посетили</g:link></li>
+    <li><g:link controller="place" action="list">Рекомендуем посетить</g:link></li>
 
     <li class="divider"></li>
     <li class="nav-header">Рекомендуем:</li>
     <li>
-        <g:render id="newPlacesRender" template="/place/layouts/newPlaces"/>
+        <g:render id="places-recommended-min-render" template="/place/layouts/placesRecommendedMin"/>
     </li>
 
     <li class="nav-header">Календарь ваших событий</li>

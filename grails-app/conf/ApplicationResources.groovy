@@ -3,14 +3,10 @@ modules = {
         resource url: 'js/application.js'
         resource url: 'js/alert.js'
         resource url: 'css/skeleton.css'
-    }
-
-    index {
-        resource url: 'js/index.js'
-    }
-
-    login {
         resource url: 'css/login.css'
+        resource url: 'css/place.css'
+        resource url: 'js/place.js'
+        resource url: 'js/index.js'
     }
 
     datepicker {
@@ -28,10 +24,4 @@ modules = {
         resource url: 'js/autocomplete.js'
         resource url: 'css/plugins/jquery-ui-1.10.3.custom.css'
     }
-
-    place {
-        resource url: 'css/place.css'
-        resource url: 'js/place.js'
-    }
-
 }

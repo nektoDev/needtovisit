@@ -1,5 +1,5 @@
 
-<table id="place-new-table" class="table table-condensed">
+<table id="place-recommended-table" class="table table-condensed">
     <tbody>
 
     <g:each in="${places}" status="i" var="placeInstance">
@@ -13,10 +13,10 @@
                 <span class="pull-right control">
                     <img src="${createLink([uri: "/images/add.png"])}"
                          onclick=" ${remoteFunction(controller: 'index',
-                            action: 'addUserPlaceRelation',
-                            params: [place: placeInstance.id],
-                            onSuccess: 'successAddRelation();'
-                    )}">
+                                 action: 'addUserPlaceRelation',
+                                 params: [place: placeInstance.id],
+                                 onSuccess: 'successAddRelation();'
+                         )}">
                 </span>
             </td>
         </tr>
@@ -25,18 +25,8 @@
 </table>
 
 <g:javascript>
-    function updatePlacesNewTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-new-table',
-            action: 'getNewPlaces'
-        )}
-    }
-
-    function successAddRelation() {
-
-        updatePlacesNewTable();
-        updatePlacesToVisitTable();
-    }
+    jQuery(document).ready(function() {
+        updatePlacesRecommendedTable()
+    });
 
 </g:javascript>

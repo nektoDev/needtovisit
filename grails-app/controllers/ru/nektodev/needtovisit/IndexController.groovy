@@ -37,6 +37,10 @@ class IndexController {
         render(template: '/place/layouts/newPlaces', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
     }
 
+    def getPlacesRecommended() {
+        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
+    }
+
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def getPlacesToVisit() {
         render(template: '/place/layouts/placesToVisit', model: [places: placeListsService.getPlacesToVisitList(springSecurityService.currentUser as Users, 10)])

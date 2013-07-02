@@ -2,7 +2,6 @@
 
 <r:require module="datepicker"/>
 <r:require module="autocomplete"/>
-<r:require module="place"/>
 
 <g:formRemote class="" name="addPlaceForm"
               url="[controller: 'place', action: 'saveAjax']"
