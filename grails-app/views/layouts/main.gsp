@@ -66,11 +66,11 @@
     }
 
     function updatePlacesRecommendedTable() {
-    ${remoteFunction(
-            controller: 'index',
-            update: 'place-recommended-table',
-            action: 'getPlacesRecommended'
-    )}
+        ${remoteFunction(
+                controller: 'index',
+                update: 'place-recommended-table',
+                action: 'getPlacesRecommended'
+        )}
     }
 
 
