@@ -11,10 +11,9 @@
 </div>
 
 <g:if test='${flash.message}'>
-    <g:javascript>
-        jQuery(function() {
+    <script type="text/javascript">
+        $(function() {
             showAlert("alert-info");
         })
-    </g:javascript>
-
+    </script>
 </g:if>

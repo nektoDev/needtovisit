@@ -10,15 +10,15 @@
     <title><g:layoutTitle default="NeedToVisit"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-    <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <g:javascript library="jquery" plugin="jquery"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+
     <r:require module="bootstrap-css"/>
     <r:require module="bootstrap-js"/>
-    <r:require module="bootstrap-typeahead"/>
-    <r:require module="datepicker"/>
+
+    <r:require module="application"/>
+
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
@@ -27,26 +27,24 @@
 <div id="wrap">
 
     <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well">
 
-        <div class="span2">
-            HELLO!
-            <ul class="nav nav-list">
-                <li><i class="pull-left icon-book"></i><a href="https://svn.otr.ru/repos/urksvn/db04/%D0%9C%D0%A1%D0%9E%D0%A1-2/">Documentation</a></li>
-                <li><i class="pull-left icon-list-alt"></i><a href="http://hs-c06-ws01.pds.otr.ru:13080/pages/viewpage.action?pageId=11337764">Wiki</a></li>
-                <li><i class="pull-left icon-trash"></i><a href="https://svn.otr.ru/repos/urksvn/db04/AlfaMSOS2/">Project sources</a></li>
-                <li><i class="pull-left icon-check"></i><a href="http://172.31.199.219/testlink/">TestLink</a></li>
-                <li><i class="pull-left icon-list"></i><a href="https://irbis.otr.ru:8443/jira/browse/MS">JIRA</a></li>
-                <li><i class="pull-left icon-wrench"></i><a href="http://172.31.199.218/">BuildServer</a></li>
-                <li><i class="pull-left icon-eye-open"></i><a href="http://testjmb.alfabank.ru/CS/MonLog/">MonLog</a></li>
-                <li><i class="pull-left icon-signal"></i><a href="/smsservice.html">SMSService</a></li>
-            </ul>
-        </div>
+                    <g:render template="/layouts/left-menu"/>
 
-        <div id="main-content" class="span10">
-            <div class="well">
-                <g:render template="/layouts/alert"/>
-                <g:layoutBody/>
+                </div>
             </div>
+
+            <div class="span9">
+                <div class="well">
+
+                    <g:render template="/layouts/alert"/>
+                    <g:layoutBody/>
+
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -55,7 +53,106 @@
 
 <g:render template="/layouts/footer"/>
 
-<g:javascript library="application"/>
+<g:javascript>
+jQuery(document).ready(function() {
+    updatePlacesRecommendedTable()
+});
+
+
+//region UPDATE TABLES
+function updatePlacesListTable() {
+    ${remoteFunction(
+        controller: 'index',
+        update: 'place-list-table',
+        action: 'getPlacesList'
+    )}
+}
+function updatePlacesRecommendedTable() {
+    ${remoteFunction(
+        controller: 'index',
+        update: 'place-recommended-table',
+        action: 'getPlacesRecommended'
+    )}
+}
+//endregion
+
+//region PlaceToVisit
+function successLoadVisitedPopup() {
+    jQuery('#visited-popup').on('shown', function () {
+       $('#comment').focus();
+       $('#visited-popup').bind('keydown', function (event) {
+           if (event.keyCode == 13 && event.ctrlKey) {
+               $('#visited-popup #setVisitedPopupSubminBtn').click();
+           }
+       })
+   });
+   $('#visited-popup').modal('show');
+}
+
+function failureLoadVisitedPopup() {
+    $("#alert #alert-content").html("Произошла ошибка!");
+    showAlert('alert-error');
+}
+//endregion
+
+//region VisitedPopup
+function successSetVisited(data) {
+
+    $('#visited-popup').modal('hide');
+    $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
+    showAlert('alert-success');
+
+    updatePlacesListTable();
+
+}
+
+function failtureSetVisited(data) {
+
+    jQuery('#visited-popup').modal('hide');
+    $("#alert #alert-content").html("Произошла ошибка!");
+    showAlert('alert-error');
+
+    updatePlacesListTable();
+
+}
+//endregion
+
+//region PlacesRecommended
+function successAddRelation() {
+    updatePlacesRecommendedTable();
+    updatePlacesListTable();
+}
+//endregion
+
+
+//region ADD PLACE
+function search(request, response) {
+    var query = request.term;
+    ${remoteFunction(
+        controller: 'place',
+        action: 'search',
+        params: "'max=5&q=' + query",
+        onSuccess: 'response(data);'
+    )}
+}
+
+function successAddPlace(data) {
+
+    $("#alert #alert-content").html("Место " + data + " успешно добавлено!");
+    showAlert('alert-success');
+
+    updatePlacesListTable();
+    document.getElementById('addPlaceForm').reset();
+}
+
+function failureAddPlace(data) {
+    $("#alert #alert-content").html("Не удалось добавить место!");
+    showAlert('alert-error');
+    updatePlacesListTable();
+}
+//endredion
+</g:javascript>
+
 
 <r:layoutResources/>
 

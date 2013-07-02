@@ -3,7 +3,6 @@ body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
     background: url("../images/fabric-plaid.png");
-    color: rgb(73, 73, 73) !important;
 }
 
 /* Wrapper for page content to push down footer */
@@ -43,6 +42,11 @@ body {
 .container .credit {
     margin: 20px 0;
 }
+
+code {
+    font-size: 80%;
+}
+
 .control {
     cursor: pointer;
 }
@@ -69,6 +73,10 @@ body {
 }
 
 /*CHECKBOXES*/
+input[type=checkbox] {
+    margin-top: 0 !important;
+    background-color: #ffffff;
+}
 
 #place-to-visit {
     -webkit-transition: all 0.5s;
@@ -86,14 +94,40 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: lighter !important;
 }
 
-.span5 {
-    margin: 0px !important;
+
+/* LEFT COLUMN STYLES */
+
+.brand {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #999;
+    font-size: 200%;
+    margin: 10px 0;
+    display: block;
 }
 
-
-i {
-    margin-top: 5px !important;
-    margin-right: 5px !important;
+.brand:hover {
+    text-decoration: none;
+    color: #999;
 }
 
+.greeting-section {
+    font-size: 80%;
+    margin-bottom: 10px;
+}
 
+.greeting-section a {
+    text-decoration: none;
+}
+.nav-list {
+    padding-right: 0;
+    padding-left: 5px;
+}
+.nav-list .nav-header {
+    margin-left: -25px;
+}
+
+.nav-list .divider {
+    margin-left: -10px;
+}

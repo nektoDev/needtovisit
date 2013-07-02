@@ -15,9 +15,9 @@ class IndexController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [newPlaces: placeListsService.getPlacesNewList(user, 10), placesToVisit: placeListsService.getPlacesToVisitList(user, 100), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
+            return [placesList: placeListsService.getPlacesList(user)]
         } else {
-            return [newPlaces: placeListsService.getPlacesList(20)]
+            return [placesList: placeListsService.getPlacesList(20)]
         }
     }
 
@@ -33,18 +33,20 @@ class IndexController {
 
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
-    def getNewPlaces() {
-        render(template: '/place/layouts/newPlaces', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
+    def getPlacesRecommended() {
+        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 7)])
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
-    def getPlacesToVisit() {
-        render(template: '/place/layouts/placesToVisit', model: [places: placeListsService.getPlacesToVisitList(springSecurityService.currentUser as Users, 10)])
-    }
+    def getPlacesList() {
+        List<Place> result = new ArrayList<>();
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
-    def getPlacesVisited() {
-        render(template: '/place/layouts/placesVisited', model: ['places': placeListsService.getPlacesVisitedList(springSecurityService.currentUser as Users, 10)])
+        if (springSecurityService.isLoggedIn()) {
+            Users user = springSecurityService.currentUser as Users;
+            result = placeListsService.getPlacesList(user, Integer.MAX_VALUE)
+        } else {
+            result = placeListsService.getPlacesList(20)
+        }
+
+        render(template: '/place/layouts/placesList', model: [places: result])
     }
 }
