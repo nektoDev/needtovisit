@@ -32,20 +32,21 @@
     <li><g:link controller="place" action="list">Рекомендуем посетить</g:link></li>
 
     <li class="divider"></li>
-    <li class="nav-header">Рекомендуем:</li>
-    <li>
-        <g:render id="places-recommended-min-render" template="/place/layouts/placesRecommendedMin"/>
-    </li>
-
-    <li class="nav-header">Календарь ваших событий</li>
-    <li>
-        <div style="width: 215px; height: 215px; background-color: white; border: 1px solid black;"></div>
-    </li>
-
-    <li class="nav-header">Реклама</li>
-    <li>
-        <div style="width: 215px; height: 215px; background-color: white; border: 1px solid black;"></div>
-    </li>
-
 </ul>
+    <div class="nav-header">Рекомендуем:</div>
+    <div id="places-recommended-min-wrapper">
+        <g:render id="places-recommended-min-render" template="/place/layouts/placesRecommendedMin"/>
+    </div>
+
+    <div class="nav-header">Календарь ваших событий</div>
+    <div>
+        <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
+    </div>
+
+    <div class="nav-header">Реклама</div>
+    <div>
+        <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
+    </div>
+
+
 

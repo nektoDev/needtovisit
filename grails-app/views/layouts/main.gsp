@@ -70,7 +70,7 @@ function updatePlacesListTable() {
 function updatePlacesRecommendedTable() {
     ${remoteFunction(
         controller: 'index',
-        update: 'place-recommended-table',
+        update: 'places-recommended-min-wrapper',
         action: 'getPlacesRecommended'
     )}
 }
