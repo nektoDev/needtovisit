@@ -23,32 +23,3 @@
     </tbody>
 </table>
 
-<g:javascript>
-    jQuery(document).ready(function() {
-        updatePlacesRecommendedTable()
-    });
-
-    function updatePlacesToVisitTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
-        )}
-    }
-
-    function updatePlacesRecommendedTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-recommended-table',
-            action: 'getPlacesRecommended'
-        )}
-    }
-
-
-    function successAddRelation() {
-
-        updatePlacesRecommendedTable();
-        updatePlacesToVisitTable();
-    }
-
-</g:javascript>

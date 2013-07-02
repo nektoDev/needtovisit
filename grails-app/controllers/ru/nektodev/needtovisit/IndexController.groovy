@@ -15,9 +15,9 @@ class IndexController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [newPlaces: placeListsService.getPlacesNewList(user, 10), placesToVisit: placeListsService.getPlacesToVisitList(user, 10), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
+            return [placesList: placeListsService.getPlacesToVisitList(user, 10), placesVisited: placeListsService.getPlacesVisitedList(user, 10)]
         } else {
-            return [newPlaces: placeListsService.getPlacesList(20)]
+            return [placesList: placeListsService.getPlacesList(20)]
         }
     }
 
@@ -31,10 +31,6 @@ class IndexController {
         else
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to save.")
 
-    }
-
-    def getNewPlaces() {
-        render(template: '/place/layouts/newPlaces', model: ['places': placeListsService.getPlacesNewList(springSecurityService.currentUser as Users, 10)])
     }
 
     def getPlacesRecommended() {

@@ -38,15 +38,6 @@
         });
     });
 
-
-    function updatePlacesToVisitTable() {
-        ${remoteFunction(
-            controller: 'index',
-            update: 'place-to-visit-table',
-            action: 'getPlacesToVisit'
-        )}
-    }
-
     function search(request, response) {
         var query = request.term;
         ${remoteFunction(
@@ -73,6 +64,13 @@
         updatePlacesToVisitTable();
     }
 
+    function updatePlacesToVisitTable() {
+    ${remoteFunction(
+            controller: 'index',
+            update: 'place-to-visit-table',
+            action: 'getPlacesToVisit'
+    )}
+    }
 
 </g:javascript>
 

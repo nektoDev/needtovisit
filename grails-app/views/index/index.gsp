@@ -14,27 +14,62 @@
         Хотите посетить? <small class="muted"><g:link controller="users" action="create">Зарегистрируйтесь</g:link> или <g:link
                     controller="login" action="auth">войдите</g:link>, чтобы не забыть сходить или найти компанию</small>
     </h3>
-    <g:render id="newPlacesRender" template="/place/layouts/newPlaces" model="[places: newPlaces]"/>
 </sec:ifNotLoggedIn>
 
 <sec:ifLoggedIn>
     <g:render template="/place/layouts/addPlace"/>
-
-    <h3>Уже посетили?</h3>
-    <g:render id="placesToVisitRender" template="/place/layouts/placesToVisit" model="[places: placesToVisit]"/>
-
-%{--   <div class="row">
-
-   <div class="span5">
-         <h3>Хотите посетить?</h3>
-
-         <g:render id="newPlacesRender" template="/place/layouts/newPlaces" model="[places: newPlaces]"/>
---}%
-            <h3>Еще разок?</h3>
-            <g:render id="placesVisitedRender" template="/place/layouts/placesVisited" model="[places: placesVisited]"/>
-   %{--     </div>
-
-    </div>--}%
 </sec:ifLoggedIn>
+
+<g:render id="placesToVisitRender" template="/place/layouts/placesToVisit" model="[places: placesList]"/>
+
+<g:javascript>
+//region PlacesRecommended
+    jQuery(document).ready(function() {
+        updatePlacesRecommendedTable()
+    });
+
+    function updatePlacesToVisitTable() {
+        ${remoteFunction(
+        controller: 'index',
+        update: 'place-to-visit-table',
+        action: 'getPlacesToVisit'
+)}
+    }
+
+    function updatePlacesRecommendedTable() {
+    ${remoteFunction(
+            controller: 'index',
+            update: 'place-recommended-table',
+            action: 'getPlacesRecommended'
+    )}
+    }
+
+    function successAddRelation() {
+
+        updatePlacesRecommendedTable();
+        updatePlacesToVisitTable();
+    }
+//endregion
+
+//region PlaceToVisit
+function successLoadVisitedPopup() {
+    jQuery('#visited-popup').on('shown', function () {
+       jQuery('#comment').focus();
+       jQuery('#visited-popup').bind('keydown', function (event) {
+           if (event.keyCode == 13 && event.ctrlKey) {
+               jQuery('#visited-popup #setVisitedPopupSubminBtn').click();
+           }
+       })
+   });
+   jQuery('#visited-popup').modal('show');
+}
+
+function failureLoadVisitedPopup() {
+    jQuery("#alert #alert-content").html("Произошла ошибка!");
+    showAlert('alert-error');
+}
+//endregion
+</g:javascript>
+
 </body>
 </html>
