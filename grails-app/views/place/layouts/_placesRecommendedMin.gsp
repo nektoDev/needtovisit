@@ -1,32 +1,10 @@
-<style type="text/css">
-    #place-recommended-table td{
-        vertical-align: middle;
-    }
-
-    #place-recommended-table {
-        background-color: rgba(245, 245, 245, 0);
-    }
-
-    #place-recommended-table tr:hover{
-        background-color: rgb(255, 255, 255);
-    }
-
-    #place-recommended-table tr:first-of-type td{
-        border: none;
-    }
-
-    td.image {
-        width: 24px;
-    }
-</style>
-
-<table id="place-recommended-table" class="table table-condensed place-recommended-table">
+<table id="place-recommended-table" class="table places-table table-condensed place-recommended-table">
     <tbody>
 
     <g:each in="${places}" status="i" var="placeInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td class="image">
-                <img src='images/place-default.jpg' class='img-rounded place-img-small'/>
+                <img src='${createLink([uri: "/images/place-default.jpg"])}' class='img-rounded place-img-small'/>
             </td>
 
             <td><g:link controller="place" action="show"

@@ -26,3 +26,76 @@ img.place-img-standart {
 img.place-img-big {
     width: 128px;
 }
+
+.places-table tr.visited {
+    background-color: #d0d0d0 !important;
+    background-image: url('/images/stripe.png');
+
+}
+
+.places-table tr.visited td {
+    background-image: url('../images/stripe.png');
+
+}
+
+.places-table td{
+    vertical-align: middle;
+}
+
+.places-table tr:first-of-type td{
+    border: none;
+}
+
+.places-table td.image {
+    width: 24px;
+}
+
+.places-table tr {
+    cursor: pointer;
+}
+
+.places-table tbody > tr:nth-child(even) > td, .table-striped tbody > tr:nth-child(even) > th {
+    background-color: rgba(0, 0, 0, 0.11);
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.places-table tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th {
+    background-color: rgba(0, 0, 0, 0.04);
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.places-table tr td .control {
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.places-table tr:hover {
+    background-color: white;
+    font-size: 105%;
+
+}
+
+.places-table tr:hover td {
+    background: white !important;
+}
+
+.places-table tr:hover td .control {
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}

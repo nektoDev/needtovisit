@@ -37,7 +37,7 @@
             </div>
 
             <div class="span9">
-                <div class="well">
+                <div class="well" style="background-color: #ffffff">
 
                     <g:render template="/layouts/alert"/>
                     <g:layoutBody/>

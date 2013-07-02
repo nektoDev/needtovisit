@@ -19,13 +19,9 @@ class Place {
 
     static List<Place> listByUser(Users u, Integer max = 20) {
 
-        def result = createCriteria().list {
-            userRelation {
-                eq("user", u)
-            }
-            maxResults(max)
-            order("id", "desc")
-        }
+        def result = listNotVisitedByUser(u, max);
+        result.addAll(listVisitedByUser(u, max));
+
         return result
     }
 
@@ -36,7 +32,7 @@ class Place {
                         WHERE NOT EXISTS
                              (FROM p.userRelation ur
                                  WHERE ur.user = :user)
-                        ORDER BY p.id DESC""", [user: u], [max: max])
+                        ORDER BY ur.dateCreated DESC""", [user: u], [max: max])
 
         return result
     }
@@ -48,7 +44,7 @@ class Place {
                         WHERE EXISTS
                              (FROM p.userRelation ur
                                  WHERE ur.user = :user AND ur.visited = false)
-                        ORDER BY p.id DESC""", [user: u], [max: max])
+                        ORDER BY ur.dateCreated DESC""", [user: u], [max: max])
 
         return result
     }
@@ -60,7 +56,7 @@ class Place {
                         WHERE EXISTS
                              (FROM p.userRelation ur
                                  WHERE ur.user = :user AND ur.visited = true)
-                         ORDER BY p.id DESC""", [user: u], [max: max])
+                         ORDER BY ur.dateCreated DESC""", [user: u], [max: max])
 
         return result
     }
