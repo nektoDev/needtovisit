@@ -1,5 +1,4 @@
 package ru.nektodev.needtovisit
-
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -11,6 +10,8 @@ class PlaceController {
     def springSecurityService
 
     def placeService
+
+    def userPlaceRelationService
 
     def index() {
         redirect(action: "list", params: params)
@@ -46,9 +47,12 @@ class PlaceController {
 
         placeInstance = placeService.save(placeInstance, springSecurityService.currentUser as Users)
         if (placeInstance == null) {
+
             render placeInstance.name
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
+
+        userPlaceRelationService.update(placeInstance.userRelation.find({it.user.equals(springSecurityService.currentUser as Users)}), params);
 
         render g.link([controller: 'place', action: 'show', id: placeInstance.id], placeInstance.name)
     }

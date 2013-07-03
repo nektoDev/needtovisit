@@ -1,5 +1,6 @@
 package needtovisit
 
+import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 import org.springframework.transaction.annotation.Transactional
 import ru.nektodev.needtovisit.Place
 import ru.nektodev.needtovisit.UserPlaceRelation
@@ -59,6 +60,16 @@ class UserPlaceRelationService {
         }
 
         return null;
+    }
+
+    UserPlaceRelation update(UserPlaceRelation instance, GrailsParameterMap params) {
+        if (instance == null) throw new NullPointerException("Relation cannot be null");
+        if (params == null) return instance;
+
+        instance.properties = params;
+        instance.setDateToVisit(params.get("dateToVisit"))
+        instance.save();
+        return instance;
     }
 
 
