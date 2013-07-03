@@ -121,12 +121,12 @@ class UserPlaceRelationController {
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
-    def setVisitedAjax(Long placeId, Date visitedDate, String comment) {
+    def setVisitedAjax(Boolean visited, Long placeId, Date visitedDate, String comment) {
         if (placeId != null) {
             Place p = Place.get(placeId)
             Users u = springSecurityService.currentUser as Users
 
-            if (userPlaceRelationService.setVisited(p, u, visitedDate, comment) != null) {
+            if (userPlaceRelationService.setVisited(p, u, visitedDate, comment, visited) != null) {
                 render g.link([controller: 'place', action: 'show', id: p.id], p.name)
             }
         } else {

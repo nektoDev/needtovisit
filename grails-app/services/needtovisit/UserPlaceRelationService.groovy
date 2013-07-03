@@ -34,13 +34,19 @@ class UserPlaceRelationService {
     }
 
     @Transactional
-    def UserPlaceRelation setVisited(Place p, Users u, Date visitedDate = new Date(), String comment) {
+    def UserPlaceRelation setVisited(Place p, Users u, Date visitedDate = new Date(), String comment, Boolean visited) {
         UserPlaceRelation relation = UserPlaceRelation.findByUserAndPlace(u, p);
 
         if (relation != null) {
-            relation.visited = true;
-            relation.dateVisited = visitedDate;
-            relation.comment = comment;
+            relation.visited = visited;
+
+            if (visited) {
+                relation.dateVisited = visitedDate;
+                if (relation.comment == null)
+                    relation.comment = comment;
+                else
+                    relation.comment += "\n" + visitedDate.format('dd.MM.yyyy') + ":\n" + comment;
+            }
 
             if (relation.save(flush: true)) {
                 return relation;

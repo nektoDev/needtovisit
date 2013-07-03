@@ -9,7 +9,7 @@
                   name="saveVisited"
                   url="[controller: 'userPlaceRelation',
                         action: 'setVisitedAjax',
-                        params: [placeId: placeRel.place.id]]"
+                        params: [placeId: placeRel.place.id, visited: true]]"
                         onSuccess="successSetVisited(data)"
                         onFailure="failtureSetVisited(XMLHttpRequest)"
     >
@@ -18,7 +18,7 @@
         <label for="dateVisited" id="date-visited-label">Когда посетили?</label>
         <g:datePicker name="dateVisited" id="dateVisited" value="${new Date()}" precision="day"/>
         <label for="dateVisited" id="date-visited-label">
-            <g:if test="placeRel?.comment != null">
+            <g:if test="${placeRel?.comment?.isEmpty()}">
                     Хотите что нибудь добавить к старым впечатлениям?
             </g:if>
             <g:else>
