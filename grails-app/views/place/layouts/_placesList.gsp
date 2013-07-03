@@ -33,7 +33,13 @@
                 <span class="pull-right control">
 
                     <g:if test="${isVisited}">
-                        <small class="muted">Вы уже посетили это место. <span class="btn btn-mini">Еще раз?</span></small>
+                        <small class="muted">Вы уже посетили это место. <span class="btn btn-mini" onclick="
+                        ${remoteFunction(controller: 'userPlaceRelation',
+                                action: 'setVisitedAjax',
+                                params: [placeId: placeToVisit.id, visited: false],
+                                onSuccess: "successSetVisited(data)",
+                                onFailure: "failtureSetVisited(XMLHttpRequest)"
+                        )}">Еще раз?</span></small>
                     </g:if>
                     <g:else>
                         <img src="${createLink([uri: "/images/check.png"])}"
