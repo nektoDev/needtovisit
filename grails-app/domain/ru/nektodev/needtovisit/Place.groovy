@@ -28,7 +28,7 @@ class Place {
     static List<Place> listByUserNotEqual(Users u, Integer max = Integer.MAX_VALUE) {
 
         def result = executeQuery(
-                    """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
+                """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE NOT EXISTS
                              (FROM p.userRelation ur
                                  WHERE ur.user = :user)

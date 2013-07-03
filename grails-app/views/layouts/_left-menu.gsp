@@ -13,7 +13,7 @@
         <g:link class="" controller="users" action="edit"
                 id="${sec.loggedInUserInfo(field: 'id')}">
 
-                <sec:username/>
+            <sec:username/>
 
         </g:link>
 
@@ -33,20 +33,24 @@
 
     <li class="divider"></li>
 </ul>
-    <div class="nav-header">Рекомендуем:</div>
-    <div id="places-recommended-min-wrapper">
-        <g:render id="places-recommended-min-render" template="/place/layouts/placesRecommendedMin"/>
-    </div>
 
-    <div class="nav-header">Календарь ваших событий</div>
-    <div>
-        <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
-    </div>
+<div class="nav-header">Рекомендуем:</div>
 
-    <div class="nav-header">Реклама</div>
-    <div>
-        <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
-    </div>
+<div id="places-recommended-min-wrapper">
+    <g:render id="places-recommended-min-render" template="/place/layouts/placesRecommendedMin"/>
+</div>
+
+<div class="nav-header">Календарь ваших событий</div>
+
+<div>
+    <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
+</div>
+
+<div class="nav-header">Реклама</div>
+
+<div>
+    <div style="width: 240px; height: 215px; background-color: white; border: 1px solid black;"></div>
+</div>
 
 
 

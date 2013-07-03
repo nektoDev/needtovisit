@@ -20,8 +20,8 @@
     <div class='alert alert-error'><ul role="alert">
         <g:eachError bean="${usersInstance}" var="error">
             <li <g:if test="${error in org.springframework.validation.FieldError}">
-                    data-field-id="${error.field}"
-                </g:if>>
+                data-field-id="${error.field}"
+            </g:if>>
 
                 <g:message error="${error}"/>
             </li>
@@ -30,14 +30,14 @@
 
 </g:hasErrors>
 
-<g:form class="form-horizontal" action="save" >
+<g:form class="form-horizontal" action="save">
     <fieldset class="form">
         <g:render template="form"/>
     </fieldset>
 
     <fieldset class="buttons control-group">
         <div class="controls"><g:submitButton name="create" class="btn btn-success"
-                        value="${message(code: 'default.button.create.label', default: 'Create')}"/></div>
+                                              value="${message(code: 'default.button.create.label', default: 'Create')}"/></div>
     </fieldset>
 </g:form>
 

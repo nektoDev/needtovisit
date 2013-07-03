@@ -72,8 +72,8 @@ class UsersController {
         if (version != null) {
             if (usersInstance.version > version) {
                 usersInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'users.label', default: 'Users')] as Object[],
-                          "Another user has updated this Users while you were editing")
+                        [message(code: 'users.label', default: 'Users')] as Object[],
+                        "Another user has updated this Users while you were editing")
                 render(view: "edit", model: [usersInstance: usersInstance])
                 return
             }

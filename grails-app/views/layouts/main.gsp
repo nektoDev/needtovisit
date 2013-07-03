@@ -65,92 +65,92 @@ function updatePlacesListTable() {
         controller: 'index',
         update: 'place-list-table',
         action: 'getPlacesList'
-    )}
-}
-function updatePlacesRecommendedTable() {
+)}
+    }
+    function updatePlacesRecommendedTable() {
     ${remoteFunction(
-        controller: 'index',
-        update: 'places-recommended-min-wrapper',
-        action: 'getPlacesRecommended'
+            controller: 'index',
+            update: 'places-recommended-min-wrapper',
+            action: 'getPlacesRecommended'
     )}
-}
-//endregion
+    }
+    //endregion
 
-//region PlaceToVisit
-function successLoadVisitedPopup() {
-    jQuery('#visited-popup').on('shown', function () {
-       $('#comment').focus();
-       $('#visited-popup').bind('keydown', function (event) {
-           if (event.keyCode == 13 && event.ctrlKey) {
-               $('#visited-popup #setVisitedPopupSubminBtn').click();
-           }
-       })
-   });
-   $('#visited-popup').modal('show');
-}
+    //region PlaceToVisit
+    function successLoadVisitedPopup() {
+        jQuery('#visited-popup').on('shown', function () {
+           $('#comment').focus();
+           $('#visited-popup').bind('keydown', function (event) {
+               if (event.keyCode == 13 && event.ctrlKey) {
+                   $('#visited-popup #setVisitedPopupSubminBtn').click();
+               }
+           })
+       });
+       $('#visited-popup').modal('show');
+    }
 
-function failureLoadVisitedPopup() {
-    $("#alert #alert-content").html("Произошла ошибка!");
-    showAlert('alert-error');
-}
-//endregion
+    function failureLoadVisitedPopup() {
+        $("#alert #alert-content").html("Произошла ошибка!");
+        showAlert('alert-error');
+    }
+    //endregion
 
-//region VisitedPopup
-function successSetVisited(data) {
+    //region VisitedPopup
+    function successSetVisited(data) {
 
-    $('#visited-popup').modal('hide');
-    $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
-    showAlert('alert-success');
+        $('#visited-popup').modal('hide');
+        $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
+        showAlert('alert-success');
 
-    updatePlacesListTable();
+        updatePlacesListTable();
 
-}
+    }
 
-function failtureSetVisited(data) {
+    function failtureSetVisited(data) {
 
-    jQuery('#visited-popup').modal('hide');
-    $("#alert #alert-content").html("Произошла ошибка!");
-    showAlert('alert-error');
+        jQuery('#visited-popup').modal('hide');
+        $("#alert #alert-content").html("Произошла ошибка!");
+        showAlert('alert-error');
 
-    updatePlacesListTable();
+        updatePlacesListTable();
 
-}
-//endregion
+    }
+    //endregion
 
-//region PlacesRecommended
-function successAddRelation() {
-    updatePlacesRecommendedTable();
-    updatePlacesListTable();
-}
-//endregion
+    //region PlacesRecommended
+    function successAddRelation() {
+        updatePlacesRecommendedTable();
+        updatePlacesListTable();
+    }
+    //endregion
 
 
-//region ADD PLACE
-function search(request, response) {
-    var query = request.term;
+    //region ADD PLACE
+    function search(request, response) {
+        var query = request.term;
     ${remoteFunction(
-        controller: 'place',
-        action: 'search',
-        params: "'max=5&q=' + query",
-        onSuccess: 'response(data);'
+            controller: 'place',
+            action: 'search',
+            params: "'max=5&q=' + query",
+            onSuccess: 'response(data);'
     )}
-}
+    }
 
-function successAddPlace(data) {
+    function successAddPlace(data) {
 
-    $("#alert #alert-content").html("Место " + data + " успешно добавлено!");
-    showAlert('alert-success');
+        $("#alert #alert-content").html("Место " + data + " успешно добавлено!");
+        showAlert('alert-success');
 
-    updatePlacesListTable();
-    document.getElementById('addPlaceForm').reset();
-}
+        updatePlacesListTable();
+        document.getElementById('addPlaceForm').reset();
+    }
 
-function failureAddPlace(data) {
-    $("#alert #alert-content").html("Не удалось добавить место!");
-    showAlert('alert-error');
-    updatePlacesListTable();
-}
-//endredion
+    function failureAddPlace(data) {
+        $("#alert #alert-content").html("Не удалось добавить место!");
+        showAlert('alert-error');
+        updatePlacesListTable();
+    }
+    //endredion
 </g:javascript>
 
 

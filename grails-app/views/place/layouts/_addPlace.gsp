@@ -27,7 +27,8 @@
         </table>
     </div>
 
-    <g:hiddenField name="userRelation.dateToVisit" id="date-to-visit-hidden" value="${datePicker(format: "dd.MM.yyyy" )}"/>
+    <g:hiddenField name="userRelation.dateToVisit" id="date-to-visit-hidden"
+                   value="${datePicker(format: "dd.MM.yyyy")}"/>
 </g:formRemote>
 <script type="text/javascript">
     var nowTemp = new Date();

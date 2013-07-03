@@ -2,54 +2,54 @@ package ru.nektodev.needtovisit
 
 class Users {
 
-	transient springSecurityService
+    transient springSecurityService
 
-	String username
-	String password
+    String username
+    String password
     String email
     String firstName
     String lastName
 
-	boolean enabled
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+    boolean enabled
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
 
     static hasMany = [placeRelation: UserPlaceRelation]
 
-	static constraints = {
-		username        blank: false, unique: true
-		password        blank: false
-        email           email: true, nullable: true, unique: true
-        firstName       nullable: true
-        lastName        nullable: true
+    static constraints = {
+        username blank: false, unique: true
+        password blank: false
+        email email: true, nullable: true, unique: true
+        firstName nullable: true
+        lastName nullable: true
 
-        enabled         defaultValue: true
-        accountExpired  defaultValue: false
-        accountLocked   defaultValue: false
+        enabled defaultValue: true
+        accountExpired defaultValue: false
+        accountLocked defaultValue: false
         passwordExpired defaultValue: false
     }
 
-	static mapping = {
-		password column: '`password`'
+    static mapping = {
+        password column: '`password`'
         placeRelation lazy: false
-	}
+    }
 
-	Set<Role> getAuthorities() {
-		UsersRole.findAllByUser(this).collect { it.role } as Set
-	}
+    Set<Role> getAuthorities() {
+        UsersRole.findAllByUser(this).collect { it.role } as Set
+    }
 
-	def beforeInsert() {
-		encodePassword()
-	}
+    def beforeInsert() {
+        encodePassword()
+    }
 
-	def beforeUpdate() {
-		if (isDirty('password')) {
-			encodePassword()
-		}
-	}
+    def beforeUpdate() {
+        if (isDirty('password')) {
+            encodePassword()
+        }
+    }
 
-	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
-	}
+    protected void encodePassword() {
+        password = springSecurityService.encodePassword(password)
+    }
 }

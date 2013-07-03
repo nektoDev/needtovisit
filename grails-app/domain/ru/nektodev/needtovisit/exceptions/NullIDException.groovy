@@ -4,7 +4,7 @@ package ru.nektodev.needtovisit.exceptions
  * @author nektodev
  *         ts.slawa@gmail.com
  */
-class NullIDException extends Exception{
+class NullIDException extends Exception {
     NullIDException() {
         super()
     }

@@ -72,8 +72,4 @@ class UserPlaceRelationService {
         instance.save(flush: true);
         return instance;
     }
-
-
-
-
 }

@@ -1,4 +1,5 @@
 package ru.nektodev.needtovisit
+
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
@@ -52,7 +53,7 @@ class PlaceController {
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
 
-        userPlaceRelationService.update(placeInstance.userRelation.find({it.user.equals(springSecurityService.currentUser as Users)}), params);
+        userPlaceRelationService.update(placeInstance.userRelation.find({ it.user.equals(springSecurityService.currentUser as Users) }), params);
 
         render g.link([controller: 'place', action: 'show', id: placeInstance.id], placeInstance.name)
     }
@@ -92,8 +93,8 @@ class PlaceController {
         if (version != null) {
             if (placeInstance.version > version) {
                 placeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'place.label', default: 'Place')] as Object[],
-                          "Another user has updated this Place while you were editing")
+                        [message(code: 'place.label', default: 'Place')] as Object[],
+                        "Another user has updated this Place while you were editing")
                 render(view: "edit", model: [placeInstance: placeInstance])
                 return
             }

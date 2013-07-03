@@ -1,5 +1,7 @@
 package ru.nektodev.needtovisit
+
 import grails.validation.Validateable
+
 /**
  * @author tsykin.vyacheslav ts.slawa@gmail.com
 
@@ -7,7 +9,7 @@ import grails.validation.Validateable
  */
 
 @Validateable
-class UserPlaceRelation implements Serializable{
+class UserPlaceRelation implements Serializable {
     Users user
     Place place
     boolean visited
@@ -21,11 +23,11 @@ class UserPlaceRelation implements Serializable{
     static belongsTo = [place: Place, user: Users]
 
     static constraints = {
-        visited visited: false, blank : false
+        visited visited: false, blank: false
 
-        dateToVisit  nullable: true
-        dateVisited  nullable: true
-        comment      nullable: true
+        dateToVisit nullable: true
+        dateVisited nullable: true
+        comment nullable: true
     }
 
     static mapping = {

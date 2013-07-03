@@ -1,5 +1,5 @@
 <div class="pull-right" style="margin-right: 220px;">
-    <div id="alert" style="position: fixed;" class="alert fade" >
+    <div id="alert" style="position: fixed;" class="alert fade">
         <button type="button" class="close" onclick="hideAlert();">&times;</button>
 
         <span id="alert-content">
@@ -12,7 +12,7 @@
 
 <g:if test='${flash.message}'>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             showAlert("alert-info");
         })
     </script>

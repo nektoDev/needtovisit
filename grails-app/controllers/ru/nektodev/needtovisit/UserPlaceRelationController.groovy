@@ -28,8 +28,8 @@ class UserPlaceRelationController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
-        def userPlaceRelationInstance  = new UserPlaceRelation(params)
-        if (!userPlaceRelationInstance.save(flush: true, failOnError:true)) {
+        def userPlaceRelationInstance = new UserPlaceRelation(params)
+        if (!userPlaceRelationInstance.save(flush: true, failOnError: true)) {
             render(view: "create", model: [userPlaceRelationInstance: userPlaceRelationInstance])
             return
         }
