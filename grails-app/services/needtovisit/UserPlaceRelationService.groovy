@@ -64,13 +64,12 @@ class UserPlaceRelationService {
 
     UserPlaceRelation update(UserPlaceRelation instance, GrailsParameterMap params) {
         if (instance == null) throw new NullPointerException("Relation cannot be null");
-        if (params == null) return instance;
+        if (params == null || params.userRelation == null) return instance;
 
-
+        params.userRelation.put("dateToVisit", params.date("userRelation.dateToVisit", "dd.MM.yyyy"))
         instance.properties = params.userRelation;
 
-        instance.dateToVisit = params.date('userRelation.dateToVisit', 'dd.MM.yyyy')
-        instance.save();
+        instance.save(flush: true);
         return instance;
     }
 

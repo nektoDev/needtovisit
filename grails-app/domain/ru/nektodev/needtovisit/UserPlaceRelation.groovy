@@ -23,7 +23,7 @@ class UserPlaceRelation implements Serializable{
     static constraints = {
         visited visited: false, blank : false
 
-        dateToVisit    nullable: true
+        dateToVisit  nullable: true
         dateVisited  nullable: true
         comment      nullable: true
     }
