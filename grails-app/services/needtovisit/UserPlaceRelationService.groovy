@@ -42,10 +42,11 @@ class UserPlaceRelationService {
 
             if (visited) {
                 relation.dateVisited = visitedDate;
+                def commentString = "\n" + visitedDate.format('dd.MM.yyyy') + ":\n" + comment
                 if (relation.comment == null)
-                    relation.comment = comment;
+                    relation.comment = commentString
                 else
-                    relation.comment += "\n" + visitedDate.format('dd.MM.yyyy') + ":\n" + comment;
+                    relation.comment += commentString;
             }
 
             if (relation.save(flush: true)) {

@@ -19,10 +19,10 @@
         <g:datePicker name="dateVisited" id="dateVisited" value="${new Date()}" precision="day"/>
         <label for="dateVisited" id="date-visited-label">
             <g:if test="${placeRel?.comment?.isEmpty()}">
-                    Хотите что нибудь добавить к старым впечатлениям?
+                Как впечатления?
             </g:if>
             <g:else>
-                Как впечатления?
+                Хотите что нибудь добавить к старым впечатлениям?
             </g:else>
         </label>
         <g:textArea id="comment" name="comment" rows="3" class="span6" value="${placeRel?.comment}"/>
