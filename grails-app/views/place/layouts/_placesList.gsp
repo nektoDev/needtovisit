@@ -3,10 +3,10 @@
 <table id="place-list-table" class="table table-striped table-condensed places-table">
     <tbody>
     <g:each in="${places}" status="i" var="placeToVisit">
-        <g:set var="isVisited"
-               value="${placeToVisit.userRelation.find({ it.user.id.toString().equals(sec.loggedInUserInfo(field: 'id').toString()) })?.visited}"/>
+        <g:set var="instaceRelation"
+               value="${placeToVisit.userRelation.find({ it.user.id.toString().equals(sec.loggedInUserInfo(field: 'id').toString()) })}"/>
         <sec:ifLoggedIn>
-            <tr class="${isVisited ? 'visited' : ''}">
+            <tr class="${instaceRelation?.visited ? 'visited' : ''}">
         </sec:ifLoggedIn>
         <sec:ifNotLoggedIn>
             <tr>
@@ -22,6 +22,10 @@
         </td>
 
         <td>
+            <g:formatDate date="${instaceRelation?.dateToVisit}" format="dd.MM.yyyy"/>
+        </td>
+
+        <td>
             <g:each in="${placeToVisit.userRelation.user}" var="user">
                 <g:link controller="users" action="show" class="label"
                         id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link>
@@ -32,7 +36,7 @@
             <td>
                 <span class="pull-right control">
 
-                    <g:if test="${isVisited}">
+                    <g:if test="${instaceRelation?.visited}">
                         <small class="muted">Вы уже посетили это место. <span class="btn btn-mini" onclick="
                         ${remoteFunction(controller: 'userPlaceRelation',
                                 action: 'setVisitedAjax',

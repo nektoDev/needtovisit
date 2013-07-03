@@ -66,11 +66,15 @@ class UserPlaceRelationService {
         if (instance == null) throw new NullPointerException("Relation cannot be null");
         if (params == null) return instance;
 
-        instance.properties = params;
-        instance.setDateToVisit(params.get("dateToVisit"))
+
+        instance.properties = params.userRelation;
+
+        instance.dateToVisit = params.date('userRelation.dateToVisit', 'dd.MM.yyyy')
         instance.save();
         return instance;
     }
+
+
 
 
 }

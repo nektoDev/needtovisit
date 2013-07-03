@@ -1,28 +1,6 @@
 <%@ page import="ru.nektodev.needtovisit.PlaceController" %>
-
 <r:require module="datepicker"/>
 <r:require module="autocomplete"/>
-
-<style type="text/css" xmlns="http://www.w3.org/1999/html">
-#add-date-icon {
-    display: block;
-    height: 20px;
-    padding: 2px 2px 2px 22px;
-    margin: 3px 0;
-    background-color: lightgrey; /* Replace with your own image */
-    outline: 1px solid #ccc;
-    outline-offset: 2px;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none !important;
-}
-
-#add-place-input {
-    border-radius: 0;
-    borde
-}
-</style>
 
 <g:formRemote class="" name="addPlaceForm"
               url="[controller: 'place', action: 'saveAjax']"
@@ -49,7 +27,7 @@
         </table>
     </div>
 
-    <g:hiddenField name="dateToVisit" id="date-to-visit-hidden" value=""/>
+    <g:hiddenField name="userRelation.dateToVisit" id="date-to-visit-hidden" value="${datePicker(format: "dd.MM.yyyy" )}"/>
 </g:formRemote>
 <script type="text/javascript">
     var nowTemp = new Date();

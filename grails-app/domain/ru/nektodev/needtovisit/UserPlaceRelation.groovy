@@ -1,9 +1,5 @@
 package ru.nektodev.needtovisit
-
 import grails.validation.Validateable
-
-import java.text.SimpleDateFormat
-
 /**
  * @author tsykin.vyacheslav ts.slawa@gmail.com
 
@@ -40,10 +36,5 @@ class UserPlaceRelation implements Serializable{
         place lazy: false
         user lazy: false
         comment sqlType: "text"
-    }
-
-    void setDateToVisit(String dateToVisit) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        this.dateToVisit = sdf.parse(dateToVisit);
     }
 }
