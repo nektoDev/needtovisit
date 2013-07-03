@@ -44,7 +44,7 @@ class UserPlaceRelationService {
                 relation.dateVisited = visitedDate;
                 if (!comment?.isEmpty()) {
                     def commentString = "\n" + visitedDate.format('dd.MM.yyyy') + ":\n" + comment;
-                    if (relation.comment?.isEmpty())
+                    if (relation.comment == null || relation.comment.isEmpty())
                         relation.comment = commentString
                     else
                         relation.comment += commentString;

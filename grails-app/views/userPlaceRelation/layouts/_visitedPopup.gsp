@@ -18,7 +18,7 @@
         <label for="dateVisited" id="date-visited-label">Когда посетили?</label>
         <g:datePicker name="dateVisited" id="dateVisited" value="${new Date()}" precision="day"/>
         <label for="dateVisited" id="date-visited-label">
-            <g:if test="${placeRel?.comment?.isEmpty()}">
+            <g:if test="${placeRel?.comment == null || placeRel?.comment?.isEmpty()}">
                 Как впечатления?
             </g:if>
             <g:else>
