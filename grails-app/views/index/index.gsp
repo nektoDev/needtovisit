@@ -22,7 +22,7 @@
     <g:render template="/place/layouts/addPlace"/>
 </sec:ifLoggedIn>
 
-<g:render id="placesListRender" template="/place/layouts/placesList" model="[places: placesList]"/>
+<g:render id="placesListRender"  template="/place/layouts/placesList" model="[places: placesList]"/>
 
 </body>
 </html>

@@ -63,7 +63,7 @@ jQuery(document).ready(function() {
 function updatePlacesListTable() {
     ${remoteFunction(
         controller: 'index',
-        update: 'place-list-table',
+        update: 'places-list-render-wrapper',
         action: 'getPlacesList'
 )}
     }

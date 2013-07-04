@@ -18,7 +18,7 @@ class PlaceListsService {
     }
 
     List<Place> getPlacesList(Integer max = 10) {
-        return Place.list([order: "id desc"])
+        return Place.list([max: max, order: "id desc"])
     }
 
     List<Place> getPlacesList(Users u, Integer max = Integer.MAX_VALUE) {

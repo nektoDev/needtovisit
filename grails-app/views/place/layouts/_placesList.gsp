@@ -28,7 +28,7 @@
         <td>
             <g:each in="${placeToVisit.userRelation.user}" var="user">
                 <g:link controller="users" action="show" class="label"
-                        id="${user.id}">${fieldValue(bean: user, field: "id").toString().equalsIgnoreCase(sec.loggedInUserInfo(field: 'id').toString())? 'Вы' : fieldValue(bean: user, field: "username")}</g:link>
+                        id="${user.id}">${fieldValue(bean: user, field: "id").toString().equalsIgnoreCase(sec.loggedInUserInfo(field: 'id').toString()) ? 'Вы' : fieldValue(bean: user, field: "username")}</g:link>
             </g:each>
         </td>
 
@@ -36,26 +36,39 @@
             <td>
                 <span class="pull-right control">
 
-                    <g:if test="${instaceRelation?.visited}">
-                        <small class="muted">Вы уже посетили это место. <span class="btn btn-mini" onclick="
-                        ${remoteFunction(controller: 'userPlaceRelation',
-                                action: 'setVisitedAjax',
-                                params: [placeId: placeToVisit.id, visited: false],
-                                onSuccess: "successSetVisited(data)",
-                                onFailure: "failtureSetVisited(XMLHttpRequest)"
-                        )}">Еще раз?</span></small>
+                    <g:if test="${instaceRelation != null}">
+                        <g:if test="${instaceRelation?.visited}">
+                            <small class="muted">Вы уже посетили это место. <span class="btn btn-mini" onclick="
+                            ${remoteFunction(controller: 'userPlaceRelation',
+                                    action: 'setVisitedAjax',
+                                    params: [placeId: placeToVisit.id, visited: false],
+                                    onSuccess: "successSetVisited(data)",
+                                    onFailure: "failtureSetVisited(XMLHttpRequest)"
+                            )}">Еще раз?</span></small>
+                        </g:if>
+                        <g:else>
+                            <img src="${createLink([uri: "/images/check.png"])}"
+                                 onclick="
+                                 ${remoteFunction(controller: 'userPlaceRelation',
+                                         action: 'loadVisitedPopup',
+                                         params: [placeId: placeToVisit.id],
+                                         update: 'visited-popup-wrapper',
+                                         onSuccess: "successLoadVisitedPopup()",
+                                         onFailure: "failureLoadVisitedPopup()"
+                                 )}">
+                        </g:else>
                     </g:if>
                     <g:else>
-                        <img src="${createLink([uri: "/images/check.png"])}"
-                             onclick="
-                             ${remoteFunction(controller: 'userPlaceRelation',
-                                     action: 'loadVisitedPopup',
-                                     params: [placeId: placeToVisit.id],
-                                     update: 'visited-popup-wrapper',
-                                     onSuccess: "successLoadVisitedPopup()",
-                                     onFailure: "failureLoadVisitedPopup()"
-                             )}">
+                        <span class="pull-right control">
+                            <img src="${createLink([uri: "/images/add.png"])}"
+                                 onclick=" ${remoteFunction(controller: 'index',
+                                         action: 'addUserPlaceRelation',
+                                         params: [place: placeToVisit.id],
+                                         onSuccess: 'successAddRelation();'
+                                 )}">
+                        </span>
                     </g:else>
+
                 </span>
             </td>
         </sec:ifLoggedIn>

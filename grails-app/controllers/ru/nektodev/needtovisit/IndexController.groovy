@@ -39,7 +39,6 @@ class IndexController {
 
     def getPlacesList() {
         List<Place> result = new ArrayList<>();
-
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
             result = placeListsService.getPlacesList(user, Integer.MAX_VALUE)
