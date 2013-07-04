@@ -91,9 +91,9 @@ img.place-img-big {
 #add-date-icon {
     display: block;
     height: 20px;
-    padding: 2px 2px 2px 22px;
+    padding: 2px 2px 2px 24px;
     margin: 3px 0;
-    background-color: lightgrey; /* Replace with your own image */
+    background: rgba(138, 190, 237, 0.26) url("../images/calendar-grey.png") no-repeat;
     outline: 1px solid #ccc;
     outline-offset: 2px;
     border-radius: 6px;

@@ -143,6 +143,7 @@ function updatePlacesListTable() {
 
         updatePlacesListTable();
         document.getElementById('addPlaceForm').reset();
+        document.getElementById('addPlaceForm').reset();
     }
 
     function failureAddPlace(data) {

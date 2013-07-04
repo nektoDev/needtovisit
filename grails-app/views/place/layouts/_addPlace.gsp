@@ -46,12 +46,43 @@
         }).on('changeDate',
                 function (ev) {
 
-                    $('#add-date-icon').text($('#add-date-icon').data('date'));
+                    $('#add-date-icon').showHtml($(this).data('date'));
+                    $('#add-date-icon').css("background-image", "url('images/calendar-blue.png')");
+
                     $('#date-to-visit-hidden').val($('#add-date-icon').data('date'));
                     $('#add-date-icon').datepicker('hide');
                     $('#add-place-input').focus();
                 });
     });
+
+
+    (function($)
+    {
+        $.fn.showHtml = function(html, speed, callback)
+        {
+            return this.each(function()
+            {
+                var el = $(this);
+
+                var finish = {width: this.style.width, height: this.style.height};
+
+                var cur = {width: el.width()+'px', height: el.height()+'px'};
+
+                el.html(html);
+
+                var next = {width: el.width()+'px', height: el.height()+'px'};
+
+                el .css(cur)
+                        .animate(next, speed, function()
+                        {
+                            el.css(finish);
+                            if ( $.isFunction(callback) ) callback();
+                        });
+            });
+        };
+
+
+    })(jQuery);
 </script>
 
 
