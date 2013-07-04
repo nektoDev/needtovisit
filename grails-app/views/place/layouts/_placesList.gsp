@@ -22,13 +22,13 @@
         </td>
 
         <td>
-            <g:formatDate date="${instaceRelation?.dateToVisit}" format="dd.MM.yyyy"/>
+            <g:formatDate date="${instaceRelation?.dateToVisit ?: instaceRelation?.dateVisited}" format="dd.MM.yyyy"/>
         </td>
 
         <td>
             <g:each in="${placeToVisit.userRelation.user}" var="user">
                 <g:link controller="users" action="show" class="label"
-                        id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link>
+                        id="${user.id}">${fieldValue(bean: user, field: "id").toString().equalsIgnoreCase(sec.loggedInUserInfo(field: 'id').toString())? 'Вы' : fieldValue(bean: user, field: "username")}</g:link>
             </g:each>
         </td>
 
