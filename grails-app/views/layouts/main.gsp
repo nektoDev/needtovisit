@@ -142,8 +142,15 @@ function updatePlacesListTable() {
         showAlert('alert-success');
 
         updatePlacesListTable();
+        resetAddPlaceForm();
+    }
+
+    function resetAddPlaceForm() {
         document.getElementById('addPlaceForm').reset();
-        document.getElementById('addPlaceForm').reset();
+
+        $('#date-to-visit-hidden').val("");
+        $('#add-date-icon').showHtml("");
+        $('#add-date-icon').css("background-image", "url('images/calendar-grey.png')");
     }
 
     function failureAddPlace(data) {
