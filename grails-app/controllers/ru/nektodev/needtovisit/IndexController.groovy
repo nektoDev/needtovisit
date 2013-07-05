@@ -17,14 +17,19 @@ class IndexController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [placesList: placeService.getPlacesList(user)]
+
+            placeListsService.setPlaces(placeService.getPlacesList(user))
         } else {
-            return [placesList: placeService.getPlacesList(20)]
+            placeListsService.setPlaces(placeService.getPlacesList(20))
+
         }
+
+        return [placesList: placeListsService.getPlaces()]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def addUserPlaceRelation() {
+
         Users user = springSecurityService.currentUser as Users;
         def placeId = params.get("place") as String;
 
