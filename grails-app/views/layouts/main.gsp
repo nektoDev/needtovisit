@@ -65,7 +65,7 @@ function updatePlacesListTable() {
         controller: 'index',
         update: 'places-list-render-wrapper',
         action: 'getPlacesList'
-)}
+    )}
     }
     function updatePlacesRecommendedTable() {
     ${remoteFunction(
