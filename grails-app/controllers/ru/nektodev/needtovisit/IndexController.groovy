@@ -10,14 +10,16 @@ class IndexController {
 
     def placeListsService
 
+    def placeService
+
     def userPlaceRelationService;
 
     def index() {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            return [placesList: placeListsService.getPlacesList(user)]
+            return [placesList: placeService.getPlacesList(user)]
         } else {
-            return [placesList: placeListsService.getPlacesList(20)]
+            return [placesList: placeService.getPlacesList(20)]
         }
     }
 
@@ -34,16 +36,16 @@ class IndexController {
     }
 
     def getPlacesRecommended() {
-        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeListsService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 7)])
+        render(template: '/place/layouts/placesRecommendedMin', model: ['places': placeService.getPlacesRecommendedList(springSecurityService.currentUser as Users, 7)])
     }
 
     def getPlacesList() {
         List<Place> result = new ArrayList<>();
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
-            result = placeListsService.getPlacesList(user, Integer.MAX_VALUE)
+            result = placeService.getPlacesList(user, Integer.MAX_VALUE)
         } else {
-            result = placeListsService.getPlacesList(20)
+            result = placeService.getPlacesList(20)
         }
 
         render(template: '/place/layouts/placesList', model: [places: result])
