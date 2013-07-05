@@ -146,4 +146,17 @@ class PlaceController {
         def max = params.get('max') != null ? params.get('max') as Long : 10;
         render placeService.search(query, max) as JSON
     }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def notByUser(Integer max) {
+        params.max = Math.min(max ?: 50, 100)
+
+        Closure refresh = {placeService.getPlacesNotUserList(springSecurityService.currentUser as Users, params.max as Integer)}
+
+        placeListsService.setPlaces(refresh);
+        def result = placeListsService.getPlaces();
+
+        [placeInstanceList: result, placeInstanceTotal: result.size()]
+    }
+
 }
