@@ -12,6 +12,8 @@ class PlaceController {
 
     def placeService
 
+    def placeListsService
+
     def userPlaceRelationService
 
     def index() {
@@ -20,7 +22,13 @@ class PlaceController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 50, 100)
-        [placeInstanceList: Place.list(params), placeInstanceTotal: Place.count()]
+
+        Closure refresh = {Place.list(params)};
+        placeListsService.setPlaces(refresh);
+
+        def result = placeListsService.getPlaces();
+
+        [placeInstanceList: result, placeInstanceTotal: result.size()]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])

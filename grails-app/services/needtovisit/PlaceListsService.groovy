@@ -1,17 +1,17 @@
 package needtovisit
 import ru.nektodev.needtovisit.Place
 
-class PlaceListsService {
+class PlaceListsService implements Serializable{
 
     static scope = 'session'
 
-    List<Place> places;
+    Closure refresh;
 
     List<Place> getPlaces() {
-        return places
+        return refresh();
     }
 
-    void setPlaces(List<Place> places) {
-        this.places = places
+    void setPlaces(Closure c) {
+        this.refresh = c;
     }
 }

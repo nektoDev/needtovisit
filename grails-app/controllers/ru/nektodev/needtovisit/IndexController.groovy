@@ -4,7 +4,6 @@ import grails.plugins.springsecurity.Secured
 import ru.nektodev.needtovisit.exceptions.DatabaseSaveException
 
 class IndexController {
-    static scope = "session"
 
     def springSecurityService
 
@@ -18,9 +17,12 @@ class IndexController {
         if (springSecurityService.isLoggedIn()) {
             Users user = springSecurityService.currentUser as Users;
 
-            placeListsService.setPlaces(placeService.getPlacesList(user))
+            def refresh = {placeService.getPlacesList(user)};
+            placeListsService.setPlaces(refresh)
+
         } else {
-            placeListsService.setPlaces(placeService.getPlacesList(20))
+            Closure refresh = {placeService.getPlacesList(20)}
+            placeListsService.setPlaces(refresh)
 
         }
 
@@ -45,14 +47,6 @@ class IndexController {
     }
 
     def getPlacesList() {
-        List<Place> result = new ArrayList<>();
-        if (springSecurityService.isLoggedIn()) {
-            Users user = springSecurityService.currentUser as Users;
-            result = placeService.getPlacesList(user, Integer.MAX_VALUE)
-        } else {
-            result = placeService.getPlacesList(20)
-        }
-
-        render(template: '/place/layouts/placesList', model: [places: result])
+        render(template: '/place/layouts/placesList', model: [places: placeListsService.getPlaces()])
     }
 }
