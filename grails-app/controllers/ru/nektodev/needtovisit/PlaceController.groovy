@@ -159,4 +159,24 @@ class PlaceController {
         [placeInstanceList: result, placeInstanceTotal: result.size()]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def byUser(Long id) {
+        Users u = null
+        if (id == null || id == 0) {
+            u = springSecurityService.currentUser as Users
+        } else {
+            u = Users.get(id)
+        }
+
+        if (u == null) {
+            flash.message = "Пользователь с таким id не найден"
+        }
+
+        Closure refresh = {placeService.getPlacesNotVisitedList(u, Integer.MAX_VALUE)}
+        placeListsService.setPlaces(refresh);
+        def result = placeListsService.getPlaces();
+
+        [placeInstanceList: result, placeInstanceTotal: result.size()]
+    }
+
 }

@@ -28,7 +28,7 @@
     <li class="nav-header">Навигация</li>
     <li><g:link controller="place" action="list">Все места</g:link></li>
     <li><g:link controller="place" action="notByUser">Что еще посетить</g:link></li>
-    <li><g:link controller="place" action="list">Хотите посетить</g:link></li>
+    <li><g:link controller="place" action="byUser">Хотите посетить</g:link></li>
     <li><g:link controller="place" action="list">Уже посетили</g:link></li>
     <li><g:link controller="place" action="list">Рекомендуем посетить</g:link></li>
 

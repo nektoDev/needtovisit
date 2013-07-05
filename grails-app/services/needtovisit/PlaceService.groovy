@@ -89,4 +89,24 @@ class PlaceService {
 
         return result;
     }
+
+    List<Place> getPlacesNotVisitedList(Users u, Integer max = Integer.MAX_VALUE) {
+        List<Place> result = new ArrayList<>();
+
+        if (u != null) {
+            result = Place.listNotVisitedByUser(u, max);
+        }
+
+        return result;
+    }
+
+    List<Place> getPlacesVisitedList(Users u, Integer max = Integer.MAX_VALUE) {
+        List<Place> result = new ArrayList<>();
+
+        if (u != null) {
+            result = Place.listVisitedByUser(u, max) as List<Place>;
+        }
+
+        return result;
+    }
 }
