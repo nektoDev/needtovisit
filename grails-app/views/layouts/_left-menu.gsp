@@ -26,6 +26,7 @@
 <ul class="nav nav-list">
 
     <li class="nav-header">Навигация</li>
+    <li><g:link controller="index">На главную</g:link></li>
     <li><g:link controller="place" action="list">Все места</g:link></li>
     <li><g:link controller="place" action="notByUser">Что еще посетить</g:link></li>
     <li><g:link controller="place" action="byUser">Хотите посетить</g:link></li>
