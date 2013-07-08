@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="page-header"><h1>Посещенные</h1></div>
+<div class="header-page"><h1>Уже постетили</h1></div>
 
 <div id="list-place" class="content scaffold-list" role="main">
     <div id="places-list-render-wrapper">

@@ -16,18 +16,22 @@
 
     <r:require module="bootstrap-css"/>
     <r:require module="bootstrap-js"/>
-    %{--
 
-        <r:require module="application"/>
-    --}%
+    <r:require module="application"/>
+
 
     <g:layoutHead/>
     <r:layoutResources/>
 
     <style>
     #myCarousel img {
-        height: 300px;
+        height: 250px;
         margin: auto;
+    }
+
+    .carousel-caption{
+        font-size: 80%;
+
     }
 
     #myCarousel {
@@ -48,7 +52,7 @@
 <body>
 <div id="wrap">
     <div class="container-fluid">
-        <div id="myCarousel" class="carousel slide" style="height: 300px">
+        <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class=""></li>
                 <li data-target="#myCarousel" data-slide-to="1" class=""></li>

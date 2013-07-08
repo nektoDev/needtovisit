@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="page-header"><h1>Что еще можно посетить</h1></div>
+<div class="header-page"><span class="header-page-content">Что еще?</span></div>
 
 <div id="list-place" class="content scaffold-list" role="main">
     <div id="places-list-render-wrapper">

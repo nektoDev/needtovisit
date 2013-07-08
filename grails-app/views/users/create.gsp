@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="page-header"><h1><g:message code="registration" default="Registration"/></h1></div>
+<div class="header-page"><h1><g:message code="registration" default="Registration"/></h1></div>
 
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>

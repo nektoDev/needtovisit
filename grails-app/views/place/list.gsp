@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="page-header"><h1>Все места</h1></div>
+<div class="header-page"><span class="header-page-content">Все места</span></div>
 
 <div id="list-place" class="content scaffold-list" role="main">
     <div id="places-list-render-wrapper">
