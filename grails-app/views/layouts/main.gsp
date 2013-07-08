@@ -29,6 +29,20 @@
         margin: auto;
     }
 
+    #myCarousel:hover .carousel-caption{
+        opacity: 0.75;
+    }
+
+    .carousel-caption{
+        font-size: 80%;
+        opacity: 0;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
+
     .carousel-caption{
         font-size: 80%;
 
@@ -61,7 +75,7 @@
 
             <div class="carousel-inner">
                 <div class="item">
-                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+                    <img src='${createLink([uri: "/images/zoo-ad.jpg"])}' alt="">
 
                     <div class="carousel-caption">
                         <h4>Зоопарк</h4>
@@ -71,7 +85,7 @@
                 </div>
 
                 <div class="item">
-                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+                    <img src='${createLink([uri: "/images/mu-ad.jpg"])}' alt="">
 
                     <div class="carousel-caption">
                         <h4>Кино: Университет монстров</h4>
@@ -81,7 +95,7 @@
                 </div>
 
                 <div class="item active">
-                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+                    <img src='${createLink([uri: "/images/gorky-ad.JPG"])}' alt="">
 
                     <div class="carousel-caption">
                         <h4>Парк Горького</h4>
