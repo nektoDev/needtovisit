@@ -16,17 +16,104 @@
 
     <r:require module="bootstrap-css"/>
     <r:require module="bootstrap-js"/>
+    %{--
 
-    <r:require module="application"/>
+        <r:require module="application"/>
+    --}%
 
     <g:layoutHead/>
     <r:layoutResources/>
+
+    <style>
+    #myCarousel img {
+        height: 300px;
+        margin: auto;
+    }
+
+    #myCarousel {
+        background-color: lightgrey;
+        box-shadow: 0 0 12px #b8b6b5;
+    }
+
+    .container-fluid {
+        width: 1000px;
+        margin: auto;
+        padding-top: 20px;
+        background-color: white;
+        box-shadow: 0 0 12px #dcdad9;
+    }
+    </style>
 </head>
 
 <body>
 <div id="wrap">
-
     <div class="container-fluid">
+        <div id="myCarousel" class="carousel slide" style="height: 300px">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item">
+                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+
+                    <div class="carousel-caption">
+                        <h4>First Thumbnail label</h4>
+
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Second Thumbnail label</h4>
+
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div>
+                </div>
+
+                <div class="item active">
+                    <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
+
+                    <div class="carousel-caption">
+                        <h4>Third Thumbnail label</h4>
+
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+        </div>
+
+        <div class="row-fluid">
+
+
+            <div class="span9">
+                <div class="well" style="background-color: #ffffff">
+
+                    <g:render template="/layouts/alert"/>
+                    <g:layoutBody/>
+
+                </div>
+            </div>
+
+            <div class="span3">
+                <div class="well">
+
+                    <g:render template="/layouts/left-menu"/>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    %{--<div class="container-fluid">
         <div class="row-fluid">
             <div class="span3">
                 <div class="well">
@@ -46,7 +133,9 @@
             </div>
 
         </div>
-    </div>
+    </div>--}%
+
+
 
     <div id="push"></div>
 </div>
@@ -65,7 +154,7 @@ function updatePlacesListTable() {
         controller: 'index',
         update: 'places-list-render-wrapper',
         action: 'getPlacesList'
-    )}
+)}
     }
     function updatePlacesRecommendedTable() {
     ${remoteFunction(
