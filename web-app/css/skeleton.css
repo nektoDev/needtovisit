@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* LEFT COLUMN STYLES */
 
-.brand {
+/*.brand {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     font-weight: bold;
     text-transform: uppercase;
@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 .brand:hover {
     text-decoration: none;
     color: #999;
-}
+}*/
 
 .greeting-section {
     font-size: 80%;

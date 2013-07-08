@@ -31,14 +31,14 @@
     }
 
     #myCarousel {
-        background-color: lightgrey;
+        background-color: #ebebeb;
         box-shadow: 0 0 12px #b8b6b5;
     }
 
     .container-fluid {
-        width: 1000px;
+        width: 920px;
         margin: auto;
-        padding-top: 20px;
+        padding: 20px;
         background-color: white;
         box-shadow: 0 0 12px #dcdad9;
     }
@@ -60,9 +60,9 @@
                     <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
 
                     <div class="carousel-caption">
-                        <h4>First Thumbnail label</h4>
+                        <h4>Зоопарк</h4>
 
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Прекрасное место отдыха семьей и с детьми</p>
                     </div>
                 </div>
 
@@ -70,9 +70,9 @@
                     <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
 
                     <div class="carousel-caption">
-                        <h4>Second Thumbnail label</h4>
+                        <h4>Кино: Университет монстров</h4>
 
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Продолжение великолепного мультфильма о монстрах</p>
                     </div>
                 </div>
 
@@ -80,9 +80,9 @@
                     <img src='${createLink([uri: "/images/bootstrap-mdo-sfmoma-01.jpg"])}' alt="">
 
                     <div class="carousel-caption">
-                        <h4>Third Thumbnail label</h4>
+                        <h4>Парк Горького</h4>
 
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Бесплатный вход, Wi-fi покрытие, новые зоны, созданные в духе самых современных тенденций дизайна, продуманная программа мероприятий и внимание к людям – все это превратило Парк Горького в эпицентр жизни столицы, сделав его одной из главных точек притяжения как для молодёжи, так и для более взрослой, семейной аудитории.</p>
                     </div>
                 </div>
             </div>
@@ -90,24 +90,57 @@
             <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
         </div>
 
-        <div class="row-fluid">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">NEED TO VISIT</a>
+                    <div class="navbar-text pull-right">
+                        <sec:ifNotLoggedIn>
+                            <span class="divider-vertical"></span>
+                            <g:link class="navbar-link" controller="login">Войти</g:link>
+                        </sec:ifNotLoggedIn>
 
+                        <sec:ifLoggedIn>
+                            <span class="navbar-text">Добрый день,</span>
 
-            <div class="span9">
-                <div class="well" style="background-color: #ffffff">
+                            <g:link class="navbar-link" controller="user" action="edit"
+                                    id="${sec.loggedInUserInfo(field: 'id')}">
+                                <sec:username/>
+                            </g:link>
+                            <span class="divider-vertical"></span>
 
-                    <g:render template="/layouts/alert"/>
-                    <g:layoutBody/>
+                            <g:link class="navbar-link" controller="logout">Выйти</g:link>
+
+                        </sec:ifLoggedIn>
+                    </div>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><g:link controller="index">Ваше</g:link></li>
+                            <li><g:link controller="place" action="notByUser">Что еще?</g:link></li>
+                            <li><g:link controller="place" action="notByUser">Рекомендуем</g:link></li>
+                            <li><g:link controller="place" action="list">Все</g:link></li>
+                        </ul>
+                    </div>
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
 
                 </div>
+
+            </div><!-- /navbar-inner -->
+        </div>
+
+        <div class="row-fluid">
+
+            <div class="span9">
+
+                <g:render template="/layouts/alert"/>
+                <g:layoutBody/>
+
             </div>
 
             <div class="span3">
-                <div class="well">
 
-                    <g:render template="/layouts/left-menu"/>
+                <g:render template="/layouts/left-menu"/>
 
-                </div>
             </div>
 
         </div>
