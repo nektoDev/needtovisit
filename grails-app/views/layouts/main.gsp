@@ -19,174 +19,34 @@
 
     <r:require module="application"/>
 
-
     <g:layoutHead/>
     <r:layoutResources/>
-
-    <style>
-    #myCarousel img {
-        height: 250px;
-        margin: auto;
-    }
-
-    #myCarousel:hover .carousel-caption{
-        opacity: 0.75;
-    }
-
-    .carousel-caption{
-        font-size: 80%;
-        opacity: 0;
-        -webkit-transition: 1s;
-        -moz-transition: 1s;
-        -ms-transition: 1s;
-        -o-transition: 1s;
-        transition: 1s;
-    }
-
-    .carousel-caption{
-        font-size: 80%;
-
-    }
-
-    #myCarousel {
-        background-color: #ebebeb;
-        box-shadow: 0 0 12px #b8b6b5;
-    }
-
-    .container-fluid {
-        width: 920px;
-        margin: auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 0 12px #dcdad9;
-    }
-    </style>
 </head>
 
 <body>
 <div id="wrap">
     <div class="container-fluid">
-        <div id="myCarousel" class="carousel slide">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
-            </ol>
-
-            <div class="carousel-inner">
-                <div class="item">
-                    <img src='${createLink([uri: "/images/zoo-ad.jpg"])}' alt="">
-
-                    <div class="carousel-caption">
-                        <h4>Зоопарк</h4>
-
-                        <p>Прекрасное место отдыха семьей и с детьми</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src='${createLink([uri: "/images/mu-ad.jpg"])}' alt="">
-
-                    <div class="carousel-caption">
-                        <h4>Кино: Университет монстров</h4>
-
-                        <p>Продолжение великолепного мультфильма о монстрах</p>
-                    </div>
-                </div>
-
-                <div class="item active">
-                    <img src='${createLink([uri: "/images/gorky-ad.JPG"])}' alt="">
-
-                    <div class="carousel-caption">
-                        <h4>Парк Горького</h4>
-
-                        <p>Бесплатный вход, Wi-fi покрытие, новые зоны, созданные в духе самых современных тенденций дизайна, продуманная программа мероприятий и внимание к людям – все это превратило Парк Горького в эпицентр жизни столицы, сделав его одной из главных точек притяжения как для молодёжи, так и для более взрослой, семейной аудитории.</p>
-                    </div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-        </div>
-
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">NEED TO VISIT</a>
-                    <div class="navbar-text pull-right">
-                        <sec:ifNotLoggedIn>
-                            <span class="divider-vertical"></span>
-                            <g:link class="navbar-link" controller="login">Войти</g:link>
-                        </sec:ifNotLoggedIn>
-
-                        <sec:ifLoggedIn>
-                            <span class="navbar-text">Добрый день,</span>
-
-                            <g:link class="navbar-link" controller="user" action="edit"
-                                    id="${sec.loggedInUserInfo(field: 'id')}">
-                                <sec:username/>
-                            </g:link>
-                            <span class="divider-vertical"></span>
-
-                            <g:link class="navbar-link" controller="logout">Выйти</g:link>
-
-                        </sec:ifLoggedIn>
-                    </div>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><g:link controller="index">Ваше</g:link></li>
-                            <li><g:link controller="place" action="notByUser">Что еще?</g:link></li>
-                            <li><g:link controller="place" action="notByUser">Рекомендуем</g:link></li>
-                            <li><g:link controller="place" action="list">Все</g:link></li>
-                        </ul>
-                    </div>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-
-                </div>
-
-            </div><!-- /navbar-inner -->
-        </div>
+        <g:render template="/layouts/alert"/>
+        <g:render template="/layouts/top-ad"/>
+        <g:render template="/layouts/navbar"/>
 
         <div class="row-fluid">
 
             <div class="span9">
 
-                <g:render template="/layouts/alert"/>
                 <g:layoutBody/>
 
             </div>
 
             <div class="span3">
 
-                <g:render template="/layouts/left-menu"/>
+                <g:render template="/layouts/right-column"/>
 
             </div>
 
         </div>
 
     </div>
-    %{--<div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span3">
-                <div class="well">
-
-                    <g:render template="/layouts/left-menu"/>
-
-                </div>
-            </div>
-
-            <div class="span9">
-                <div class="well" style="background-color: #ffffff">
-
-                    <g:render template="/layouts/alert"/>
-                    <g:layoutBody/>
-
-                </div>
-            </div>
-
-        </div>
-    </div>--}%
-
-
 
     <div id="push"></div>
 </div>

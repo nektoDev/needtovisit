@@ -195,3 +195,41 @@ h1, h2, h3, h4, h5, h6 {
     border-width: 1em 0 0 1em;
 }
 
+/*AD CAROUSEL*/
+#myCarousel img {
+    height: 250px;
+    margin: auto;
+}
+
+#myCarousel:hover .carousel-caption{
+    opacity: 0.75;
+}
+
+.carousel-caption{
+    font-size: 80%;
+    opacity: 0;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.carousel-caption{
+    font-size: 80%;
+
+}
+
+#myCarousel {
+    background-color: #ebebeb;
+    box-shadow: 0 0 12px #b8b6b5;
+}
+
+.container-fluid {
+    width: 920px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 12px #dcdad9;
+}
+
