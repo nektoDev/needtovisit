@@ -33,6 +33,11 @@
         <div class="row-fluid">
 
             <div class="span9">
+                <g:if test="${pageProperty(name: 'page.header-page')}">
+                    <div class="header-page">
+                        <span class="header-page-content">${pageProperty(name: 'page.header-page')}</span>
+                    </div>
+                </g:if>
 
                 <g:layoutBody/>
 

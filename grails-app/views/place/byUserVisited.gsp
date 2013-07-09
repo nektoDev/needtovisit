@@ -5,10 +5,11 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'place.label', default: 'Place')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <parameter name="header-page" value="Уже посетили"/>
+
 </head>
 
 <body>
-<div class="header-page"><h1>Уже постетили</h1></div>
 
 <div id="list-place" class="content scaffold-list" role="main">
     <div id="places-list-render-wrapper">

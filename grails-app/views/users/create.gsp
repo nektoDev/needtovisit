@@ -6,10 +6,11 @@
     <g:set var="entityName" value="${message(code: 'users.label', default: 'Users')}"/>
     <title><g:message code="registration"/></title>
     <r:require module="passfield"/>
+    <parameter name="header-page" value="${message(code: 'registration')}"/>
+
 </head>
 
 <body>
-<div class="header-page"><h1><g:message code="registration" default="Registration"/></h1></div>
 
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>

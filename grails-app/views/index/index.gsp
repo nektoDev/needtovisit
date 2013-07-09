@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <meta name="layout" content="main"/>
+    <parameter name="header-page" value="Ваши места"/>
+
+        <meta name="layout" content="main"/>
     <title>NeedToVisit</title>
 </head>
 
 <body>
-<div class="header-page"><span class="header-page-content">Ваши места</span></div>
 
 <sec:ifNotLoggedIn>
     <h3>

@@ -3,13 +3,13 @@
     <meta name='layout' content='main'/>
     <title><g:message code="springSecurity.login.title"/></title>
     <r:require module="passfield"/>
+    <parameter name="header-page" value="${message(code: 'springSecurity.login.header')}"/>
 
 </head>
 
 <body>
 
 <form class="form-signin" action='${postUrl}' method='POST' id='loginForm'>
-    <h2 class="form-signin-heading"><g:message code="springSecurity.login.header"/></h2>
 
     <g:if test='${flash.message}'>
         <div class='alert alert-error'>${flash.message}</div>

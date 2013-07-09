@@ -4,6 +4,7 @@
             <a class="brand" href="#">NEED TO VISIT</a>
             <div class="navbar-text pull-right">
                 <sec:ifNotLoggedIn>
+                    <g:link class="navbar-link" controller="users" action="create">Зарегистрироваться</g:link>
                     <span class="divider-vertical"></span>
                     <g:link class="navbar-link" controller="login">Войти</g:link>
                 </sec:ifNotLoggedIn>
