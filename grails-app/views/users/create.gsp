@@ -5,7 +5,6 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'users.label', default: 'Users')}"/>
     <title><g:message code="registration"/></title>
-    <r:require module="passfield"/>
     <parameter name="header-page" value="${message(code: 'registration')}"/>
 
 </head>

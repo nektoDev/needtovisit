@@ -55,10 +55,12 @@
 </g:formInput>
 
 <script type="text/javascript">
-    jQuery('#password').passField({
-        showWarn: false,
-        showTip: false,
-        locale: "ru"
-    });
+    jQuery(document).ready(function () {
+        jQuery('#password').passField({
+            showWarn: false,
+            showTip: false,
+            locale: "ru"
+        });
+    })
 </script>
 

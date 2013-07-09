@@ -166,7 +166,6 @@ function updatePlacesListTable() {
     //endredion
 </g:javascript>
 
-
 <r:layoutResources/>
 
 <sec:ifLoggedIn>

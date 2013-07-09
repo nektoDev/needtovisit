@@ -7,6 +7,8 @@ modules = {
         resource url: 'css/place.css'
         resource url: 'js/place.js'
         resource url: 'js/index.js'
+        resource url: 'js/plugins/passfield.min.js'
+        resource url: 'css/plugins/passfield.min.css'
     }
 
     datepicker {
@@ -15,8 +17,7 @@ modules = {
     }
 
     passfield {
-        resource url: 'js/plugins/passfield.min.js'
-        resource url: 'css/plugins/passfield.min.css'
+
     }
 
     autocomplete {
