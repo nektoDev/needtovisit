@@ -45,6 +45,9 @@ class UsersController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def show(Long id) {
         def usersInstance = Users.get(id)
+        if (id.equals((springSecurityService.getCurrentUser() as Users).id as Long)) {
+            redirect(action: "edit", id: id)
+        }
         if (!usersInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'users.label', default: 'Users'), id])
             redirect(action: "list")
