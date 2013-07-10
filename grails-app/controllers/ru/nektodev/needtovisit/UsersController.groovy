@@ -11,6 +11,7 @@ class UsersController {
     def placeService
 
     def placeListsService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -56,6 +57,10 @@ class UsersController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
+        if (!id.equals((springSecurityService.getCurrentUser() as Users).id as Long)) {
+            redirect(action: "show", id: id)
+        }
+
         def usersInstance = Users.get(id)
         if (!usersInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'users.label', default: 'Users'), id])
