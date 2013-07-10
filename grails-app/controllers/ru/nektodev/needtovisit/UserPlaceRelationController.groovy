@@ -94,7 +94,19 @@ class UserPlaceRelationController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
-        def userPlaceRelationInstance = UserPlaceRelation.get(id)
+        if (id == null) {
+            flash.message = "Null ID!"
+            throw new NullIDException("Null id is not allowed")
+        }
+
+        Place p = Place.get(id);
+
+        if (p == null) {
+            flash.message = "There is no such place"
+            return;
+        }
+        def userPlaceRelationInstance = UserPlaceRelation.findByUserAndPlace(springSecurityService.getCurrentUser() as Users, p);
+
         if (!userPlaceRelationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), id])
             redirect(action: "list")
@@ -104,7 +116,7 @@ class UserPlaceRelationController {
         try {
             userPlaceRelationInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), id])
-            redirect(action: "list")
+            render "OK"
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'userPlaceRelation.label', default: 'UserPlaceRelation'), id])

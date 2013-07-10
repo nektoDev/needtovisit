@@ -61,7 +61,7 @@
     <div class="place-recommended">
         <g:link controller="place" action="show" id="${placeInstance.id}">
             <div class="place-recommended-caption">${placeInstance.name}</div>
-            <img src='${createLink([uri: "/images/nophoto-80x90_1.png"])}' style="" alt="">
+            <img src='${createLink([uri: "/images/nophoto-80x90.png"])}' style="" alt="">
         </g:link>
 
         <div class="place-recommended-controls control">

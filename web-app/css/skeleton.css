@@ -52,6 +52,7 @@ code {
 }
 
 .control img {
+    display: inline-block;
     width: 20px;
     opacity: 0.5;
     -webkit-transition: all 0.2s;

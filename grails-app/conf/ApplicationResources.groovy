@@ -14,6 +14,7 @@ modules = {
     datepicker {
         resource url: 'css/plugins/datepicker.css'
         resource url: 'js/plugins/bootstrap-datepicker.js'
+        resource url: 'js/plugins/locales/bootstrap-datepicker.ru.js'
     }
 
     passfield {

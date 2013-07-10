@@ -33,7 +33,7 @@
             <div class="modal-footer">
                 <small class="muted pull-left" style="margin: 5px 0;"><i>Ctrl+Enter для сохранения</i></small>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
-                <g:submitButton class="btn btn-success" name="setVisitedPopupSubminBtn" id="setVisitedPopupSubminBtn"
+                <g:submitButton class="btn btn-primary" name="setVisitedPopupSubminBtn" id="setVisitedPopupSubminBtn"
                                 value="ОК"/>
             </div>
         </g:formRemote>

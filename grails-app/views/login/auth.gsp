@@ -25,7 +25,7 @@
         <g:message code="springSecurity.login.remember.me.label"/>
     </label>
 
-    <button class="btn btn-large btn-success" type="submit"
+    <button class="btn btn-large btn-primary" type="submit"
             value='${message(code: "springSecurity.login.button")}'>
         Войти
     </button>

@@ -29,8 +29,6 @@ class PlaceService {
             place = Place.findByName(place.name) ?: place.save(flush: true);
             def rel = UserPlaceRelation.findByUserAndPlace(u, place) ?: userPlaceRelationService.save(place, u);
             if (rel != null) {
-                place.addToUserRelation(rel);
-                place.save()
                 return place;
             }
         }
@@ -45,10 +43,6 @@ class PlaceService {
             result = Place.findAllByNameIlike('%' + query + '%', [max: max])
         }
 
-        for (Place p : result) {
-            p.setUserRelation(UserPlaceRelation.findAllByPlace(p) as Set<UserPlaceRelation>);
-        }
-
         return result;
     }
 
@@ -56,7 +50,7 @@ class PlaceService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listByUserNotEqual(u, max) as List<Place>;
+            result = UserPlaceRelation.listByUserNotEqual(u, max) as List<Place>;
         } else {
             result = getPlacesList(max);
         }
@@ -68,7 +62,7 @@ class PlaceService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listByUserNotEqual(u, max) as List<Place>;
+            result = UserPlaceRelation.listByUserNotEqual(u, max) as List<Place>;
         } else {
             result = getPlacesList(max);
         }
@@ -84,7 +78,7 @@ class PlaceService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listByUser(u, max) as List<Place>;
+            result = UserPlaceRelation.listByUser(u, max) as List<Place>;
         }
 
         return result;
@@ -94,7 +88,7 @@ class PlaceService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listNotVisitedByUser(u, max);
+            result = UserPlaceRelation.listNotVisitedByUser(u, max);
         }
 
         return result;
@@ -104,7 +98,7 @@ class PlaceService {
         List<Place> result = new ArrayList<>();
 
         if (u != null) {
-            result = Place.listVisitedByUser(u, max) as List<Place>;
+            result = UserPlaceRelation.listVisitedByUser(u, max) as List<Place>;
         }
 
         return result;

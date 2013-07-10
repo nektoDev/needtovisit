@@ -20,7 +20,7 @@
                            type="text"
                            name="name" style="width: 80%;"
                            placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
-                    <g:submitButton class="btn btn-success" style="width: 18.5%" name="addPlace" value="Добавить"/>
+                    <g:submitButton class="btn btn-primary" style="width: 18.5%" name="addPlace" value="Добавить"/>
                 </td>
             </tr>
 
@@ -38,10 +38,9 @@
         autocompleteAddPlace();
 
         $('#add-date-icon').datepicker({
-            onRender: function (date) {
-                return date.valueOf() < now.valueOf() ? 'disabled' : '';
-            },
-            weekStart: 1
+            startDate: new Date(),
+            weekStart: 1,
+            locale: 'ru',
 
         }).on('changeDate',
                 function (ev) {

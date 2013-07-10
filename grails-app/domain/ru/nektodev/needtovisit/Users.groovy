@@ -15,8 +15,6 @@ class Users {
     boolean accountLocked
     boolean passwordExpired
 
-    static hasMany = [placeRelation: UserPlaceRelation]
-
     static constraints = {
         username blank: false, unique: true
         password blank: false
@@ -32,7 +30,6 @@ class Users {
 
     static mapping = {
         password column: '`password`'
-        placeRelation lazy: false
     }
 
     Set<Role> getAuthorities() {

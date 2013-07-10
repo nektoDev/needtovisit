@@ -20,8 +20,6 @@ class UserPlaceRelation implements Serializable {
 
     String comment
 
-    static belongsTo = [place: Place, user: Users]
-
     static constraints = {
         visited visited: false, blank: false
 
@@ -38,5 +36,58 @@ class UserPlaceRelation implements Serializable {
         place lazy: false
         user lazy: false
         comment sqlType: "text"
+    }
+
+    static List<Place> listByUser(Users u, Integer max = 20) {
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
+        def result = listNotVisitedByUser(u, max);
+        result.addAll(listVisitedByUser(u, max));
+
+        return result
+    }
+
+    static List<Place> listByUserNotEqual(Users u, Integer max = Integer.MAX_VALUE) {
+
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
+
+        def result = executeQuery(
+                """FROM Place pl
+                        WHERE NOT EXISTS
+                             (FROM UserPlaceRelation ur
+                                 WHERE ur.place = pl AND ur.user = :user)
+
+                """, [user: u], [max: max])
+
+        return result
+    }
+
+    static List<Place> listNotVisitedByUser(Users u, Integer max = 10) {
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
+        def result = executeQuery(
+                """FROM Place pl
+                        WHERE EXISTS
+                             (FROM UserPlaceRelation ur
+                                 WHERE ur.place = pl AND ur.user = :user AND ur.visited = false)""", [user: u], [max: max])
+
+        return result
+    }
+
+    static List<Place> listVisitedByUser(Users u, Integer max = 10) {
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
+        def result = executeQuery(
+                """FROM Place pl
+                        WHERE EXISTS
+                             (FROM UserPlaceRelation ur
+                                 WHERE ur.place = pl AND ur.user = :user AND ur.visited = true)""", [user: u], [max: max])
+
+        return result
     }
 }
