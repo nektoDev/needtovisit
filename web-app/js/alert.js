@@ -9,7 +9,7 @@ function showAlert(clazz) {
 
     setTimeout(function () {
         hideAlert();
-    }, 15000);
+    }, 5000);
 }
 
 function hideAlert() {
