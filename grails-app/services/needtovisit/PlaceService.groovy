@@ -36,13 +36,16 @@ class PlaceService {
     }
 
     def search(String query, Long max = 10) {
-        List<Place> result = new ArrayList<>();
+        List<Place> places = new ArrayList<>();
         if (query == null || query.isEmpty()) {
-            result = Place.list(max: max);
+            places = Place.list(max: max);
         } else {
-            result = Place.findAllByNameIlike('%' + query + '%', [max: max])
+            places = Place.findAllByNameIlike('%' + query + '%', [max: max])
         }
-
+        def result = [];
+        places.each { Place p ->
+            result.add([p, UserPlaceRelation.findAllByPlace(p)]);
+        }
         return result;
     }
 

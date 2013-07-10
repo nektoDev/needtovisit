@@ -134,12 +134,12 @@ function updatePlacesListTable() {
     //region ADD PLACE
     function search(request, response) {
         var query = request.term;
-    ${remoteFunction(
-            controller: 'place',
-            action: 'search',
-            params: "'max=5&q=' + query",
-            onSuccess: 'response(data);'
-    )}
+        ${remoteFunction(
+                controller: 'place',
+                action: 'search',
+                params: "'max=5&q=' + query",
+                onSuccess: 'response(data);'
+        )}
     }
 
     function successAddPlace(data) {
