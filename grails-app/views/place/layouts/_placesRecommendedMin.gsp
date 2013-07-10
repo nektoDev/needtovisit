@@ -1,12 +1,12 @@
 <style>
 .place-recommended-list {
-    border: 1px solid #ffffff;
+    border: 1px solid #d4d4d4;;
     border-radius: 5px;
     height: 100px;
     padding: 5px;
     margin-bottom: 20px;
     background-color: #fdfdfd;
-    box-shadow: 0 1px 6px #b8b6b5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);;
 }
 
 .recommended-title {
