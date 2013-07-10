@@ -3,9 +3,8 @@
     border: 1px solid #eeeeee;
     border-radius: 5px;
     height: 120px;
-    width: 100%;
-    margin-bottom: 10px;
     padding: 5px;
+    margin-bottom: 20px;
 }
 
 .recommended-title {
