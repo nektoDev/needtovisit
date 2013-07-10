@@ -1,11 +1,16 @@
 package ru.nektodev.needtovisit
 
 import grails.plugins.springsecurity.Secured
+import needtovisit.PlaceService
 import org.springframework.dao.DataIntegrityViolationException
 
 class UsersController {
 
     def userService
+
+    def placeService
+
+    def placeListsService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -44,8 +49,9 @@ class UsersController {
             redirect(action: "list")
             return
         }
-
-        [usersInstance: usersInstance]
+        Closure refresh = {placeService.getPlacesList(usersInstance)}
+        placeListsService.setPlaces(refresh)
+        [usersInstance: usersInstance, places: placeListsService.getPlaces()]
     }
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
