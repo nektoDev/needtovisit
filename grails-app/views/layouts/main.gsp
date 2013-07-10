@@ -124,7 +124,7 @@ function updatePlacesListTable() {
 
     //region PlacesRecommended
     function successAddRelation() {
-        updatePlacesRecommendedTable();
+//        updatePlacesRecommendedTable();
         updatePlacesListTable();
     }
     //endregion

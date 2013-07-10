@@ -18,7 +18,9 @@ class Place {
     }
 
     static List<Place> listByUser(Users u, Integer max = 20) {
-
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
         def result = listNotVisitedByUser(u, max);
         result.addAll(listVisitedByUser(u, max));
 
@@ -26,6 +28,10 @@ class Place {
     }
 
     static List<Place> listByUserNotEqual(Users u, Integer max = Integer.MAX_VALUE) {
+
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
 
         def result = executeQuery(
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
@@ -38,7 +44,9 @@ class Place {
     }
 
     static List<Place> listNotVisitedByUser(Users u, Integer max = 10) {
-
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
         def result = executeQuery(
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
@@ -50,7 +58,9 @@ class Place {
     }
 
     static List<Place> listVisitedByUser(Users u, Integer max = 10) {
-
+        if (max == null) {
+            max = Integer.MAX_VALUE;
+        }
         def result = executeQuery(
                 """SELECT DISTINCT p FROM Place p JOIN FETCH p.userRelation ur
                         WHERE EXISTS
