@@ -106,7 +106,7 @@ function updatePlacesListTable() {
 
         $('#visited-popup').modal('hide');
         $("#alert #alert-content").html("Место " + data + " отмечено как посещенное!");
-        showAlert('alert-success');
+        showAlert('alert-info');
 
         updatePlacesListTable();
 
@@ -145,7 +145,7 @@ function updatePlacesListTable() {
     function successAddPlace(data) {
 
         $("#alert #alert-content").html("Место " + data + " успешно добавлено!");
-        showAlert('alert-success');
+        showAlert('alert-info');
 
         updatePlacesListTable();
         resetAddPlaceForm();
