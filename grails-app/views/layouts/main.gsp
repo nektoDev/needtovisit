@@ -29,6 +29,9 @@
         <g:render template="/layouts/alert"/>
         <g:render template="/layouts/top-ad"/>
         <g:render template="/layouts/navbar"/>
+        <div id="place-recommended-table" class="place-recommended">
+            <g:render template="/place/layouts/placesRecommendedMin"/>
+        </div>
 
         <div class="row-fluid">
 
@@ -75,7 +78,7 @@ function updatePlacesListTable() {
     function updatePlacesRecommendedTable() {
     ${remoteFunction(
             controller: 'index',
-            update: 'places-recommended-min-wrapper',
+            update: 'place-recommended-table',
             action: 'getPlacesRecommended'
     )}
     }
@@ -124,7 +127,7 @@ function updatePlacesListTable() {
 
     //region PlacesRecommended
     function successAddRelation() {
-//        updatePlacesRecommendedTable();
+        updatePlacesRecommendedTable();
         updatePlacesListTable();
     }
     //endregion

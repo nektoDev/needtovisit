@@ -1,4 +1,25 @@
-<table id="place-recommended-table" class="table places-table table-condensed place-recommended-table">
+<style>
+.place-recommended {
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    height: 120px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.recommended-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #999999;
+    width: 100%;
+}
+</style>
+
+
+<div class="recommended-title">Рекомендуем</div>
+
+%{--<table id="place-recommended-table" class="table places-table table-condensed place-recommended-table">
     <tbody>
 
     <g:each in="${places}" status="i" var="placeInstance">
@@ -27,5 +48,5 @@
         </tr>
     </g:each>
     </tbody>
-</table>
+</table>--}%
 

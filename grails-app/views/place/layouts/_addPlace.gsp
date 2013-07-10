@@ -56,27 +56,23 @@
     });
 
 
-    (function($)
-    {
-        $.fn.showHtml = function(html, speed, callback)
-        {
-            return this.each(function()
-            {
+    (function ($) {
+        $.fn.showHtml = function (html, speed, callback) {
+            return this.each(function () {
                 var el = $(this);
 
                 var finish = {width: this.style.width, height: this.style.height};
 
-                var cur = {width: el.width()+'px', height: el.height()+'px'};
+                var cur = {width: el.width() + 'px', height: el.height() + 'px'};
 
                 el.html(html);
 
-                var next = {width: el.width()+'px', height: el.height()+'px'};
+                var next = {width: el.width() + 'px', height: el.height() + 'px'};
 
-                el .css(cur)
-                        .animate(next, speed, function()
-                        {
+                el.css(cur)
+                        .animate(next, speed, function () {
                             el.css(finish);
-                            if ( $.isFunction(callback) ) callback();
+                            if ($.isFunction(callback)) callback();
                         });
             });
         };
