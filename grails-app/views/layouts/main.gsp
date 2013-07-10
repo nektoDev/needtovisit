@@ -39,10 +39,6 @@
         <div class="row-fluid">
 
             <div class="span9">
-                <div class="recommended-title">Рекомендуем</div>
-                <div id="place-recommended-table" class="place-recommended-list">
-                    <g:render template="/place/layouts/placesRecommendedMin"/>
-                </div>
 
                 <g:layoutBody/>
 

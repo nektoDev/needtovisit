@@ -19,3 +19,10 @@ table td>form {
     opacity: 1;
 }
 
+.places-list-render-wrapper {
+    background-color: #fdfdfd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    padding: 5px;
+    border: 1px solid #d4d4d4;
+}
+

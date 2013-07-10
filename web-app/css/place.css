@@ -29,6 +29,7 @@ img.place-img-big {
 
 .places-table td{
     vertical-align: middle;
+    color: #777;
 }
 
 .places-table tr:first-of-type td{
@@ -44,7 +45,7 @@ img.place-img-big {
 }
 
 .places-table tbody > tr:nth-child(even) > td, .table-striped tbody > tr:nth-child(even) > th {
-    background-color: rgba(0, 0, 0, 0.08);
+
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
@@ -53,7 +54,7 @@ img.place-img-big {
 }
 
 .places-table tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th {
-    background-color: rgba(0, 0, 0, 0.04);
+
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
@@ -71,11 +72,11 @@ img.place-img-big {
 }
 
 .places-table tr:hover {
-    background-color: white;
+    background-color: rgb(252, 252, 252);
 }
 
 .places-table tr:hover td {
-    background: white !important;
+    background: rgb(252, 252, 252) !important;
     opacity: 1;
 }
 
@@ -104,4 +105,8 @@ img.place-img-big {
 
 #add-place-input {
     border-radius: 0;
+}
+
+#places-list-render-wrapper table{
+    margin-bottom: 0;
 }

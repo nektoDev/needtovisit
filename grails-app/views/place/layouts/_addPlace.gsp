@@ -18,9 +18,9 @@
                 <td>
                     <input id="add-place-input"
                            type="text"
-                           name="name" style="width: 85%;"
+                           name="name" style="width: 80%;"
                            placeholder="Что хотите посетить? Например: зоопарк, планетарий, Шри-Ланка"/>
-                    <g:submitButton class="btn btn-success" style="width: 13.7%" name="addPlace" value="Добавить"/>
+                    <g:submitButton class="btn btn-success" style="width: 18.5%" name="addPlace" value="Добавить"/>
                 </td>
             </tr>
 
