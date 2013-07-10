@@ -6,11 +6,11 @@ function autocompleteAddPlace() {
             search(request, response);
         },
         focus: function (event, ui) {
-            $("#add-place-input").val(ui.item.name);
+            $("#add-place-input").val(ui.item[0].name);
             return false;
         },
         select: function (event, ui) {
-            $("#add-place-input").val(ui.item.name);
+            $("#add-place-input").val(ui.item[0].name);
             return false;
         }
     })

@@ -54,14 +54,15 @@ class PlaceController {
     def saveAjax() {
         def placeInstance = new Place(params)
 
-        placeInstance = placeService.save(placeInstance, springSecurityService.currentUser as Users)
+        def user = springSecurityService.currentUser as Users
+        placeInstance = placeService.save(placeInstance, user)
         if (placeInstance == null) {
 
             render placeInstance.name
             throw new DatabaseSaveException("Sorry. Something going wrong when we trying to saving to database.")
         }
 
-        userPlaceRelationService.update(placeInstance.userRelation.find({ it.user.equals(springSecurityService.currentUser as Users) }), params);
+        userPlaceRelationService.update(UserPlaceRelation.findByPlaceAndUser(placeInstance, user), params);
 
         render g.link([controller: 'place', action: 'show', id: placeInstance.id], placeInstance.name)
     }
