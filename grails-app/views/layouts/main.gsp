@@ -29,18 +29,20 @@
         <g:render template="/layouts/alert"/>
         <g:render template="/layouts/top-ad"/>
         <g:render template="/layouts/navbar"/>
-        <div id="place-recommended-table" class="place-recommended">
-            <g:render template="/place/layouts/placesRecommendedMin"/>
-        </div>
+        <g:if test="${pageProperty(name: 'page.header-page')}">
+            <div class="header-page">
+                <span class="header-page-content">${pageProperty(name: 'page.header-page')}</span>
+            </div>
+        </g:if>
+
 
         <div class="row-fluid">
 
             <div class="span9">
-                <g:if test="${pageProperty(name: 'page.header-page')}">
-                    <div class="header-page">
-                        <span class="header-page-content">${pageProperty(name: 'page.header-page')}</span>
-                    </div>
-                </g:if>
+                <div class="recommended-title">Рекомендуем</div>
+                <div id="place-recommended-table" class="place-recommended-list">
+                    <g:render template="/place/layouts/placesRecommendedMin"/>
+                </div>
 
                 <g:layoutBody/>
 
