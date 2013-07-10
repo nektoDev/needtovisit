@@ -22,7 +22,7 @@
     </label>
 
     <div class="controls">
-        <g:textField name="password" id="password" required="" value="${usersInstance?.password}"
+        <g:textField name="password" id="password" required="" value=""
                      placeholder="${message([code: 'users.password.label', default: 'Password'])}"/>
     </div>
 </div>
