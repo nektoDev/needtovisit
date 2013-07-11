@@ -16,6 +16,7 @@
 
     <r:require module="bootstrap-css"/>
     <r:require module="bootstrap-js"/>
+    <r:require module="font-awesome"/>
 
     <r:require module="application"/>
 

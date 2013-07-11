@@ -51,9 +51,7 @@ code {
     cursor: pointer;
 }
 
-.control img {
-    display: inline-block;
-    width: 20px;
+.control i {
     opacity: 0.5;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -62,8 +60,7 @@ code {
     transition: all 0.2s;
 }
 
-.control img:hover {
-    width: 20px;
+.control i:hover {
     opacity: 1;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;

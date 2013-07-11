@@ -18,3 +18,13 @@ table td>form {
 #alert.in:hover {
     opacity: 1;
 }
+
+.icon-plus,
+.icon-check,
+.icon-check-empty  {
+    color: #0076CC;
+}
+
+.icon-remove {
+    color: rgb(170, 11, 14);
+}

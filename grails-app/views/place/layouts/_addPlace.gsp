@@ -38,9 +38,8 @@
         autocompleteAddPlace();
 
         $('#add-date-icon').datepicker({
-            startDate: new Date(),
-            weekStart: 1,
-            locale: 'ru',
+            startDate: now,
+            weekStart: 1
 
         }).on('changeDate',
                 function (ev) {

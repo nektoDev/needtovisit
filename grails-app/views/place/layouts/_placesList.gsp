@@ -15,7 +15,48 @@
         <sec:ifNotLoggedIn>
             <tr>
         </sec:ifNotLoggedIn>
+        <sec:ifLoggedIn>
+            <td style="width: 16px;">
+                <span class="pull-left">
 
+                    <g:if test="${instanceRelation != null}">
+                        <g:if test="${instanceRelation?.visited}">
+                            <i class="icon-check icon-large"
+
+                               onclick="${remoteFunction(controller: 'userPlaceRelation',
+                                       action: 'setVisitedAjax',
+                                       params: [placeId: placeInstance.id, visited: false],
+                                       onSuccess: "successSetVisited(data)",
+                                       onFailure: "failtureSetVisited(XMLHttpRequest)"
+                               )}"
+                            ></i>
+                        </g:if>
+                        <g:else>
+                            <i class="icon-check-empty icon-large"
+                               onclick="${remoteFunction(controller: 'userPlaceRelation',
+                                       action: 'loadVisitedPopup',
+                                       params: [placeId: placeInstance.id],
+                                       update: 'visited-popup-wrapper',
+                                       onSuccess: "successLoadVisitedPopup()",
+                                       onFailure: "failureLoadVisitedPopup()"
+                               )}"></i>
+
+                        </g:else>
+                    </g:if>
+                    <g:else>
+
+                        <i class="icon-plus icon-large"
+                           onclick=" ${remoteFunction(controller: 'index',
+                                   action: 'addUserPlaceRelation',
+                                   params: [place: placeInstance.id],
+                                   onSuccess: 'successAddRelation();'
+                           )}"></i>
+
+                    </g:else>
+
+                </span>
+            </td>
+        </sec:ifLoggedIn>
         <td class="image" style="width: 24px;">
             <img src='${createLink([uri: "/images/place-default.jpg"])}' class='img-rounded place-img-small'/>
         </td>
@@ -26,21 +67,15 @@
         </td>
 
         <td style="width: 10ex;">
-            <g:formatDate date="${instanceRelation?.visited ? instanceRelation?.dateVisited : instanceRelation?.dateToVisit}" format="dd.MM.yyyy"/>
+            <g:formatDate
+                    date="${instanceRelation?.visited ? instanceRelation?.dateVisited : instanceRelation?.dateToVisit}"
+                    format="dd.MM.yyyy"/>
         </td>
         <g:if test="${instanceRelation?.visited}">
             <td colspan="2">
                 <span class="pull-right control">
                     <small class="muted">Вы уже посетили это место.
-                        <span class="btn btn-mini" onclick="
-                        ${remoteFunction(controller: 'userPlaceRelation',
-                                action: 'setVisitedAjax',
-                                params: [placeId: placeInstance.id, visited: false],
-                                onSuccess: "successSetVisited(data)",
-                                onFailure: "failtureSetVisited(XMLHttpRequest)"
-                        )}">
-                            Еще раз?
-                        </span>
+
                     </small>
                 </span>
             </td>
@@ -49,45 +84,23 @@
             <td style="width: 190px;">
                 <g:each in="${UserPlaceRelation.findAllByPlace(placeInstance)}" var="userR" status="il">
                     <g:if test="${il < 5}"><g:link controller="users" action="show" class="label"
-                            id="${userR.user.id}">${fieldValue(bean: userR.user, field: "id").toString().equalsIgnoreCase(sec.loggedInUserInfo(field: 'id').toString()) ? 'Вы' : fieldValue(bean: userR.user, field: "username")}</g:link></g:if>
+                                                   id="${userR.user.id}">${fieldValue(bean: userR.user, field: "id").toString().equalsIgnoreCase(sec.loggedInUserInfo(field: 'id').toString()) ? 'Вы' : fieldValue(bean: userR.user, field: "username")}</g:link></g:if>
                 </g:each>
             </td>
 
             <sec:ifLoggedIn>
                 <td style="width: 50px;">
                     <span class="pull-right control">
-
                         <g:if test="${instanceRelation != null}">
-                            <img src="${createLink([uri: "/images/remove.png"])}"
-                                 onclick="
-                                 ${remoteFunction(controller: 'userPlaceRelation',
-                                         action: 'delete',
-                                         params: [id: placeInstance.id],
-                                         onSuccess: 'successAddRelation();'
-                                 )}"
-                            >
-                            <img src="${createLink([uri: "/images/check.png"])}"
-                                 onclick="
-                                 ${remoteFunction(controller: 'userPlaceRelation',
-                                         action: 'loadVisitedPopup',
-                                         params: [placeId: placeInstance.id],
-                                         update: 'visited-popup-wrapper',
-                                         onSuccess: "successLoadVisitedPopup()",
-                                         onFailure: "failureLoadVisitedPopup()"
-                                 )}">
+
+                            <i class="icon-remove icon-large"
+                               onclick="${remoteFunction(controller: 'userPlaceRelation',
+                                       action: 'delete',
+                                       params: [id: placeInstance.id],
+                                       onSuccess: 'successAddRelation();'
+                               )}"></i>
 
                         </g:if>
-                        <g:else>
-                            <span class="pull-right control">
-                                <img src="${createLink([uri: "/images/add.png"])}"
-                                     onclick=" ${remoteFunction(controller: 'index',
-                                             action: 'addUserPlaceRelation',
-                                             params: [place: placeInstance.id],
-                                             onSuccess: 'successAddRelation();'
-                                     )}">
-                            </span>
-                        </g:else>
-
                     </span>
                 </td>
             </sec:ifLoggedIn>

@@ -65,13 +65,13 @@
         </g:link>
 
         <div class="place-recommended-controls control">
-            <img src="${createLink([uri: "/images/add.png"])}"
-                 onclick="${remoteFunction(controller: 'index',
-                         action: 'addUserPlaceRelation',
-                         params: [place: placeInstance.id],
-                         onSuccess: 'successAddRelation();'
-                 )}"
-                 class="pull-right">
+            <i class="icon-plus icon-large pull-right"
+               onclick="${remoteFunction(controller: 'index',
+                       action: 'addUserPlaceRelation',
+                       params: [place: placeInstance.id],
+                       onSuccess: 'successAddRelation();'
+               )}"
+            ></i>
         </div>
     </div>
 </g:each>
