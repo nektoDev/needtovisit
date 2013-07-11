@@ -1,12 +1,20 @@
-<%@ page import="ru.nektodev.needtovisit.UserPlaceRelation; ru.nektodev.needtovisit.Users" %>
+<%@ page import="ru.nektodev.needtovisit.Place; ru.nektodev.needtovisit.UserPlaceRelation; ru.nektodev.needtovisit.Users" %>
 <span id="datepicker" data-date-format="dd.mm.yyyy"
       data-date="${formatDate([format: "dd.MM.yyyy", date: new Date()])}">
 
 </span>
-<table id="place-list-table" class="places-table table">
 
-    <tbody>
-    <g:each in="${places}" status="i" var="placeInstance">
+<g:each in="${places}" status="i" var="placeInstance">
+
+<div class="accordion-group">
+    <div class="place-list-item accordion-heading"
+         data-parent="#places-list-render-wrapper"
+         data-toggle="collapse"
+         data-target="#place-list-item-collapse_${placeInstance.id}">
+
+    <table id="place-list-table" class="places-table table">
+
+        <tbody>
         <g:set var="instanceRelation"
                value="${UserPlaceRelation.findAllByPlace(placeInstance).find({ it.user.id.toString().equals(sec.loggedInUserInfo(field: 'id').toString()) })}"/>
         <sec:ifLoggedIn>
@@ -28,8 +36,7 @@
                                        params: [placeId: placeInstance.id, visited: false],
                                        onSuccess: "successSetVisited(data)",
                                        onFailure: "failtureSetVisited(XMLHttpRequest)"
-                               )}"
-                            ></i>
+                               )}"></i>
                         </g:if>
                         <g:else>
                             <i class="icon-check-empty icon-large"
@@ -64,6 +71,7 @@
         <td>
             <g:link controller="place" action="show"
                     id="${placeInstance.id}">${fieldValue(bean: placeInstance, field: "name")}</g:link>
+
         </td>
 
         <td style="width: 10ex;">
@@ -106,9 +114,14 @@
             </sec:ifLoggedIn>
         </g:else>
         </tr>
-    </g:each>
-    </tbody>
-</table>
+
+        </tbody>
+    </table>
+</div>
+    <div id="place-list-item-collapse_${placeInstance.id}" class="collapse accordion-body"><div class="accordion-inner"><g:render template="../userPlaceRelation/layouts/innerForm" model="[userPlaceRelationInstance: instanceRelation]"/> </div></div>
+</div>
+</g:each>
+
 
 <div id="visited-popup-wrapper">
     <g:render id="visited-popup-render" template="/userPlaceRelation/layouts/visitedPopup"/>

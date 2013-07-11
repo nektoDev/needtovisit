@@ -17,6 +17,10 @@ img.place-img-big {
     width: 128px;
 }
 
+.places-table tr, .places-table tr td {
+    border: none;
+}
+
 .places-table tr.visited {
     background-color: #d0d0d0 !important;
     background-image: url('/images/stripe.png');
@@ -30,10 +34,6 @@ img.place-img-big {
 .places-table td{
     vertical-align: middle;
     color: #777;
-}
-
-.places-table tr:first-of-type td{
-    border: none;
 }
 
 .places-table tr.visited td{
