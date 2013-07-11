@@ -7,16 +7,16 @@
 
     function openForm(id) {
 
-        $("#place-list-item-collapse_" + id).on('shown', function() {
-            $("#place-list-table_" + id).hide();
-            $("#place-list-item-header_" + id).show(400);
+        $("#place-list-item-collapse_" + id).on('show', function() {
+            $("#place-list-table-wrapper_" + id).slideUp();
+            $("#place-list-item-header_" + id).slideDown();
 
         });
 
-        $("#place-list-item-collapse_" + id).on('hidden', function() {
+        $("#place-list-item-collapse_" + id).on('hide', function() {
 
-            $("#place-list-item-header_" + id).hide();
-            $("#place-list-table_" + id).show(400);
+            $("#place-list-item-header_" + id).slideUp();
+            $("#place-list-table-wrapper_" + id).slideDown();
         });
 
         $("#place-list-item-collapse_" + id).collapse('toggle');
@@ -79,7 +79,7 @@
 
             </div>
 
-            <table id="place-list-table_${placeInstance.id}" class="places-table table">
+            <div id="place-list-table-wrapper_${placeInstance.id}"><table id="place-list-table_${placeInstance.id}" class="places-table table">
 
                 <tbody>
 
@@ -182,7 +182,7 @@
                 </tr>
 
                 </tbody>
-            </table>
+            </table></div>
         </div>
 
         <sec:ifLoggedIn>
