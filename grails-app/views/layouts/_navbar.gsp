@@ -1,7 +1,7 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">NEED TO VISIT</a>
+            <g:link class="brand" controller="index">NEED TO VISIT</g:link>
             <div class="navbar-text pull-right">
                 <sec:ifNotLoggedIn>
                     <g:link class="navbar-link" controller="users" action="create">Зарегистрироваться</g:link>
