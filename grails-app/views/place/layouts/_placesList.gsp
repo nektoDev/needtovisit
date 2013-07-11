@@ -46,16 +46,32 @@
 
 <style>
     .place-list-item-header{
-        background-color: #0085CC;
+
         padding: 8px;
         border: none;
         border-radius: 4px 4px 0 0;
         color: white;
+
+        background-image: linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -o-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -moz-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -webkit-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -ms-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+
+        background-image: -webkit-gradient(
+            linear,
+            right bottom,
+            right top,
+            color-stop(0, rgba(0,133,204, 1)),
+            color-stop(0.65, rgba(0,133,204, 0.66))
+        );
     }
     .place-list-item-header .name{
         font-size: 120%;
         text-shadow: 0px -1px 0px rgb(78, 78, 78);
     }
+
+
 </style>
 <g:each in="${places}" status="i" var="placeInstance">
     <g:set var="instanceRelation"
@@ -146,7 +162,7 @@
                             format="dd.MM.yyyy"/>
                 </td>
                 <g:if test="${instanceRelation?.visited}">
-                    <td colspan="2">
+                    <td style="width: 256px;">
                         <span class="pull-right control">
                             <small class="muted">Вы уже посетили это место.
 
