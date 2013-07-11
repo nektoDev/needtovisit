@@ -123,27 +123,27 @@ h1, h2, h3, h4, h5, h6 {
     background: -webkit-gradient(
         linear,
         left top, right top,
-        from(rgb(170, 11, 14)),
+        from(#0085CC),
         to(rgba(255,255,255,0))
     );
     background: -webkit-linear-gradient(
         left,
-        rgb(170, 11, 14),
+        #0085CC,
         rgba(255,255,255,0)
     );
     background: -moz-linear-gradient(
         left,
-        rgb(170, 11, 14),
+        #0085CC,
         rgba(255,255,255,0)
     );
     background: -o-linear-gradient(
         left,
-        rgb(170, 11, 14),
+        #0085CC,
         rgba(255,255,255,0)
     );
     background: linear-gradient(
         left,
-        rgb(170, 11, 14),
+        #0085CC,
         rgba(255,255,255,0)
     );
 
@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     display: block;
     border-style: solid;
-    border-color: #75181b transparent transparent transparent;
+    border-color: #004CCC transparent transparent transparent;
     bottom: -1em;
 }
 .header-page .header-page-content:before {
