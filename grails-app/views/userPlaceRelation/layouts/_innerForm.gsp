@@ -1,12 +1,6 @@
 <%@ page import="ru.nektodev.needtovisit.UserPlaceRelation" %>
 <g:formRemote class="form form-horizontal" style="" name="innerRelationForm" url="[controller: 'userPlaceRelation', action: 'update']">
-    <h4>${userPlaceRelationInstance?.place?.name}
-    <g:if test="${userPlaceRelationInstance?.dateVisited}">
-    <small><i>
-        Вы уже тут были ${formatDate([date: userPlaceRelationInstance?.dateVisited, format: 'dd.MM.yyyy'])}
-    </i></small>
-</g:if>
-    </h4>
+
 
 <div class="control-group ${hasErrors(bean: userPlaceRelationInstance, field: 'visited', 'error')}">
     <label class="control-label" for="dateToVisit">

@@ -144,7 +144,22 @@ class UserPlaceRelationController {
         } else {
             throw new NullIDException("Place ID cannot be null")
         }
+    }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def loadCollapseForm(Integer id) {
+        if (id == null) {
+            throw new NullIDException("ID cannot be null");
+        }
 
+        Place place = Place.get(id);
+
+        if (place == null) {
+            throw new NullPointerException("There is no such place")
+        }
+
+        UserPlaceRelation upr = UserPlaceRelation.findByUserAndPlace(springSecurityService.getCurrentUser() as Users, place);
+
+        render([template: "/userPlaceRelation/layouts/innerForm", model: [userPlaceRelationInstance: upr]])
     }
 }
