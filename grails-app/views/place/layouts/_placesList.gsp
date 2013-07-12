@@ -7,13 +7,13 @@
 
     function openForm(id) {
 
-        $("#place-list-item-collapse_" + id).on('show', function () {
+        $("#place-list-item-collapse_" + id).on('show', function() {
             $("#place-list-table-wrapper_" + id).slideUp();
             $("#place-list-item-header_" + id).slideDown();
 
         });
 
-        $("#place-list-item-collapse_" + id).on('hide', function () {
+        $("#place-list-item-collapse_" + id).on('hide', function() {
 
             $("#place-list-item-header_" + id).slideUp();
             $("#place-list-table-wrapper_" + id).slideDown();
@@ -45,26 +45,31 @@
 </script>
 
 <style>
-.place-list-item-header {
+    .place-list-item-header{
 
-    padding: 8px;
-    border: none;
-    border-radius: 4px 4px 0 0;
-    color: white;
+        padding: 8px;
+        border: none;
+        border-radius: 4px 4px 0 0;
+        color: white;
 
-    background-image: linear-gradient(bottom, rgb(0, 133, 204) 0%, rgba(0, 133, 204, 0.66) 65%);
-    background-image: -o-linear-gradient(bottom, rgb(0, 133, 204) 0%, rgba(0, 133, 204, 0.66) 65%);
-    background-image: -moz-linear-gradient(bottom, rgb(0, 133, 204) 0%, rgba(0, 133, 204, 0.66) 65%);
-    background-image: -webkit-linear-gradient(bottom, rgb(0, 133, 204) 0%, rgba(0, 133, 204, 0.66) 65%);
-    background-image: -ms-linear-gradient(bottom, rgb(0, 133, 204) 0%, rgba(0, 133, 204, 0.66) 65%);
+        background-image: linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -o-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -moz-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -webkit-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
+        background-image: -ms-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
 
-    background-image: -webkit-gradient(linear, right bottom, right top, color-stop(0, rgba(0, 133, 204, 1)), color-stop(0.65, rgba(0, 133, 204, 0.66)));
-}
-
-.place-list-item-header .name {
-    font-size: 120%;
-    text-shadow: 0px -1px 0px rgb(78, 78, 78);
-}
+        background-image: -webkit-gradient(
+            linear,
+            right bottom,
+            right top,
+            color-stop(0, rgba(0,133,204, 1)),
+            color-stop(0.65, rgba(0,133,204, 0.66))
+        );
+    }
+    .place-list-item-header .name{
+        font-size: 120%;
+        text-shadow: 0px -1px 0px rgb(78, 78, 78);
+    }
 
 
 </style>
@@ -79,18 +84,18 @@
 
             <div id="place-list-item-header_${placeInstance.id}"
                  class="place-list-item-header"
-                 style="display: none;">
+                 style="display: none;"
+            >
                 <span class="name">${placeInstance?.name}</span>
-                <g:if test="${instanceRelation?.dateVisited}">
-                    <small><i>
-                        Вы уже тут были ${formatDate([date: instanceRelation?.dateVisited, format: 'dd.MM.yyyy'])}
-                    </i></small>
-                </g:if>
+                    <g:if test="${instanceRelation?.dateVisited}">
+                        <small><i>
+                            Вы уже тут были ${formatDate([date: instanceRelation?.dateVisited, format: 'dd.MM.yyyy'])}
+                        </i></small>
+                    </g:if>
 
             </div>
 
-            <div id="place-list-table-wrapper_${placeInstance.id}"><table id="place-list-table_${placeInstance.id}"
-                                                                          class="places-table table">
+            <div id="place-list-table-wrapper_${placeInstance.id}"><table id="place-list-table_${placeInstance.id}" class="places-table table">
 
                 <tbody>
 
