@@ -19,13 +19,13 @@
             $("#place-list-table-wrapper_" + id).slideDown();
         });
 
-        $("#place-list-item-collapse_" + id).collapse('toggle');
+        $("#place-list-item-collapse_" + id).collapse('show');
 
     }
 
     function toggleForm(id) {
         if ($('#place-list-item-collapse_' + id).hasClass('in')) {
-            $("#place-list-item-collapse_" + id).collapse('toggle');
+            $("#place-list-item-collapse_" + id).collapse('hide');
 
         } else {
             jQuery.ajax({

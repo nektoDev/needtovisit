@@ -1,7 +1,5 @@
 <%@ page import="ru.nektodev.needtovisit.UserPlaceRelation" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: userPlaceRelationInstance, field: 'place', 'error')} required">
     <label for="place">
         <g:message code="userPlaceRelation.place.label" default="Place"/>
