@@ -1,5 +1,5 @@
 <%@ page import="ru.nektodev.needtovisit.UserPlaceRelation" %>
-<g:formRemote class="form form-horizontal" style="" name="innerRelationForm" url="[controller: 'userPlaceRelation', action: 'update']">
+<g:formRemote class="form form-horizontal" name="innerRelationForm" url="[controller: 'userPlaceRelation', action: 'update']">
 
 
 <div class="control-group ${hasErrors(bean: userPlaceRelationInstance, field: 'visited', 'error')}">
