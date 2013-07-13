@@ -1,78 +1,4 @@
 <%@ page import="ru.nektodev.needtovisit.Place; ru.nektodev.needtovisit.UserPlaceRelation; ru.nektodev.needtovisit.Users" %>
-<span id="datepicker" data-date-format="dd.mm.yyyy"
-      data-date="${formatDate([format: "dd.MM.yyyy", date: new Date()])}">
-
-</span>
-<script type="text/javascript">
-
-    function openForm(id) {
-
-        $("#place-list-item-collapse_" + id).on('show', function() {
-            $("#place-list-table-wrapper_" + id).slideUp();
-            $("#place-list-item-header_" + id).slideDown();
-
-        });
-
-        $("#place-list-item-collapse_" + id).on('hide', function() {
-
-            $("#place-list-item-header_" + id).slideUp();
-            $("#place-list-table-wrapper_" + id).slideDown();
-        });
-
-        $("#place-list-item-collapse_" + id).collapse('toggle');
-
-    }
-
-    function toggleForm(id) {
-        if ($('#place-list-item-collapse_' + id).hasClass('in')) {
-            $("#place-list-item-collapse_" + id).collapse('toggle');
-
-        } else {
-            jQuery.ajax({
-                type: 'POST',
-                data: {'id': id},
-                url: '/needtovisit/userPlaceRelation/loadCollapseForm',
-                success: function (data, textStatus) {
-                    jQuery('#place-list-item-collapse-inner_' + id).html(data);
-                    openForm(id);
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    failOpenCollapse(XMLHttpRequest);
-                }
-            });
-        }
-    }
-</script>
-
-<style>
-    .place-list-item-header{
-
-        padding: 8px;
-        border: none;
-        border-radius: 4px 4px 0 0;
-        color: white;
-
-        background-image: linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
-        background-image: -o-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
-        background-image: -moz-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
-        background-image: -webkit-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
-        background-image: -ms-linear-gradient(bottom, rgb(0,133,204) 0%, rgba(0,133,204, 0.66) 65%);
-
-        background-image: -webkit-gradient(
-            linear,
-            right bottom,
-            right top,
-            color-stop(0, rgba(0,133,204, 1)),
-            color-stop(0.65, rgba(0,133,204, 0.66))
-        );
-    }
-    .place-list-item-header .name{
-        font-size: 120%;
-        text-shadow: 0px -1px 0px rgb(78, 78, 78);
-    }
-
-
-</style>
 <g:each in="${places}" status="i" var="placeInstance">
     <g:set var="instanceRelation"
            value="${UserPlaceRelation.findAllByPlace(placeInstance).find({ it.user.id.toString().equals(sec.loggedInUserInfo(field: 'id').toString()) })}"/>
@@ -236,4 +162,42 @@
 
                 });
     });
+
+    function openForm(id) {
+
+        $("#place-list-item-collapse_" + id).on('show', function() {
+            $("#place-list-table-wrapper_" + id).slideUp();
+            $("#place-list-item-header_" + id).slideDown();
+
+        });
+
+        $("#place-list-item-collapse_" + id).on('hide', function() {
+
+            $("#place-list-item-header_" + id).slideUp();
+            $("#place-list-table-wrapper_" + id).slideDown();
+        });
+
+        $("#place-list-item-collapse_" + id).collapse('toggle');
+
+    }
+
+    function toggleForm(id) {
+        if ($('#place-list-item-collapse_' + id).hasClass('in')) {
+            $("#place-list-item-collapse_" + id).collapse('toggle');
+
+        } else {
+            jQuery.ajax({
+                type: 'POST',
+                data: {'id': id},
+                url: '/needtovisit/userPlaceRelation/loadCollapseForm',
+                success: function (data, textStatus) {
+                    jQuery('#place-list-item-collapse-inner_' + id).html(data);
+                    openForm(id);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    failOpenCollapse(XMLHttpRequest);
+                }
+            });
+        }
+    }
 </script>
