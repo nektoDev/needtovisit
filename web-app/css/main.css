@@ -113,3 +113,37 @@ table td>form {
     opacity: 1;
     z-index: 100;
 }
+
+/*COMMENTS*/
+
+.comments {
+
+}
+
+.comments-title {
+    text-transform: uppercase;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.comment-body {
+    background-color: #fafafa;
+    border: 1px dashed #ccc;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.comment-user {
+    font-size: 120%;
+    margin-bottom: 10px;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+}
+
+.comment-footer {
+    font-size: 70%;
+    color: darkgray;
+    margin-bottom: -5px;
+}

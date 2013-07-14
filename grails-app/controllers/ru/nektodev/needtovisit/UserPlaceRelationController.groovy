@@ -159,7 +159,8 @@ class UserPlaceRelationController {
         }
 
         UserPlaceRelation upr = UserPlaceRelation.findByUserAndPlace(springSecurityService.getCurrentUser() as Users, place);
+        List<UserPlaceRelation> rels = UserPlaceRelation.findAllByPlace(place)
 
-        render([template: "/userPlaceRelation/layouts/innerForm", model: [userPlaceRelationInstance: upr]])
+        render([template: "/userPlaceRelation/layouts/innerForm", model: [userPlaceRelationInstance: upr, relations: rels]])
     }
 }
